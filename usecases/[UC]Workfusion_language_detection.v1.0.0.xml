@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
+<objectListWrapper>
+    <objects>
+        <objectContainer>
+            <machineWorkSetting>
+                <category>
+                    <automation>false</automation>
+                    <description></description>
+                    <enabled>true</enabled>
+                    <executingType>MACHINE</executingType>
+                    <name>ETL</name>
+                    <private>false</private>
+                    <publicId>0ef23179-3fa8-4750-86ca-f6da84f6e16d</publicId>
+                </category>
+                <contentType>NORMAL</contentType>
+                <description>Detects language of the text snippet</description>
+                <enabled>true</enabled>
+                <name>Language Detection1</name>
+                <publicId>e6b43323-e0cf-45e5-a242-07849127f886</publicId>
+                <version>
+                    <componentUuid>dea26ff7-c0d4-45e4-a6e4-5460a738d17d</componentUuid>
+                    <incrementalVersion>1.5</incrementalVersion>
+                    <lastInChain>true</lastInChain>
+                    <lastModified>2018-06-08T10:00:01Z</lastModified>
+                    <versionUuid>a6bc51d7-68fc-494a-b072-ec0db202f78e</versionUuid>
+                </version>
+                <answers>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>text_doc_link</answer>
+                        <answerCode>text_doc_link</answerCode>
+                        <answerHtml>Path to the text file, which you want to use for language detection</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2017-03-09T07:55:01Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>1</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                </answers>
+                <machineWorkSettingType>ETL</machineWorkSettingType>
+                <template>
+                    <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;config&gt;
+  
+  &lt;var-def name="content"&gt;
+    &lt;#noparse&gt;
+    	&lt;http url="${{{text_doc_link}}}"/&gt;
+    &lt;/#noparse&gt;
+  &lt;/var-def&gt;
+  
+  
+  &lt;script&gt;&lt;![CDATA[
+  import com.freedomoss.crowdcontrol.webharvest.extractor.language.Language;
+
+  if(sys.isVariableDefined("group_language")){
+    String detected_language = group_language.toString();
+    double detected_language_probability = 1.0;
+  }else{
+      Language l  = com.freedomoss.crowdcontrol.webharvest.extractor.language.LanguageExtractor.getInstance().extract(content.toString());
+      
+      String lang = l.getLang();
+      int prob = (int)(l.getProb()*100.00);
+     
+      //!!!this needs to be verified, code below developed for POC HPE case!!!
+      String groupLang = "NotDetected";
+      if ( prob &gt;= 98 ) {
+        if ( "en".equals(lang) ) {
+          groupLang = "English";
+        } else if ( "es".equals(lang) || "pt".equals(lang) ) {
+          groupLang = "Spanish";
+        }
+      } else if ( prob &lt; 98 &amp;&amp; ( "en".equals(lang) || "es".equals(lang) || "it".equals(lang) || "pt".equals(lang) ) ) {
+       groupLang = "Spanish"; 
+      }
+      
+      sys.defineVariable("group_language", groupLang, true);
+      sys.defineVariable("detected_language", l.getLang(), true);
+      sys.defineVariable("detected_language_probability", (int)(l.getProb()*100.00), true);
+  }
+  ]]&gt;&lt;/script&gt;
+  
+  &lt;export include-original-data="true"&gt;
+    &lt;single-column name="detected_language" value="${detected_language}"/&gt;
+    &lt;single-column name="detected_language_probability" value="${detected_language_probability}"/&gt;
+    &lt;single-column name="group_language" value="${group_language}"/&gt;
+  &lt;/export&gt;
+&lt;/config&gt;</content>
+                    <name>Language Detection</name>
+                    <origination>CREATED_MANUALLY</origination>
+                    <status>ACTIVE</status>
+                    <type>BASE_MACHINE</type>
+                    <uuid>b463647b-e244-43f7-b63a-00a6688e0441</uuid>
+                    <version>
+                        <componentUuid>2453a986-802c-4c18-9c1a-680c24c06c35</componentUuid>
+                        <incrementalVersion>1.2</incrementalVersion>
+                        <lastInChain>true</lastInChain>
+                        <lastModified>2017-03-09T08:00:19Z</lastModified>
+                        <versionUuid>e1a55d87-d4e0-4c8f-ad16-954731721638</versionUuid>
+                    </version>
+                </template>
+            </machineWorkSetting>
+            <hashCode>-45599064</hashCode>
+        </objectContainer>
+    </objects>
+</objectListWrapper>

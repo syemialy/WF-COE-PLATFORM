@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
+<objectListWrapper>
+    <objects>
+        <objectContainer>
+            <machineWorkSetting>
+                <category>
+                    <automation>false</automation>
+                    <description></description>
+                    <enabled>true</enabled>
+                    <executingType>MACHINE</executingType>
+                    <name>ETL</name>
+                    <private>false</private>
+                    <publicId>0ef23179-3fa8-4750-86ca-f6da84f6e16d</publicId>
+                </category>
+                <contentType>NORMAL</contentType>
+                <description>Save all input records to DS that will be created automatically</description>
+                <enabled>true</enabled>
+                <name>Save all input records to Data Store1</name>
+                <publicId>8baecfbd-f0e9-45e1-a7ce-301bea297139</publicId>
+                <version>
+                    <componentUuid>61d7df2c-e682-43b3-9f82-00addac12b02</componentUuid>
+                    <incrementalVersion>1.1</incrementalVersion>
+                    <lastInChain>true</lastInChain>
+                    <lastModified>2018-06-08T09:22:05Z</lastModified>
+                    <versionUuid>dbd29cf4-d2e0-4731-a696-9b981d33e3bd</versionUuid>
+                </version>
+                <answers>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Data Store name</answer>
+                        <answerCode>ds_name</answerCode>
+                        <answerHtml></answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2017-03-06T14:31:27Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>1</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                </answers>
+                <machineWorkSettingType>ETL</machineWorkSettingType>
+                <template>
+                    <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;config xmlns="http://web-harvest.sourceforge.net/schema/1.0/config"
+	scriptlang="groovy"&gt;
+	
+	&lt;var-def name="ds_name"&gt;
+        &lt;template&gt;{{ds_name}}&lt;/template&gt;
+    &lt;/var-def&gt;
+&lt;#noparse&gt;
+	&lt;script&gt;&lt;![CDATA[
+		originalData = new HashMap();
+
+		for (Object dataItem: hit_submission_data_item.getWrappedObject().getItemValueList()) {
+
+			String name = dataItem.getName();
+			String value = dataItem.getValue();
+
+			originalData.put(name, value);
+		}
+	]]&gt;&lt;/script&gt;
+
+	&lt;insert-datastore datastore-name="${ds_name}"
+		json-value-map="${new com.google.gson.Gson().toJson(originalData)}" create="true" /&gt;
+
+	&lt;export include-original-data="true"&gt;
+		&lt;single-column name="ds_name" value="${ds_name}" /&gt;
+	&lt;/export&gt;
+          
+  &lt;/#noparse&gt;
+&lt;/config&gt;</content>
+                    <name>Save all input records to Data Store</name>
+                    <origination>CREATED_MANUALLY</origination>
+                    <status>ACTIVE</status>
+                    <type>BASE_MACHINE</type>
+                    <uuid>b5104340-9740-4c94-9cb7-94f8dd5dd569</uuid>
+                    <version>
+                        <componentUuid>dfc90c24-82d5-4cfb-b193-96f9c31877d6</componentUuid>
+                        <incrementalVersion>1.0</incrementalVersion>
+                        <lastInChain>true</lastInChain>
+                        <lastModified>2017-03-06T14:40:21Z</lastModified>
+                        <versionUuid>16514269-f0c8-4493-8f06-3cb3502c6093</versionUuid>
+                    </version>
+                </template>
+            </machineWorkSetting>
+            <hashCode>918863195</hashCode>
+        </objectContainer>
+    </objects>
+</objectListWrapper>
