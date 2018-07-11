@@ -3,7 +3,7 @@
   <objects>
       <objectContainer>
          <project>
-            <name>[BP][Template][OCR]v2.0 11-7-2018</name>
+            <name>[BP][Template][OCR]Template 11-7-2018</name>
             <description/>
             <author>amironov</author>
             <runs>
@@ -20,7 +20,7 @@
                               <name>Approve All</name>
                               <ruleType>WORKFLOW_RULE</ruleType>
                               <ruleTypeUI>Composite</ruleTypeUI>
-                              <uuid>7aef9f86-db70-4434-83e4-4478ab14a8ed</uuid>
+                              <uuid>3bfc39ca-b6b7-49e1-b6f5-40dfcd5f6a8b</uuid>
                               <workflowRuleMode>SIMPLE</workflowRuleMode>
                            </businessRule>
                            <campaign>
@@ -43,7 +43,7 @@
 &lt;/config&gt;</content>
                                  <description/>
                                  <includedConfigs/>
-                                 <inclusionCode>c286e602-47a1-4e62-ae44-a7bdd78c7708</inclusionCode>
+                                 <inclusionCode>c6d7d0b8-d1f3-4872-8cb8-c2fd62e56bc3</inclusionCode>
                                  <jsonParams>{"configXMLModified":"true"}</jsonParams>
                                  <machineWorkSetting>
                                     <category>
@@ -112,13 +112,13 @@
                                        <versionUuid>8f04bd99-7f51-4796-a528-d1a7c9ccfbc4</versionUuid>
                                     </version>
                                  </template>
-                                 <uuid>c286e602-47a1-4e62-ae44-a7bdd78c7708</uuid>
+                                 <uuid>c6d7d0b8-d1f3-4872-8cb8-c2fd62e56bc3</uuid>
                                  <version>
                                     <componentUuid>6a7a14b7-7437-4245-9177-96a0c6a609a1</componentUuid>
                                     <incrementalVersion>1.1</incrementalVersion>
                                     <lastInChain>true</lastInChain>
-                                    <lastModified>2018-07-11T10:23:40Z</lastModified>
-                                    <versionUuid>3e3f2047-994a-4f4d-87c1-69025e5cb635</versionUuid>
+                                    <lastModified>2018-07-11T10:58:49Z</lastModified>
+                                    <versionUuid>e350d1cf-0649-4318-8331-f5037cf97c4e</versionUuid>
                                  </version>
                                  <code/>
                               </machineConfig>
@@ -132,21 +132,21 @@
                               <streamValueType>Tasks</streamValueType>
                               <title>replace with Settings </title>
                               <type>SINGLE</type>
-                              <uuid>9a29a1c8-831d-417e-a6dd-a1ee59069aae</uuid>
+                              <uuid>a02f4560-11b4-4c39-889e-29d70115beb3</uuid>
                               <validWorkflow>false</validWorkflow>
                               <version>
                                  <componentUuid>5a73ff3b-2d75-482d-a3a1-a8cd5bc5bb2d</componentUuid>
                                  <incrementalVersion>1.1</incrementalVersion>
                                  <lastInChain>true</lastInChain>
-                                 <lastModified>2018-07-11T10:33:49Z</lastModified>
-                                 <versionUuid>4fb862ab-46ec-41f4-81a3-34906d9b9253</versionUuid>
+                                 <lastModified>2018-07-11T13:21:44Z</lastModified>
+                                 <versionUuid>1eb463f8-e7ef-4f4d-b0f9-fe6ea4084bdb</versionUuid>
                               </version>
                               <workSettingBase>false</workSettingBase>
                            </campaign>
                            <deleted>false</deleted>
                            <stepIndex>1</stepIndex>
                            <stepPosition>START</stepPosition>
-                           <uuid>29ed8022-f285-4b93-b74a-09b2bb67cfdf</uuid>
+                           <uuid>ef9b9565-aec0-46b5-bc53-ba79136d01e5</uuid>
                         </campaignMap>
                         <campaignMap>
                            <blockSize>1</blockSize>
@@ -224,7 +224,7 @@ end</content>
                               <name>OCR Type</name>
                               <ruleType>WORKFLOW_RULE</ruleType>
                               <ruleTypeUI>Composite</ruleTypeUI>
-                              <uuid>1a170e7a-0117-4acd-9e9b-fa90f212a56f</uuid>
+                              <uuid>34aa019c-a8b6-4be0-a54a-e6212e037699</uuid>
                               <workflowRuleMode>SIMPLE</workflowRuleMode>
                            </businessRule>
                            <campaign>
@@ -247,7 +247,7 @@ end</content>
 &lt;/config&gt;</content>
                                  <description>Replace with OCR UC</description>
                                  <includedConfigs/>
-                                 <inclusionCode>23b849bf-cdf0-4d50-b132-1aedf1536ed9</inclusionCode>
+                                 <inclusionCode>36d33159-b672-488c-b84e-bc31db8bb7d9</inclusionCode>
                                  <jsonParams>{"configXMLModified":"true"}</jsonParams>
                                  <machineWorkSetting>
                                     <category>
@@ -316,13 +316,13 @@ end</content>
                                        <versionUuid>8f04bd99-7f51-4796-a528-d1a7c9ccfbc4</versionUuid>
                                     </version>
                                  </template>
-                                 <uuid>23b849bf-cdf0-4d50-b132-1aedf1536ed9</uuid>
+                                 <uuid>36d33159-b672-488c-b84e-bc31db8bb7d9</uuid>
                                  <version>
                                     <componentUuid>cf4b8949-a0ed-4b8a-a1d3-90a2e6fbc445</componentUuid>
                                     <incrementalVersion>1.1</incrementalVersion>
                                     <lastInChain>true</lastInChain>
-                                    <lastModified>2018-07-11T10:23:40Z</lastModified>
-                                    <versionUuid>9eb0cec8-30c9-4b6f-bcac-909759d49274</versionUuid>
+                                    <lastModified>2018-07-11T10:58:49Z</lastModified>
+                                    <versionUuid>46d39d3d-aa45-4f28-9637-aff695f229da</versionUuid>
                                  </version>
                                  <code/>
                               </machineConfig>
@@ -336,21 +336,21 @@ end</content>
                               <streamValueType>Tasks</streamValueType>
                               <title>replace with OCR sub-bp</title>
                               <type>SINGLE</type>
-                              <uuid>9f06b1db-c727-4efc-b9d4-e6b7623acfdf</uuid>
+                              <uuid>1d9a50a5-583c-4d19-ba1f-27cd4e147fbc</uuid>
                               <validWorkflow>false</validWorkflow>
                               <version>
                                  <componentUuid>9f35f35f-f60f-4b54-88ae-e98f09f72862</componentUuid>
                                  <incrementalVersion>1.1</incrementalVersion>
                                  <lastInChain>true</lastInChain>
-                                 <lastModified>2018-07-11T10:33:49Z</lastModified>
-                                 <versionUuid>8d47b682-7f01-4fd4-8d4f-eb44cf904ac1</versionUuid>
+                                 <lastModified>2018-07-11T13:21:44Z</lastModified>
+                                 <versionUuid>0f06fe41-2cf8-42a7-97c5-6d9736b55c31</versionUuid>
                               </version>
                               <workSettingBase>false</workSettingBase>
                            </campaign>
                            <deleted>false</deleted>
                            <stepIndex>2</stepIndex>
                            <stepPosition>INTERMEDIATE</stepPosition>
-                           <uuid>796b9a93-5a5f-4b51-b998-724c800f4e08</uuid>
+                           <uuid>054896a1-21a2-4074-aa82-efa5ebd2ae3e</uuid>
                         </campaignMap>
                         <campaignMap>
                            <blockSize>1</blockSize>
@@ -359,7 +359,7 @@ end</content>
                               <name>Approve All</name>
                               <ruleType>WORKFLOW_RULE</ruleType>
                               <ruleTypeUI>Composite</ruleTypeUI>
-                              <uuid>635b551d-e2e4-475e-8bd2-46bf42bfb702</uuid>
+                              <uuid>b70c13ba-2fc8-46dc-8c48-7c3e47fcbe58</uuid>
                               <workflowRuleMode>SIMPLE</workflowRuleMode>
                            </businessRule>
                            <campaign>
@@ -1026,8 +1026,14 @@ end
             scrollingDiv.onkeyup=keyupHandler;
             var minusButton=document.getElementsByClassName('ie-zoom-in')[0];
             var plusButton=document.getElementsByClassName('ie-zoom-out')[0];
-            minusButton.onclick=out;
-            plusButton.onclick=in;
+            if (minusButton!=null){  
+                console.log(minusButton);
+                minusButton.onclick=zoomOut;
+            }  
+            if (plusButton!=null){  
+                console.log(plusButton);
+                plusButton.onclick=zoomIn;
+            }
             var $textContainer = ExtractionAnswer.getExtractionController().$textContainer;
             console.log("Before if");
             if ($textContainer.find('document')) {
@@ -1049,12 +1055,12 @@ end
         textContainer: $([])
     };
   
-    function out(){
+    function zoomOut(){
     	scale=scale-scale*0.1;
         zoom(scale);
     }
   
-    function in(){
+    function zoomIn(){
     	scale=scale+scale*0.1;
         zoom(scale);
     }
@@ -1263,25 +1269,25 @@ end
                                        <origination>CREATED_AUTOMATICALLY</origination>
                                        <status>ACTIVE</status>
                                        <type>TASK</type>
-                                       <uuid>7b12f633-0836-4afe-b029-8a566fd4fe57</uuid>
+                                       <uuid>9468eaaa-7f58-4d7c-a0da-69db2ced8607</uuid>
                                        <version>
                                           <componentUuid>31fd0d05-0791-4083-b461-db3324593e33</componentUuid>
-                                          <incrementalVersion>1.1</incrementalVersion>
-                                          <lastInChain>true</lastInChain>
-                                          <lastModified>2018-07-11T10:23:40Z</lastModified>
-                                          <versionUuid>b067b09c-3874-4e21-84d5-34634cc68420</versionUuid>
+                                          <incrementalVersion>1.2</incrementalVersion>
+                                          <lastInChain>false</lastInChain>
+                                          <lastModified>2018-07-11T13:20:16Z</lastModified>
+                                          <versionUuid>391a03f2-045b-4564-b543-f1f1973359d9</versionUuid>
                                        </version>
                                     </template>
                                  </templates>
                                  <title>[TOOD][MT][BASE] Tagging Over Original Document</title>
                                  <useCommonHitCoordinates>true</useCommonHitCoordinates>
-                                 <uuid>137fcdcc-eae5-47d0-a0e4-747acd340ecd</uuid>
+                                 <uuid>a17b51b9-2112-4c82-a434-6f313c59df24</uuid>
                                  <version>
                                     <componentUuid>bf1e2eae-20ae-4948-9aaa-43716e85d596</componentUuid>
-                                    <incrementalVersion>1.1</incrementalVersion>
-                                    <lastInChain>true</lastInChain>
-                                    <lastModified>2018-07-11T10:23:40Z</lastModified>
-                                    <versionUuid>34080ef0-322e-41fb-a843-1aee1d78c056</versionUuid>
+                                    <incrementalVersion>1.2</incrementalVersion>
+                                    <lastInChain>false</lastInChain>
+                                    <lastModified>2018-07-11T13:20:16Z</lastModified>
+                                    <versionUuid>da7d31b2-7eed-4467-90e4-ca28f1c70159</versionUuid>
                                  </version>
                                  <workSetting>
                                     <category>
@@ -1797,21 +1803,21 @@ end
                               <streamValueType>Tasks</streamValueType>
                               <title>[TOOD][MT][BASE] Tagging Over Original Document</title>
                               <type>SINGLE</type>
-                              <uuid>c7dad6e9-dadb-4a47-b46f-ef5c73c9b31d</uuid>
+                              <uuid>0f6922d5-1fcf-475a-9738-27b180bed312</uuid>
                               <validWorkflow>false</validWorkflow>
                               <version>
                                  <componentUuid>62191fd1-b81f-40d6-8580-7d98d088d0d1</componentUuid>
-                                 <incrementalVersion>1.2</incrementalVersion>
-                                 <lastInChain>true</lastInChain>
-                                 <lastModified>2018-07-11T10:23:40Z</lastModified>
-                                 <versionUuid>3e3d9887-ac29-4906-9463-4b6a5a3d4fe4</versionUuid>
+                                 <incrementalVersion>1.4</incrementalVersion>
+                                 <lastInChain>false</lastInChain>
+                                 <lastModified>2018-07-11T13:20:16Z</lastModified>
+                                 <versionUuid>70cabf77-6989-47c8-b7c8-795804277f50</versionUuid>
                               </version>
                               <workSettingBase>false</workSettingBase>
                            </campaign>
                            <deleted>false</deleted>
                            <stepIndex>3</stepIndex>
                            <stepPosition>INTERMEDIATE</stepPosition>
-                           <uuid>bd66d3f5-8bad-4abe-aae9-fc58feb18bb7</uuid>
+                           <uuid>77257cca-2c79-4508-a5fc-48176172536c</uuid>
                         </campaignMap>
                         <campaignMap>
                            <blockSize>1</blockSize>
@@ -1820,7 +1826,7 @@ end
                               <name>Approve All</name>
                               <ruleType>WORKFLOW_RULE</ruleType>
                               <ruleTypeUI>Composite</ruleTypeUI>
-                              <uuid>425bbd48-1668-4688-a96e-438caa9e4a17</uuid>
+                              <uuid>333901b2-e758-4e7a-9260-285ab0eb48be</uuid>
                               <workflowRuleMode>SIMPLE</workflowRuleMode>
                            </businessRule>
                            <campaign>
@@ -2373,13 +2379,13 @@ end
                                  </templates>
                                  <title>[Standard] Document Tagging Sample</title>
                                  <useCommonHitCoordinates>true</useCommonHitCoordinates>
-                                 <uuid>fd831633-796c-4f5d-93b2-4e6dc5ac4a17</uuid>
+                                 <uuid>908d6e0c-f1d0-40e4-9a38-5356ab71ca29</uuid>
                                  <version>
                                     <componentUuid>1761bcef-ce47-49cf-b2d8-1397e344b559</componentUuid>
                                     <incrementalVersion>1.1</incrementalVersion>
                                     <lastInChain>true</lastInChain>
-                                    <lastModified>2018-07-11T10:23:40Z</lastModified>
-                                    <versionUuid>bb44681a-df1c-4ba3-bcf4-478013d823ba</versionUuid>
+                                    <lastModified>2018-07-11T13:20:16Z</lastModified>
+                                    <versionUuid>9eb2efa8-444f-4631-8c48-ede22b3f212b</versionUuid>
                                  </version>
                                  <workSetting>
                                     <category>
@@ -2895,21 +2901,21 @@ end
                               <streamValueType>Tasks</streamValueType>
                               <title>[Standard] Document Tagging Sample</title>
                               <type>SINGLE</type>
-                              <uuid>65b7c930-2bc8-4959-b05c-88a54dceec03</uuid>
+                              <uuid>00f227eb-b5a6-48b2-916d-a4b27a803a5b</uuid>
                               <validWorkflow>false</validWorkflow>
                               <version>
                                  <componentUuid>9105ba8a-c6d2-48d6-bdb9-ba3db908bb23</componentUuid>
                                  <incrementalVersion>1.2</incrementalVersion>
                                  <lastInChain>true</lastInChain>
-                                 <lastModified>2018-07-11T10:23:40Z</lastModified>
-                                 <versionUuid>afe596d6-9771-4ea2-bac6-03699a4572c1</versionUuid>
+                                 <lastModified>2018-07-11T13:20:16Z</lastModified>
+                                 <versionUuid>f024f9e6-53d6-4c1e-bbb7-86e34b34b72d</versionUuid>
                               </version>
                               <workSettingBase>false</workSettingBase>
                            </campaign>
                            <deleted>false</deleted>
                            <stepIndex>4</stepIndex>
                            <stepPosition>INTERMEDIATE</stepPosition>
-                           <uuid>0f60d6f0-e9ad-4e5e-b839-8e7efa37c4a6</uuid>
+                           <uuid>a6a90949-57ef-44c6-8d7f-88defffdb265</uuid>
                         </campaignMap>
                         <campaignMap>
                            <blockSize>1</blockSize>
@@ -2918,7 +2924,7 @@ end
                               <name>Approve All</name>
                               <ruleType>WORKFLOW_RULE</ruleType>
                               <ruleTypeUI>Composite</ruleTypeUI>
-                              <uuid>301d583f-9b81-45c6-8181-06a7731619ca</uuid>
+                              <uuid>e1036335-e589-4bb2-946a-502401e49563</uuid>
                               <workflowRuleMode>SIMPLE</workflowRuleMode>
                            </businessRule>
                            <campaign>
@@ -2961,7 +2967,7 @@ end
 &lt;/config&gt;</content>
                                  <description/>
                                  <includedConfigs/>
-                                 <inclusionCode>701e09d6-90f9-425c-a229-b93f529b92f2</inclusionCode>
+                                 <inclusionCode>792ce929-20cb-4ce2-94d9-c11686d01f5b</inclusionCode>
                                  <jsonParams>{"configXMLModified":"true"}</jsonParams>
                                  <machineWorkSetting>
                                     <category>
@@ -3030,13 +3036,13 @@ end
                                        <versionUuid>8f04bd99-7f51-4796-a528-d1a7c9ccfbc4</versionUuid>
                                     </version>
                                  </template>
-                                 <uuid>701e09d6-90f9-425c-a229-b93f529b92f2</uuid>
+                                 <uuid>792ce929-20cb-4ce2-94d9-c11686d01f5b</uuid>
                                  <version>
                                     <componentUuid>1d58607e-74a7-4359-937e-139d054b9d18</componentUuid>
                                     <incrementalVersion>1.1</incrementalVersion>
-                                    <lastInChain>true</lastInChain>
-                                    <lastModified>2018-07-11T10:23:40Z</lastModified>
-                                    <versionUuid>ffa9f9f1-086d-40c9-95aa-79e296913426</versionUuid>
+                                    <lastInChain>false</lastInChain>
+                                    <lastModified>2018-07-11T10:58:49Z</lastModified>
+                                    <versionUuid>53813199-e08c-47d6-82c8-164500f6d3bf</versionUuid>
                                  </version>
                                  <code/>
                               </machineConfig>
@@ -3050,21 +3056,21 @@ end
                               <streamValueType>Tasks</streamValueType>
                               <title>[Standard] Prepare URL</title>
                               <type>SINGLE</type>
-                              <uuid>b62637a3-4321-4b59-b23c-4c4405a34433</uuid>
+                              <uuid>e118eef5-e4bd-43d9-a5bd-fa105df21e07</uuid>
                               <validWorkflow>false</validWorkflow>
                               <version>
                                  <componentUuid>f63f050d-1cc8-48e8-b80e-046a76186ba8</componentUuid>
                                  <incrementalVersion>1.1</incrementalVersion>
-                                 <lastInChain>true</lastInChain>
-                                 <lastModified>2018-07-11T10:33:49Z</lastModified>
-                                 <versionUuid>e8598c50-90bd-4c09-8640-11bad58641cc</versionUuid>
+                                 <lastInChain>false</lastInChain>
+                                 <lastModified>2018-07-11T13:21:44Z</lastModified>
+                                 <versionUuid>acbf6277-c606-4825-9956-687123d7c95a</versionUuid>
                               </version>
                               <workSettingBase>false</workSettingBase>
                            </campaign>
                            <deleted>false</deleted>
                            <stepIndex>5</stepIndex>
                            <stepPosition>INTERMEDIATE</stepPosition>
-                           <uuid>1cfd9ef6-31ba-4611-a9fd-3762e191871e</uuid>
+                           <uuid>3b5f301a-e277-43aa-b38b-e690c4d950f4</uuid>
                         </campaignMap>
                         <campaignMap>
                            <blockSize>1</blockSize>
@@ -3073,7 +3079,7 @@ end
                               <name>Approve All</name>
                               <ruleType>WORKFLOW_RULE</ruleType>
                               <ruleTypeUI>Composite</ruleTypeUI>
-                              <uuid>720d9b4e-6e39-41e1-91ab-31d46b94f0a5</uuid>
+                              <uuid>90ef1cb8-8ec8-40dc-9940-11304e3647ac</uuid>
                               <workflowRuleMode>SIMPLE</workflowRuleMode>
                            </businessRule>
                            <campaign>
@@ -3105,7 +3111,7 @@ end
 &lt;/config&gt;</content>
                                  <description/>
                                  <includedConfigs/>
-                                 <inclusionCode>81026fcd-0d49-4dfd-a95f-83dd05088a1e</inclusionCode>
+                                 <inclusionCode>0adde87d-2e55-401b-b43d-9ae346434e02</inclusionCode>
                                  <jsonParams>{"configXMLModified":"true"}</jsonParams>
                                  <machineWorkSetting>
                                     <category>
@@ -3174,13 +3180,13 @@ end
                                        <versionUuid>8f04bd99-7f51-4796-a528-d1a7c9ccfbc4</versionUuid>
                                     </version>
                                  </template>
-                                 <uuid>81026fcd-0d49-4dfd-a95f-83dd05088a1e</uuid>
+                                 <uuid>0adde87d-2e55-401b-b43d-9ae346434e02</uuid>
                                  <version>
                                     <componentUuid>cd6fe770-99bf-4ce5-a76d-fd6e9c542014</componentUuid>
                                     <incrementalVersion>1.1</incrementalVersion>
-                                    <lastInChain>true</lastInChain>
-                                    <lastModified>2018-07-11T10:23:40Z</lastModified>
-                                    <versionUuid>b23fa428-0c8b-4cba-84f1-c081516e97d4</versionUuid>
+                                    <lastInChain>false</lastInChain>
+                                    <lastModified>2018-07-11T10:58:49Z</lastModified>
+                                    <versionUuid>5e346141-7902-4593-b86e-1119a473ce3d</versionUuid>
                                  </version>
                                  <code/>
                               </machineConfig>
@@ -3194,21 +3200,21 @@ end
                               <streamValueType>Tasks</streamValueType>
                               <title>[TOOD] Prepare URL</title>
                               <type>SINGLE</type>
-                              <uuid>7867f29c-b76b-4372-ab8f-36084037ceae</uuid>
+                              <uuid>86f554ae-959f-4533-b566-80e9fe93bc8d</uuid>
                               <validWorkflow>false</validWorkflow>
                               <version>
                                  <componentUuid>38841804-66b6-4442-970a-25834764dd4b</componentUuid>
                                  <incrementalVersion>1.1</incrementalVersion>
-                                 <lastInChain>true</lastInChain>
-                                 <lastModified>2018-07-11T10:33:49Z</lastModified>
-                                 <versionUuid>f286b3e6-3b86-4a26-8d73-63a3dd624a4c</versionUuid>
+                                 <lastInChain>false</lastInChain>
+                                 <lastModified>2018-07-11T13:21:44Z</lastModified>
+                                 <versionUuid>bab1f3c5-79a9-4987-9fdf-6276912d2282</versionUuid>
                               </version>
                               <workSettingBase>false</workSettingBase>
                            </campaign>
                            <deleted>false</deleted>
                            <stepIndex>6</stepIndex>
                            <stepPosition>INTERMEDIATE</stepPosition>
-                           <uuid>2a3cdd42-4797-4c28-b9ff-bc545c152b10</uuid>
+                           <uuid>bc117073-cd5b-4ce2-a9fd-5de2f0d76380</uuid>
                         </campaignMap>
                         <campaignMap>
                            <businessRule>
@@ -3249,7 +3255,7 @@ agenda-group "initialization-group"
 end</content>
                               <name>Business Process: End Rule</name>
                               <ruleType>WORKFLOW_RULE</ruleType>
-                              <uuid>b0cc04b4-0456-4dcc-8d62-0b29be4a7429</uuid>
+                              <uuid>66ea6722-d95a-4144-8c5c-febd8e7e00d9</uuid>
                               <workflowRuleMode>ADVANCED</workflowRuleMode>
                            </businessRule>
                            <campaign>
@@ -3423,12 +3429,12 @@ end</content>
                            <deleted>false</deleted>
                            <stepIndex>7</stepIndex>
                            <stepPosition>END</stepPosition>
-                           <uuid>16c23b72-1041-495a-a1e7-dd244c45a88b</uuid>
+                           <uuid>2b264303-39ff-463b-b826-2d644fee75c5</uuid>
                         </campaignMap>
                      </campaignMaps>
                      <campaigns/>
                      <compositeCampaignVersion>NEW_WORKFLOW</compositeCampaignVersion>
-                     <compositeStructureXml>&lt;mxGraphModel&gt;&lt;root&gt;&lt;mxCell id="0"/&gt;&lt;mxCell id="1" parent="0"/&gt;&lt;Start id="2" name="Start" type="start"&gt;&lt;mxCell parent="1" style="start" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="60.0" y="66.0"/&gt;&lt;/mxCell&gt;&lt;/Start&gt;&lt;Link id="25" name="" type="link"&gt;&lt;mxCell edge="1" parent="1" source="2" style="link" target="418"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="targetPoint" x="140.0" y="82.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;End campaignMapUUID="16c23b72-1041-495a-a1e7-dd244c45a88b" id="143" name="End" type="end"&gt;&lt;mxCell parent="1" style="end" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="434.0" y="430.0"/&gt;&lt;/mxCell&gt;&lt;/End&gt;&lt;Rule id="323" name="OCR Type" ruleUUID="1a170e7a-0117-4acd-9e9b-fa90f212a56f" type="rule"&gt;&lt;mxCell parent="1" style="rule" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="434.0" y="190.0"/&gt;&lt;/mxCell&gt;&lt;/Rule&gt;&lt;Link id="324" name="" type="link"&gt;&lt;mxCell edge="1" parent="1" source="417" style="link" target="323"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="sourcePoint" x="450.0" y="122.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link conditional="true" id="325" label="TOOD" name="" outcomeId="TOOD" ruleUUID="1a170e7a-0117-4acd-9e9b-fa90f212a56f" type="link"&gt;&lt;mxCell edge="1" parent="1" source="323" style="link" target="331"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="554.0" y="191.0"/&gt;&lt;Array as="points"/&gt;&lt;mxPoint as="offset" x="13.0" y="-28.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;HumanTask automatedCampaignUUID="" automatedUseCaseId="" campaignMapUUID="bd66d3f5-8bad-4abe-aae9-fc58feb18bb7" id="327" name="[TOOD][MT][BASE] Tagging Over Original Document" taskUUID="c7dad6e9-dadb-4a47-b46f-ef5c73c9b31d" type="human_task"&gt;&lt;mxCell parent="1" style="human_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="220.11666870117188" y="339.53334045410156"/&gt;&lt;/mxCell&gt;&lt;/HumanTask&gt;&lt;HumanTask automatedCampaignUUID="" automatedUseCaseId="" campaignMapUUID="0f60d6f0-e9ad-4e5e-b839-8e7efa37c4a6" id="328" name="[Standard] Document Tagging Sample" taskUUID="65b7c930-2bc8-4959-b05c-88a54dceec03" type="human_task"&gt;&lt;mxCell parent="1" style="human_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="510.1166687011719" y="339.53334045410156"/&gt;&lt;/mxCell&gt;&lt;/HumanTask&gt;&lt;Link id="329" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="635b551d-e2e4-475e-8bd2-46bf42bfb702" type="link"&gt;&lt;mxCell edge="1" parent="1" source="327" style="link" target="143"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;Array as="points"&gt;&lt;mxPoint x="300.0" y="450.0"/&gt;&lt;/Array&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="330" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="425bbd48-1668-4688-a96e-438caa9e4a17" type="link"&gt;&lt;mxCell edge="1" parent="1" source="328" style="link" target="143"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;Array as="points"&gt;&lt;mxPoint x="590.0" y="450.0"/&gt;&lt;/Array&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;MachineTask campaignMapUUID="2a3cdd42-4797-4c28-b9ff-bc545c152b10" id="331" name="[TOOD] Prepare URL" taskUUID="7867f29c-b76b-4372-ab8f-36084037ceae" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="220.0" y="250.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;MachineTask campaignMapUUID="1cfd9ef6-31ba-4611-a9fd-3762e191871e" id="332" name="[Standard] Prepare URL" taskUUID="b62637a3-4321-4b59-b23c-4c4405a34433" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="510.0" y="250.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;Link conditional="true" id="334" label="Standard" name="" outcomeId="Standard" ruleUUID="1a170e7a-0117-4acd-9e9b-fa90f212a56f" type="link"&gt;&lt;mxCell edge="1" parent="1" source="323" style="link" target="332"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="554.0" y="191.0"/&gt;&lt;Array as="points"/&gt;&lt;mxPoint as="offset" x="-8.0" y="-28.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="335" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="720d9b4e-6e39-41e1-91ab-31d46b94f0a5" type="link"&gt;&lt;mxCell edge="1" parent="1" source="331" style="link" target="327"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"/&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="336" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="301d583f-9b81-45c6-8181-06a7731619ca" type="link"&gt;&lt;mxCell edge="1" parent="1" source="332" style="link" target="328"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"/&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="338" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="7aef9f86-db70-4434-83e4-4478ab14a8ed" type="link"&gt;&lt;mxCell edge="1" parent="1" source="418" style="link" target="417"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="sourcePoint" x="300.0" y="82.0"/&gt;&lt;mxPoint as="targetPoint" x="360.0" y="82.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;MachineTask campaignMapUUID="796b9a93-5a5f-4b51-b998-724c800f4e08" id="417" name="replace with OCR sub-bp" taskUUID="9f06b1db-c727-4efc-b9d4-e6b7623acfdf" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="400.0" y="52.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;MachineTask campaignMapUUID="29ed8022-f285-4b93-b74a-09b2bb67cfdf" id="418" name="replace with Settings " taskUUID="9a29a1c8-831d-417e-a6dd-a1ee59069aae" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="170.0" y="52.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;/root&gt;&lt;/mxGraphModel&gt;</compositeStructureXml>
+                     <compositeStructureXml>&lt;mxGraphModel&gt;&lt;root&gt;&lt;mxCell id="0"/&gt;&lt;mxCell id="1" parent="0"/&gt;&lt;Start id="2" name="Start" type="start"&gt;&lt;mxCell parent="1" style="start" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="60.0" y="66.0"/&gt;&lt;/mxCell&gt;&lt;/Start&gt;&lt;Link id="25" name="" type="link"&gt;&lt;mxCell edge="1" parent="1" source="2" style="link" target="418"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="targetPoint" x="140.0" y="82.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;End campaignMapUUID="2b264303-39ff-463b-b826-2d644fee75c5" id="143" name="End" type="end"&gt;&lt;mxCell parent="1" style="end" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="434.0" y="430.0"/&gt;&lt;/mxCell&gt;&lt;/End&gt;&lt;Rule id="323" name="OCR Type" ruleUUID="34aa019c-a8b6-4be0-a54a-e6212e037699" type="rule"&gt;&lt;mxCell parent="1" style="rule" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="434.0" y="190.0"/&gt;&lt;/mxCell&gt;&lt;/Rule&gt;&lt;Link id="324" name="" type="link"&gt;&lt;mxCell edge="1" parent="1" source="417" style="link" target="323"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="sourcePoint" x="450.0" y="122.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link conditional="true" id="325" label="TOOD" name="" outcomeId="TOOD" ruleUUID="34aa019c-a8b6-4be0-a54a-e6212e037699" type="link"&gt;&lt;mxCell edge="1" parent="1" source="323" style="link" target="331"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="554.0" y="191.0"/&gt;&lt;Array as="points"/&gt;&lt;mxPoint as="offset" x="13.0" y="-28.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;HumanTask automatedCampaignUUID="" automatedUseCaseId="" campaignMapUUID="77257cca-2c79-4508-a5fc-48176172536c" id="327" name="[TOOD][MT][BASE] Tagging Over Original Document" taskUUID="0f6922d5-1fcf-475a-9738-27b180bed312" type="human_task"&gt;&lt;mxCell parent="1" style="human_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="220.11666870117188" y="339.53334045410156"/&gt;&lt;/mxCell&gt;&lt;/HumanTask&gt;&lt;HumanTask automatedCampaignUUID="" automatedUseCaseId="" campaignMapUUID="a6a90949-57ef-44c6-8d7f-88defffdb265" id="328" name="[Standard] Document Tagging Sample" taskUUID="00f227eb-b5a6-48b2-916d-a4b27a803a5b" type="human_task"&gt;&lt;mxCell parent="1" style="human_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="510.1166687011719" y="339.53334045410156"/&gt;&lt;/mxCell&gt;&lt;/HumanTask&gt;&lt;Link id="329" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="b70c13ba-2fc8-46dc-8c48-7c3e47fcbe58" type="link"&gt;&lt;mxCell edge="1" parent="1" source="327" style="link" target="143"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;Array as="points"&gt;&lt;mxPoint x="300.0" y="450.0"/&gt;&lt;/Array&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="330" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="333901b2-e758-4e7a-9260-285ab0eb48be" type="link"&gt;&lt;mxCell edge="1" parent="1" source="328" style="link" target="143"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;Array as="points"&gt;&lt;mxPoint x="590.0" y="450.0"/&gt;&lt;/Array&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;MachineTask campaignMapUUID="bc117073-cd5b-4ce2-a9fd-5de2f0d76380" id="331" name="[TOOD] Prepare URL" taskUUID="86f554ae-959f-4533-b566-80e9fe93bc8d" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="220.0" y="250.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;MachineTask campaignMapUUID="3b5f301a-e277-43aa-b38b-e690c4d950f4" id="332" name="[Standard] Prepare URL" taskUUID="e118eef5-e4bd-43d9-a5bd-fa105df21e07" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="510.0" y="250.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;Link conditional="true" id="334" label="Standard" name="" outcomeId="Standard" ruleUUID="34aa019c-a8b6-4be0-a54a-e6212e037699" type="link"&gt;&lt;mxCell edge="1" parent="1" source="323" style="link" target="332"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="554.0" y="191.0"/&gt;&lt;Array as="points"/&gt;&lt;mxPoint as="offset" x="-8.0" y="-28.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="335" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="90ef1cb8-8ec8-40dc-9940-11304e3647ac" type="link"&gt;&lt;mxCell edge="1" parent="1" source="331" style="link" target="327"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"/&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="336" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="e1036335-e589-4bb2-946a-502401e49563" type="link"&gt;&lt;mxCell edge="1" parent="1" source="332" style="link" target="328"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"/&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="338" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="3bfc39ca-b6b7-49e1-b6f5-40dfcd5f6a8b" type="link"&gt;&lt;mxCell edge="1" parent="1" source="418" style="link" target="417"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="sourcePoint" x="300.0" y="82.0"/&gt;&lt;mxPoint as="targetPoint" x="360.0" y="82.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;MachineTask campaignMapUUID="054896a1-21a2-4074-aa82-efa5ebd2ae3e" id="417" name="replace with OCR sub-bp" taskUUID="1d9a50a5-583c-4d19-ba1f-27cd4e147fbc" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="400.0" y="52.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;MachineTask campaignMapUUID="ef9b9565-aec0-46b5-bc53-ba79136d01e5" id="418" name="replace with Settings " taskUUID="a02f4560-11b4-4c39-889e-29d70115beb3" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="170.0" y="52.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;/root&gt;&lt;/mxGraphModel&gt;</compositeStructureXml>
                      <description>Business Process description</description>
                      <executingType>COMPOSITE</executingType>
                      <goldBucketBlockSize>0</goldBucketBlockSize>
@@ -4088,8 +4094,14 @@ end
             scrollingDiv.onkeyup=keyupHandler;
             var minusButton=document.getElementsByClassName('ie-zoom-in')[0];
             var plusButton=document.getElementsByClassName('ie-zoom-out')[0];
-            minusButton.onclick=out;
-            plusButton.onclick=in;
+            if (minusButton!=null){  
+                console.log(minusButton);
+                minusButton.onclick=zoomOut;
+            }  
+            if (plusButton!=null){  
+                console.log(plusButton);
+                plusButton.onclick=zoomIn;
+            }
             var $textContainer = ExtractionAnswer.getExtractionController().$textContainer;
             console.log("Before if");
             if ($textContainer.find('document')) {
@@ -4111,12 +4123,12 @@ end
         textContainer: $([])
     };
   
-    function out(){
+    function zoomOut(){
     	scale=scale-scale*0.1;
         zoom(scale);
     }
   
-    function in(){
+    function zoomIn(){
     	scale=scale+scale*0.1;
         zoom(scale);
     }
@@ -4325,25 +4337,25 @@ end
                               <origination>CREATED_AUTOMATICALLY</origination>
                               <status>ACTIVE</status>
                               <type>TASK</type>
-                              <uuid>7b12f633-0836-4afe-b029-8a566fd4fe57</uuid>
+                              <uuid>9468eaaa-7f58-4d7c-a0da-69db2ced8607</uuid>
                               <version>
                                  <componentUuid>31fd0d05-0791-4083-b461-db3324593e33</componentUuid>
-                                 <incrementalVersion>1.1</incrementalVersion>
-                                 <lastInChain>true</lastInChain>
-                                 <lastModified>2018-07-11T10:23:40Z</lastModified>
-                                 <versionUuid>b067b09c-3874-4e21-84d5-34634cc68420</versionUuid>
+                                 <incrementalVersion>1.2</incrementalVersion>
+                                 <lastInChain>false</lastInChain>
+                                 <lastModified>2018-07-11T13:20:16Z</lastModified>
+                                 <versionUuid>391a03f2-045b-4564-b543-f1f1973359d9</versionUuid>
                               </version>
                            </template>
                         </templates>
                         <title>[TOOD][MT][BASE] Tagging Over Original Document</title>
                         <useCommonHitCoordinates>true</useCommonHitCoordinates>
-                        <uuid>137fcdcc-eae5-47d0-a0e4-747acd340ecd</uuid>
+                        <uuid>a17b51b9-2112-4c82-a434-6f313c59df24</uuid>
                         <version>
                            <componentUuid>bf1e2eae-20ae-4948-9aaa-43716e85d596</componentUuid>
-                           <incrementalVersion>1.1</incrementalVersion>
-                           <lastInChain>true</lastInChain>
-                           <lastModified>2018-07-11T10:23:40Z</lastModified>
-                           <versionUuid>34080ef0-322e-41fb-a843-1aee1d78c056</versionUuid>
+                           <incrementalVersion>1.2</incrementalVersion>
+                           <lastInChain>false</lastInChain>
+                           <lastModified>2018-07-11T13:20:16Z</lastModified>
+                           <versionUuid>da7d31b2-7eed-4467-90e4-ca28f1c70159</versionUuid>
                         </version>
                         <workSetting>
                            <category>
@@ -4857,16 +4869,16 @@ end
                      <streamTimeInterval>Immediately</streamTimeInterval>
                      <streamTimeIntervalValue>0</streamTimeIntervalValue>
                      <streamValueType>Tasks</streamValueType>
-                     <title>[BP][Template][OCR]v2.0</title>
+                     <title>[BP][Template][OCR]Template</title>
                      <type>COMPOSITE</type>
-                     <uuid>aeb8ae79-54a8-4f39-b227-8bc02638c01b</uuid>
+                     <uuid>74a57b19-8641-41b5-95fb-fc6a0811882f</uuid>
                      <validWorkflow>true</validWorkflow>
                      <version>
                         <componentUuid>71be8c29-540e-4090-84f7-26755ca071e0</componentUuid>
-                        <incrementalVersion>1.3</incrementalVersion>
+                        <incrementalVersion>1.6</incrementalVersion>
                         <lastInChain>true</lastInChain>
-                        <lastModified>2018-07-11T10:23:40Z</lastModified>
-                        <versionUuid>1f58e058-f293-4529-a3c4-e47ddcd31fd1</versionUuid>
+                        <lastModified>2018-07-11T13:20:16Z</lastModified>
+                        <versionUuid>9a946888-e8e6-4468-a5f0-7160fb29bf00</versionUuid>
                      </version>
                      <workSettingBase>false</workSettingBase>
                   </campaign>
@@ -4878,16 +4890,16 @@ end
                            <modelCode>german-information-extraction</modelCode>
                            <modelType>Other</modelType>
                         </automationUseCaseConfigs>
-                        <id>21</id>
+                        <id>65</id>
                         <includeOriginalData>false</includeOriginalData>
                         <useCaseConfiguration>[{"automationUseCaseId":5,"automationUseCaseUuid":"015804db-4696-4d9f-9199-ba861967c2b8","modelType":"Other","modelCode":"german-information-extraction"}]</useCaseConfiguration>
-                        <uuid>7ebbe985-b8da-4fec-b1e1-f3e7cfdc3300</uuid>
+                        <uuid>9c9d9bfe-a127-416e-b73d-9c052e61b20f</uuid>
                      </automationSetup>
                      <dynamicTaskRenderingDisabled>false</dynamicTaskRenderingDisabled>
                      <goldRun>false</goldRun>
                      <maximumProcessingCount>2</maximumProcessingCount>
                      <qualificationTraining>false</qualificationTraining>
-                     <stepDescription>{"65b7c930-2bc8-4959-b05c-88a54dceec03":{"campaignUUID":"65b7c930-2bc8-4959-b05c-88a54dceec03","scheduleDateType":"DATE","workforceUUID":"88b3de50-7f81-11e8-80bc-0ae8ba3240ae","taskPriority":16,"includeOriginalData":false,"automationUseCaseConfigs":[{"automationUseCaseId":5,"automationUseCaseUuid":"015804db-4696-4d9f-9199-ba861967c2b8","modelType":"Other","modelCode":"german-information-extraction"}],"automationRecall":0.0,"crowdPrices":[{"crowdId":1,"price":0.0}]},"c7dad6e9-dadb-4a47-b46f-ef5c73c9b31d":{"campaignUUID":"c7dad6e9-dadb-4a47-b46f-ef5c73c9b31d","scheduleDateType":"DATE","workforceUUID":"88b3de50-7f81-11e8-80bc-0ae8ba3240ae","taskPriority":16,"includeOriginalData":false,"automationUseCaseConfigs":[{"automationUseCaseId":5,"automationUseCaseUuid":"015804db-4696-4d9f-9199-ba861967c2b8","modelType":"Other","modelCode":"german-information-extraction"}],"automationRecall":0.0,"crowdPrices":[{"crowdId":1,"price":0.0}]}}</stepDescription>
+                     <stepDescription>{"00f227eb-b5a6-48b2-916d-a4b27a803a5b":{"campaignUUID":"00f227eb-b5a6-48b2-916d-a4b27a803a5b","scheduleDateType":"DATE","workforceUUID":"88b3de50-7f81-11e8-80bc-0ae8ba3240ae","taskPriority":16,"includeOriginalData":false,"automationUseCaseConfigs":[{"automationUseCaseId":5,"automationUseCaseUuid":"015804db-4696-4d9f-9199-ba861967c2b8","modelType":"Other","modelCode":"german-information-extraction"}],"automationRecall":0.0,"crowdPrices":[{"crowdId":1,"price":0.0}]},"0f6922d5-1fcf-475a-9738-27b180bed312":{"campaignUUID":"0f6922d5-1fcf-475a-9738-27b180bed312","scheduleDateType":"DATE","workforceUUID":"88b3de50-7f81-11e8-80bc-0ae8ba3240ae","taskPriority":16,"includeOriginalData":false,"automationUseCaseConfigs":[{"automationUseCaseId":5,"automationUseCaseUuid":"015804db-4696-4d9f-9199-ba861967c2b8","modelType":"Other","modelCode":"german-information-extraction"}],"automationRecall":0.0,"crowdPrices":[{"crowdId":1,"price":0.0}]}}</stepDescription>
                      <streamingValue>1</streamingValue>
                      <streamingValueType>Tasks</streamingValueType>
                      <taskParams>{"values":{"NAME":"OCR Settings"}}</taskParams>
@@ -4909,7 +4921,7 @@ end
                   </mixStrategy>
                   <purged>false</purged>
                   <recordProcessingStatus>NOT_STARTED</recordProcessingStatus>
-                  <rootRunUUID>06c69443-0609-4494-9c6c-c3b90e5342cd</rootRunUUID>
+                  <rootRunUUID>e61ab2f9-639a-4704-89d3-951b46a062b2</rootRunUUID>
                   <runTags>
                      <value>no-region</value>
                   </runTags>
@@ -4919,13 +4931,13 @@ end
                   <runType>SIMPLE</runType>
                   <tags>no-region,two</tags>
                   <title>[BP][Template][OCR]v2.0</title>
-                  <uuid>06c69443-0609-4494-9c6c-c3b90e5342cd</uuid>
+                  <uuid>e61ab2f9-639a-4704-89d3-951b46a062b2</uuid>
                </run>
             </runs>
             <automationUseCases/>
             <automationInfo/>
          </project>
-         <hashCode>614820963</hashCode>
+         <hashCode>1175418684</hashCode>
       </objectContainer>
   </objects>
 </objectListWrapper>
