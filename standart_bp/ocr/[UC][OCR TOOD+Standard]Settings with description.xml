@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
+<objectListWrapper>
+    <objects>
+        <objectContainer>
+            <machineWorkSetting>
+                <category>
+                    <automation>false</automation>
+                    <description></description>
+                    <enabled>true</enabled>
+                    <executingType>MACHINE</executingType>
+                    <name>ETL</name>
+                    <private>false</private>
+                    <publicId>0ef23179-3fa8-4750-86ca-f6da84f6e16d</publicId>
+                </category>
+                <contentType>NORMAL</contentType>
+                <description>Settings with description</description>
+                <enabled>true</enabled>
+                <name>[UC][OCR TOOD+Standard]Settings with description</name>
+                <publicId>bfb3fc96-1085-4dac-8296-fa1fd4e1eba9</publicId>
+                <version>
+                    <componentUuid>850aedb5-e23d-46c6-9473-57e0f754847e</componentUuid>
+                    <incrementalVersion>1.3</incrementalVersion>
+                    <lastInChain>true</lastInChain>
+                    <lastModified>2018-09-25T11:15:47Z</lastModified>
+                    <versionUuid>c584469a-6523-493c-a953-4c9d7a80f90e</versionUuid>
+                </version>
+                <answers>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>S3 bucket</answer>
+                        <answerCode>s3_bucket_name</answerCode>
+                        <answerHtml>&lt;span style="color: #a6a6a6; font-family: Verdana, sans-serif; font-size: 11.3333px;"&gt;The name of S3 bucket where the&amp;nbsp;result will be saved.&lt;/span&gt;</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-09-24T15:04:23Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>false</required>
+                        <sequenceNumber>1</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>OCR Type</answer>
+                        <answerCode>ocr_type</answerCode>
+                        <answerHtml>&lt;span style="color: #a6a6a6; font-family: Verdana, sans-serif; font-size: 11.3333px;"&gt;Standard - working only with text(better performance). TOOD -&amp;nbsp;same&amp;nbsp;as Standard plus the mapping of&amp;nbsp;&lt;/span&gt;&lt;br style="color: #a6a6a6; font-family: Verdana, sans-serif; font-size: 11.3333px;" /&gt;&lt;span style="color: #a6a6a6; font-family: Verdana, sans-serif; font-size: 11.3333px;"&gt;the original document is on the background.&lt;/span&gt;</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>SELECT_FROM_LIST</answerTypeGroup>
+                            <code>SELECT_ONE</code>
+                            <description></description>
+                            <optionsAvailable>true</optionsAvailable>
+                            <optionsDescription>Provide options for the answer using key=value format. For example, Option Name1=value1 or Option Name2=value2.</optionsDescription>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Select One</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-09-25T08:57:52Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <options>Standard=standard|TOOD=tood</options>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>2</sequenceNumber>
+                        <shuffle>false</shuffle>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>OCR Cache Datastore</answer>
+                        <answerCode>cache_datastore</answerCode>
+                        <answerHtml>&lt;span style="color: #a6a6a6; font-family: Verdana, sans-serif; font-size: 11.3333px;"&gt;The name of datastore where the cache of the all business processes&amp;nbsp;will be saved.&lt;/span&gt;</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-09-24T15:08:41Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>3</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Export Format</answer>
+                        <answerCode>export_format</answerCode>
+                        <answerHtml>&lt;span class="MsoIntenseEmphasis" style="color: #999999; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px;"&gt;&lt;span style="font-size: 8.5pt; line-height: 12.1267px; font-family: Verdana, sans-serif; color: #a6a6a6;"&gt;Exports a response in needed format.&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;span style="color: #a6a6a6; font-family: Verdana, sans-serif; font-size: 8.5pt;"&gt;You can use maximum 3 types at once.&lt;/span&gt;</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>SELECT_FROM_LIST</answerTypeGroup>
+                            <code>SELECT_MULTI</code>
+                            <description></description>
+                            <optionsAvailable>true</optionsAvailable>
+                            <optionsDescription>Provide options for the answer using key=value format. For example, Option Name1=value1 or Option Name2=value2.</optionsDescription>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Select Multi</title>
+                            <valueSeparator>PIPE</valueSeparator>
+                            <valueType>MULTIVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-09-24T15:09:30Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <options>html=html|pdfSearchable=pdfSearchable|txt=txt|xml=xml|xmlForCorrectedImage=xmlForCorrectedImage</options>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>false</required>
+                        <sequenceNumber>4</sequenceNumber>
+                        <shuffle>false</shuffle>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Text type of document</answer>
+                        <answerCode>text_type</answerCode>
+                        <answerHtml>&lt;span style="font-size: 8.5pt; line-height: 13.0333px; font-family: Verdana, sans-serif; color: #a6a6a6; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"&gt;Specifies the type of the text on a page. This parameter may also contain several values.&lt;/span&gt;&lt;span style="font-size: 8.5pt; line-height: 13.0333px; font-family: Verdana, sans-serif; color: #a6a6a6;"&gt;&lt;br /&gt;&lt;span style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"&gt;(dafault "normal").&lt;/span&gt;&lt;/span&gt;</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>SELECT_FROM_LIST</answerTypeGroup>
+                            <code>SELECT_MULTI</code>
+                            <description></description>
+                            <optionsAvailable>true</optionsAvailable>
+                            <optionsDescription>Provide options for the answer using key=value format. For example, Option Name1=value1 or Option Name2=value2.</optionsDescription>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Select Multi</title>
+                            <valueSeparator>PIPE</valueSeparator>
+                            <valueType>MULTIVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-09-24T15:11:53Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <options>Normal=normal|Typewriter=typewriter|Handprinted=handprinted|Matrix=matrix|Index=index|Gothic=gothic</options>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>false</required>
+                        <sequenceNumber>5</sequenceNumber>
+                        <shuffle>false</shuffle>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Document language</answer>
+                        <answerCode>document_language</answerCode>
+                        <answerHtml>&lt;span style="color: #a6a6a6; font-family: Verdana, sans-serif; font-size: 11.3333px;"&gt;This parameter can contain several language names separated with commas, for example "English,French,German".&lt;/span&gt;</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-09-24T15:11:03Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>false</required>
+                        <sequenceNumber>6</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Per Character OCR Recognition</answer>
+                        <answerCode>ocr_xml_char_recognition</answerCode>
+                        <answerHtml>&lt;span style="font-size: 8.5pt; line-height: 12.1267px; font-family: Verdana, sans-serif; color: #a6a6a6; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"&gt;This option must be used for TOOD OCR Type. CharPosition saves extracted text on place as a original text.&lt;/span&gt;&lt;span style="font-size: 8.5pt; line-height: 12.1267px; font-family: Verdana, sans-serif; color: #a6a6a6;"&gt;&lt;br /&gt;&lt;span style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"&gt;(optional for Standard).&lt;/span&gt;&lt;/span&gt;</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>SELECT_FROM_LIST</answerTypeGroup>
+                            <code>SELECT_ONE</code>
+                            <description></description>
+                            <optionsAvailable>true</optionsAvailable>
+                            <optionsDescription>Provide options for the answer using key=value format. For example, Option Name1=value1 or Option Name2=value2.</optionsDescription>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Select One</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-09-24T15:13:06Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <options>false=false|true=true</options>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>false</required>
+                        <sequenceNumber>7</sequenceNumber>
+                        <shuffle>false</shuffle>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Allowed Region Types</answer>
+                        <answerCode>allowed_region_types</answerCode>
+                        <answerHtml>&lt;span style="color: #a6a6a6; font-family: Verdana, sans-serif; font-size: 11.3333px;"&gt;Allowed region types for identified blocks classification.&amp;nbsp;If&amp;nbsp; allowedRegionTypes=Empty, all types will be processed.&lt;/span&gt;</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>SELECT_FROM_LIST</answerTypeGroup>
+                            <code>SELECT_MULTI</code>
+                            <description></description>
+                            <optionsAvailable>true</optionsAvailable>
+                            <optionsDescription>Provide options for the answer using key=value format. For example, Option Name1=value1 or Option Name2=value2.</optionsDescription>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Select Multi</title>
+                            <valueSeparator>PIPE</valueSeparator>
+                            <valueType>MULTIVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-09-24T15:14:12Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <options>BT_AutoAnalysis=BT_AutoAnalysis|BT_Barcode=BT_Barcode|BT_Checkmark=BT_Checkmark|BT_CheckmarkGroup=BT_CheckmarkGroup|BT_RasterPicture=BT_RasterPicture|BT_Separator=BT_Separator|BT_SeparatorGroup=BT_SeparatorGroup|BT_Table=BT_Table|BT_Text=BT_Text|BT_VectorPicture=BT_VectorPicture</options>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>false</required>
+                        <sequenceNumber>8</sequenceNumber>
+                        <shuffle>false</shuffle>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Custom Regions</answer>
+                        <answerCode>custom_regions</answerCode>
+                        <answerHtml>&lt;span style="font-size: 8.5pt; line-height: 12.1267px; font-family: Verdana, sans-serif; color: #a6a6a6; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"&gt;The&amp;nbsp;custom regions must be in json&lt;/span&gt;&lt;span style="color: #a6a6a6; font-family: Verdana, sans-serif; font-size: 8.5pt;"&gt;.&lt;/span&gt;</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-09-24T15:16:12Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>false</required>
+                        <sequenceNumber>9</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Change DPI</answer>
+                        <answerCode>change_dpi</answerCode>
+                        <answerHtml>&lt;span style="color: #a6a6a6; font-family: Verdana, sans-serif; font-size: 11.3333px;"&gt;From 50 to 3200.&amp;nbsp;Recommended resolution for source image: 300 dpi for typical texts (10pt or larger)&amp;nbsp;&lt;/span&gt;&lt;br style="color: #a6a6a6; font-family: Verdana, sans-serif; font-size: 11.3333px;" /&gt;&lt;span style="color: #a6a6a6; font-family: Verdana, sans-serif; font-size: 11.3333px;"&gt;and 400-600 dpi for texts in smaller fonts (9pt or smaller).&lt;/span&gt;</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-09-24T15:15:30Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>false</required>
+                        <sequenceNumber>10</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Invert Image</answer>
+                        <answerCode>invert_image</answerCode>
+                        <answerHtml>&lt;span style="color: #a6a6a6; font-family: Verdana, sans-serif; font-size: 11.3333px;"&gt;Inverts Image.(dafault false).&lt;/span&gt;</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>SELECT_FROM_LIST</answerTypeGroup>
+                            <code>SELECT_ONE</code>
+                            <description></description>
+                            <optionsAvailable>true</optionsAvailable>
+                            <optionsDescription>Provide options for the answer using key=value format. For example, Option Name1=value1 or Option Name2=value2.</optionsDescription>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Select One</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-09-24T15:16:59Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <options>false=false|true=true</options>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>false</required>
+                        <sequenceNumber>11</sequenceNumber>
+                        <shuffle>false</shuffle>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Discard Color Image</answer>
+                        <answerCode>discard_color_image</answerCode>
+                        <answerHtml>&lt;span style="font-size: 8.5pt; line-height: 12.1267px; font-family: Verdana, sans-serif; color: #a6a6a6; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"&gt;Leaves only black-and-white plane in the prepared image.&lt;/span&gt;&lt;span style="font-size: 8.5pt; line-height: 12.1267px; font-family: Verdana, sans-serif; color: #a6a6a6;"&gt;&lt;br /&gt;&lt;span style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"&gt;(dafault false).&lt;/span&gt;&lt;/span&gt;</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>SELECT_FROM_LIST</answerTypeGroup>
+                            <code>SELECT_ONE</code>
+                            <description></description>
+                            <optionsAvailable>true</optionsAvailable>
+                            <optionsDescription>Provide options for the answer using key=value format. For example, Option Name1=value1 or Option Name2=value2.</optionsDescription>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Select One</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-09-24T15:17:35Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <options>false=false|true=true</options>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>false</required>
+                        <sequenceNumber>12</sequenceNumber>
+                        <shuffle>false</shuffle>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Remove Color Objects</answer>
+                        <answerCode>remove_color_objects</answerCode>
+                        <answerHtml>&lt;span style="font-size: 8.5pt; line-height: 107%; font-family: Verdana, sans-serif; color: #a6a6a6; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"&gt;Removes color objects from the image.&lt;/span&gt;</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>SELECT_FROM_LIST</answerTypeGroup>
+                            <code>SELECT_ONE</code>
+                            <description></description>
+                            <optionsAvailable>true</optionsAvailable>
+                            <optionsDescription>Provide options for the answer using key=value format. For example, Option Name1=value1 or Option Name2=value2.</optionsDescription>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Select One</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-09-24T15:41:58Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <options>Blue=Blue|Green=Green|Red=Red|Yellow=Yellow</options>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>false</required>
+                        <sequenceNumber>13</sequenceNumber>
+                        <shuffle>false</shuffle>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Remove Color Objects Type</answer>
+                        <answerCode>remove_color_objects_type</answerCode>
+                        <answerHtml>&lt;span style="font-size: 8.5pt; line-height: 12.1267px; font-family: Verdana, sans-serif; color: #a6a6a6; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"&gt;Removes color objects from the image.&lt;/span&gt;&lt;span style="font-size: 8.5pt; line-height: 12.1267px; font-family: Verdana, sans-serif; color: #a6a6a6;"&gt;&lt;br /&gt;&lt;span style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"&gt;(default Background).&lt;/span&gt;&lt;/span&gt;</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>SELECT_FROM_LIST</answerTypeGroup>
+                            <code>SELECT_ONE</code>
+                            <description></description>
+                            <optionsAvailable>true</optionsAvailable>
+                            <optionsDescription>Provide options for the answer using key=value format. For example, Option Name1=value1 or Option Name2=value2.</optionsDescription>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Select One</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-09-24T15:23:25Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <options>Background=Background|Full=Full|Stamp=Stamp</options>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>false</required>
+                        <sequenceNumber>14</sequenceNumber>
+                        <shuffle>false</shuffle>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Formatting text &#1089;onsidering height of letters</answer>
+                        <answerCode>use_line_height</answerCode>
+                        <answerHtml>&lt;span style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-size: 8.5pt; line-height: 12.1267px; font-family: Verdana, sans-serif; color: #a6a6a6;"&gt;True&amp;nbsp;- formats a size of letters of extracted text.&lt;/span&gt;&lt;span style="font-size: 8.5pt; line-height: 12.1267px; font-family: Verdana, sans-serif; color: #a6a6a6;"&gt;&lt;br /&gt;&lt;span style="background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"&gt;(optional for Standard).&lt;/span&gt;&lt;/span&gt;</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>SELECT_FROM_LIST</answerTypeGroup>
+                            <code>SELECT_ONE</code>
+                            <description></description>
+                            <optionsAvailable>true</optionsAvailable>
+                            <optionsDescription>Provide options for the answer using key=value format. For example, Option Name1=value1 or Option Name2=value2.</optionsDescription>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Select One</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-09-25T12:55:45Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <options>true=true|false=false</options>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>15</sequenceNumber>
+                        <shuffle>false</shuffle>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                </answers>
+                <machineWorkSettingType>ETL</machineWorkSettingType>
+                <template>
+                    <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;config charset="UTF-8"&gt;
+  	 &lt;export include-original-data="true"&gt;
+       &lt;single-column name="s3_bucket_name" value="{{s3_bucket_name}}"/&gt;
+       &lt;single-column name="ocr_type" value="{{ocr_type}}" /&gt; 
+       &lt;single-column name="cache_datastore" value="{{cache_datastore}}" /&gt; 
+       &lt;single-column name="export_format" value="{{export_format}}" /&gt;
+       &lt;single-column name="text_type" value="{{text_type}}" /&gt; 
+       &lt;single-column name="document_language" value="{{document_language}}" /&gt;
+       &lt;single-column name="ocr_xml_char_recognition" value="{{ocr_xml_char_recognition}}" /&gt; 
+       &lt;single-column name="allowed_region_types" value="{{allowed_region_types}}" /&gt; 
+       &lt;single-column name="custom_regions" value="{{custom_regions}}" /&gt; 
+       &lt;single-column name="change_dpi" value="{{change_dpi}}" /&gt; 
+       &lt;single-column name="invert_image" value="{{invert_image}}" /&gt; 
+       &lt;single-column name="discard_color_image" value="{{discard_color_image}}" /&gt; 
+       &lt;single-column name="remove_color_objects" value="{{remove_color_objects}}" /&gt; 
+       &lt;single-column name="remove_color_objects_type" value="{{remove_color_objects_type}}" /&gt;
+       &lt;single-column name="use_line_height" value="{{use_line_height}}" /&gt; 
+  &lt;/export&gt;    
+&lt;/config&gt;</content>
+                    <name>[UC][OCR TOOD+Standard]Settings with description</name>
+                    <origination>CREATED_MANUALLY</origination>
+                    <status>ACTIVE</status>
+                    <type>BASE_MACHINE</type>
+                    <uuid>a137ee01-9fc1-45d2-aed1-b1428ee1e930</uuid>
+                    <version>
+                        <componentUuid>5902d3f2-1a3a-470a-954e-afe7db061d90</componentUuid>
+                        <incrementalVersion>1.1</incrementalVersion>
+                        <lastInChain>true</lastInChain>
+                        <lastModified>2018-09-24T15:29:56Z</lastModified>
+                        <versionUuid>2a255137-859e-4205-8a37-4f559d064608</versionUuid>
+                    </version>
+                </template>
+            </machineWorkSetting>
+            <hashCode>-1532395313</hashCode>
+        </objectContainer>
+    </objects>
+</objectListWrapper>
