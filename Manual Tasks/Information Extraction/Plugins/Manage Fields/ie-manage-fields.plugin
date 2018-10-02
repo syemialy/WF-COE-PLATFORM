@@ -1,0 +1,76 @@
+<#-- 
+	Information Extraction Manage Fields Plugin
+	Author: Pavel Valetka <pvaletka@workfusion.com>
+	Version: 0.1
+-->
+
+
+<script type="text/javascript">
+	var ieToolkitHideField = function(controller){
+	    controller.getTagButton().attr('disabled', true);
+	    controller.$subAnswer.hide();
+	}
+</script>
+<style>
+	.context-menu-item.disabled{
+		display: none;
+	}
+</style>
+
+
+<#macro ieShowFields fieldsToShow=[]>
+	<script type="text/javascript">
+		var fieldsToShowArray = new Set([<#list fieldsToShow as field>"${field}",</#list>]);
+
+		Application.subscribe(Events.Restore.ON_RESTORE_TAGGED_TEXT_COMPLETE, function(){
+			Answers.getInitialSubControllers().forEach(function(controller){
+		        if(!fieldsToShowArray.has(controller.getAnswerCode())){
+		        	ieToolkitHideField(controller);
+		        }
+		    });
+		    AnswerGroupManager.getTabsWithControllers().forEach(function(tab){
+		        tab.controllers.forEach(function(controller){
+		            if(!fieldsToShowArray.has(controller.getAnswerCode())){
+		                ieToolkitHideField(controller);
+		            }
+		        });
+		    });
+            Application.subscribe(Events.Groups.ON_NEW_TABS_INIT_ANSWER_UTILS, function(event){
+	            var controllers = event.get('_CONTROLLERS_TO_INIT');
+	            controllers.forEach(function (controller) {
+		            if(!fieldsToShowArray.has(controller.getAnswerCode())){
+		                ieToolkitHideField(controller);
+	                }
+	            });            
+            }, this);
+		});
+	</script>
+</#macro>
+
+<#macro ieHideFields fieldsToHide=[]>
+	<script type="text/javascript">
+		var fieldsToHide = new Set([<#list fieldsToHide as field>"${field}",</#list>]);
+		Application.subscribe(Events.Restore.ON_RESTORE_TAGGED_TEXT_COMPLETE, function(){
+			Answers.getInitialSubControllers().forEach(function(controller){
+		        if(fieldsToHide.has(controller.getAnswerCode())){
+		            ieToolkitHideField(controller);
+		        }
+		    });
+		    AnswerGroupManager.getTabsWithControllers().forEach(function(tab){
+		        tab.controllers.forEach(function(controller){
+		            if(fieldsToHide.has(controller.getAnswerCode())){
+		                ieToolkitHideField(controller);
+		            }
+		        });
+		    });
+            Application.subscribe(Events.Groups.ON_NEW_TABS_INIT_ANSWER_UTILS, function(event){
+	            var controllers = event.get('_CONTROLLERS_TO_INIT');
+	            controllers.forEach(function (controller) {
+		            if(fieldsToHide.has(controller.getAnswerCode())){
+		                ieToolkitHideField(controller);
+	                }
+	            });            
+            }, this);
+		});
+	</script>
+</#macro>

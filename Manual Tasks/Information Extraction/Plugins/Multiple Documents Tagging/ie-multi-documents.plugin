@@ -1,0 +1,200 @@
+<#-- 
+	Information Extraction Multiple Documents Tagging Plugin
+	Author: Pavel Valetka <pvaletka@workfusion.com>
+	Version: 0.1
+-->
+
+<#--
+	Input data format:
+	[{
+		doc_name: "document 1",
+		doc_type: "Invoice",
+		doc_text: "https://docurl", // you also can use text here
+		doc_tagged_text: "https://taggeddocurl", // you also can use text here
+		doc_pdf_link: "https://link_to_show_in_preview_popup"
+	},
+	{
+	.......
+	}]
+-->
+
+<style type="text/css">
+	.block.question{
+		margin-top: -1px !important;
+	}
+
+	.navbar{
+        font-size: 14px;
+        border: 1px solid #CCC;
+        background-color: #f5f5f5;
+        display: block;
+    	height: 40px;
+    	margin-bottom: 0px;
+    }
+
+    .navbar .nav {
+        width: 100%;
+    }
+    .navbar-fixed-top .navbar-inner{
+        width: 100%;
+        box-shadow: none;
+        background: #EEE;
+    }
+
+   .navbar .nav>li>a {
+        float: none;
+        padding: 10px 10px 11px;
+        line-height: 19px;
+        color: #333;
+        text-decoration: none;
+        text-shadow: none;
+    }
+
+    .navbar .nav>li>a:hover {
+        background-color: transparent;
+        color: #666;
+        text-decoration: none;
+    }
+
+    .dropdown.open .dropdown-toggle {
+        color: auto;
+        background: #ccc;
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .dropdown-menu li>a:hover, .dropdown-menu .active>a, .dropdown-menu .active>a:hover {
+        color: #ffffff;
+        text-decoration: none;
+        background-color: #999;
+    }
+
+    .dropdown.open .dropdown-toggle {
+        color: auto;
+    }
+
+    .navbar .nav .open>.dropdown-toggle, .navbar .nav .active>.dropdown-toggle, .navbar .nav .open.active>.dropdown-toggle {
+        background-color: transparent;
+        color: #666;
+    }
+</style>
+
+<script type="text/javascript">
+	var ieDocMenuTemplate = '<div class="navbar">\
+								<div class="navbar-inner">\
+								    <ul class="nav navbar-nav" />\
+								</div>\
+							</div>';
+</script>
+
+<script type="text/javascript">
+
+	var IE_MULTIDOC_INPUT_DATA;
+	var IE_CURRENT_DOC_NAME;
+
+    cleanupAnswersPanel = function(){
+        var currentState = Answers.saveState();
+        var emptyState = currentState.clone();
+        emptyState.singleAnswers.answers.forEach(function(answer) {
+            answer.status = StateStatus.TO_REMOVE;
+        });
+        emptyState.multiAnswers.forEach(function(answer) {
+            answer.status = StateStatus.TO_REMOVE;
+        });
+        if (AnswerGroupManager.getAnswerGroupManager()) {
+            emptyState.group.status = StateStatus.CHANGED;
+            emptyState.group.tabs.forEach(function(tab, i) {
+                if (i === 0) {
+                    tab.status = StateStatus.CHANGED;
+                    tab.singleAnswers.answers.forEach(function(answer) {
+                        answer.status = StateStatus.TO_REMOVE;
+                    });
+                } else {
+                    tab.status = StateStatus.TO_REMOVE;
+                }
+            });
+        }
+        AnswersStateManager.loadState(emptyState);
+    }
+
+    var loadDocument = function(doc, reload){
+    	IE_AUTOSAVE_STATE_RESTORED = false;
+    	IE_CURRENT_DOC_NAME = doc.doc_name;
+        $(".answer-label").text(doc.doc_name);
+
+        var extractionController = ExtractionAnswer.getExtractionController();
+    	//extractionController.$container.find('.ie_tagged_text').val(doc.doc_tagged_text);
+    	extractionController.loadingCounter = 0;
+    	extractionController.questionUrl = doc.doc_text;
+    	extractionController.loadUrlImpl(reload);
+
+    	//extractionController.getUrl("ORIGINAL_APPEARANCE_EXTRACTOR", doc.doc_text, function(data){
+	    //    DocumentContainer.updateContent(data);
+    	//});
+        //Restore.restoreTaggedText(model.taggedText);
+    }
+
+	var switchDocTo = function(docName){
+		cleanupAnswersPanel();
+
+		var doc = IE_MULTIDOC_INPUT_DATA.find(function(elem){
+			return elem.doc_name === docName;
+		})
+
+		loadDocument(doc, true);
+
+	}
+
+	var drawDocumentsMenu = function(data){
+		var groups = new Set();
+		data.forEach(function(document){
+			groups.add(document.doc_type)
+		})
+
+		var $menu = $(ieDocMenuTemplate);
+
+		groups.forEach(function(group){
+			$menuItem = $('<li class="dropdown" id="'+group+'"><a href="#" class="dropdown-toggle" data-toggle="dropdown">'+group+'</a><ul class="dropdown-menu"></ul></li><div class="toolbar-boundary opacity"></div>')
+			$menu.find(".navbar-nav").append($menuItem);
+		});
+
+		data.forEach(function(document){
+            $menu.find("[id='"+document.doc_type+"']").find(".dropdown-menu").append(
+                $("<li/>").append($('<a href="#"/>').click(function(){switchDocTo(document.doc_name)}).append(document.doc_name))
+            );
+		})
+		
+		$menu.insertBefore(".block.question");
+	}
+
+	//START: override IE functions
+    function initIEAnswer(containerId) {
+      	console.log("New IE intialization!");
+
+      	// parse the input data
+      	var $appContainer = $("#"+containerId);
+      	var inputValue = $appContainer.find('.ie-document-source').val();
+      	IE_MULTIDOC_INPUT_DATA = JSON.parse(inputValue);
+      	
+      	drawDocumentsMenu(IE_MULTIDOC_INPUT_DATA);
+
+        Application.build(getApplicationConfiguration(containerId));
+
+        var extractionController = ExtractionAnswer.getExtractionController();
+
+    	extractionController.$container.find('.ie_tagged_text').val(IE_MULTIDOC_INPUT_DATA[0].doc_tagged_text);
+    	extractionController.questionUrl = IE_MULTIDOC_INPUT_DATA[0].doc_text;
+    	extractionController.loadUrlImpl(false);
+
+        $(".ie-table-preview-on-icon").off("click").click(function(){
+            generateTable(this);
+            showTablePreview(this, false);
+        });
+    }
+
+    //END: override IE functions
+
+
+</script>
+
+<#include "ie-autosave.plugin" parse=true/>
+

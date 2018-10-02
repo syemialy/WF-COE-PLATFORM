@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
+<objectListWrapper>
+    <objects>
+        <objectContainer>
+            <template>
+                <code>ie/plugins/ie-relocate-submit.plugin</code>
+<content><![CDATA[
+<#--
+	Relocate Submit Button Plugin
+	Author: Pavel Valetka <pvaletka@workfusion.com>
+	Version: 0.2
+-->
+<style type="text/css">
+.hit-submit-btn{
+	display: inline;
+	float: right;
+	margin: -6px -10px 4px 10px;
+}
+
+.hit-submit-btn > .submit-btn{
+	margin: 0;
+	padding: 4px 20px !important;
+}
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		$(".hit-submit-btn").appendTo("div.answer-label-cnt");
+	})
+</script>
+]]></content>
+                <name>ie/plugins/ie-relocate-submit.plugin</name>
+                <origination>CREATED_MANUALLY</origination>
+                <status>ACTIVE</status>
+                <type>MACRO</type>
+                <uuid>ie/plugins/ie-relocate-submit.plugin</uuid>
+            </template>
+        </objectContainer>
+    </objects>
+</objectListWrapper>
