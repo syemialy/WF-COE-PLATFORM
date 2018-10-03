@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
+<objectListWrapper>
+    <objects>
+        <objectContainer>
+            <machineWorkSetting>
+                <category>
+                    <automation>false</automation>
+                    <description></description>
+                    <enabled>true</enabled>
+                    <executingType>MACHINE</executingType>
+                    <name>ETL</name>
+                    <private>false</private>
+                    <publicId>0ef23179-3fa8-4750-86ca-f6da84f6e16d</publicId>
+                </category>
+                <contentType>NORMAL</contentType>
+                <description>Read variables from DS and pass to the next step</description>
+                <enabled>true</enabled>
+                <name>Read variables from Data Store</name>
+                <publicId>e335815a-41ef-4506-b646-65c0bcd4ba8c</publicId>
+                <version>
+                    <componentUuid>7b6e4390-61d4-4820-8f7b-c93ee815298b</componentUuid>
+                    <incrementalVersion>1.1</incrementalVersion>
+                    <lastInChain>true</lastInChain>
+                    <lastModified>2017-03-06T14:19:25Z</lastModified>
+                    <versionUuid>f12f2062-5748-4e6b-a079-5be2e7668489</versionUuid>
+                </version>
+                <answers>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Data Store name</answer>
+                        <answerCode>data_store_name</answerCode>
+                        <answerHtml></answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2017-03-06T14:16:05Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>1</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Variable name column</answer>
+                        <answerCode>var_name_column</answerCode>
+                        <answerHtml></answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2017-03-06T14:16:29Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>2</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Variable value column</answer>
+                        <answerCode>var_name_value</answerCode>
+                        <answerHtml></answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2017-03-06T14:17:08Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>3</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                </answers>
+                <machineWorkSettingType>ETL</machineWorkSettingType>
+                <template>
+                    <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;config xmlns="http://web-harvest.sourceforge.net/schema/1.0/config"
+	scriptlang="groovy"&gt;
+	
+	&lt;var-def name="data_store_name"&gt;
+        &lt;template&gt;{{data_store_name}}&lt;/template&gt;
+    &lt;/var-def&gt;
+    
+    &lt;var-def name="var_name_column"&gt;
+        &lt;template&gt;{{var_name_column}}&lt;/template&gt;
+    &lt;/var-def&gt;
+    
+    &lt;var-def name="var_name_value"&gt;
+        &lt;template&gt;{{var_name_value}}&lt;/template&gt;
+    &lt;/var-def&gt;
+
+	&lt;script&gt;
+		systemVariablesMap = new HashMap();
+	&lt;/script&gt;
+
+	&lt;loop item="systemVariable"&gt;
+		&lt;list&gt;
+			&lt;datastore name="${system_variables_ds_name}"&gt;
+				select * from @this;
+			&lt;/datastore&gt;
+		&lt;/list&gt;
+		&lt;body&gt;
+			&lt;script&gt;
+				String varName = systemVariable.get(var_name_column.toString()).toString();
+				String varValue = systemVariable.get(var_name_value.toString()).toString();
+
+				systemVariablesMap.put(varName, varValue);
+			&lt;/script&gt;
+		&lt;/body&gt;
+	&lt;/loop&gt;
+&lt;#noparse&gt;
+	&lt;export include-original-data="true"&gt;
+		&lt;loop item="exportVar"&gt;
+			&lt;list&gt;
+				&lt;script return="systemVariablesMap.entrySet()" /&gt;
+			&lt;/list&gt;
+			&lt;body&gt;
+				&lt;single-column name="${exportVar.getWrappedObject().getKey()}"
+					value="${exportVar.getWrappedObject().getValue()}" /&gt;
+			&lt;/body&gt;
+		&lt;/loop&gt;
+	&lt;/export&gt;
+      &lt;/#noparse&gt;
+&lt;/config&gt;</content>
+                    <name>Read variables from Data Store</name>
+                    <origination>CREATED_MANUALLY</origination>
+                    <status>ACTIVE</status>
+                    <type>BASE_MACHINE</type>
+                    <uuid>4c53387c-4b69-40f8-9051-33a122f8e125</uuid>
+                    <version>
+                        <componentUuid>7847ec66-763a-4433-a693-33f90742730c</componentUuid>
+                        <incrementalVersion>1.2</incrementalVersion>
+                        <lastInChain>true</lastInChain>
+                        <lastModified>2017-03-06T14:22:18Z</lastModified>
+                        <versionUuid>d5b3be67-a2d1-4a9d-a698-b385c66b2599</versionUuid>
+                    </version>
+                </template>
+            </machineWorkSetting>
+            <hashCode>1297873231</hashCode>
+        </objectContainer>
+    </objects>
+</objectListWrapper>

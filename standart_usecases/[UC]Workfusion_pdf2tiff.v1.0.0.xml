@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
+<objectListWrapper>
+    <objects>
+        <objectContainer>
+            <machineWorkSetting>
+                <category>
+                    <automation>false</automation>
+                    <description></description>
+                    <enabled>true</enabled>
+                    <executingType>MACHINE</executingType>
+                    <name>ETL</name>
+                    <private>false</private>
+                    <publicId>0ef23179-3fa8-4750-86ca-f6da84f6e16d</publicId>
+                </category>
+                <contentType>NORMAL</contentType>
+                <description>Convert pdf to tiff</description>
+                <enabled>true</enabled>
+                <name>pdf2tiff</name>
+                <publicId>1b19d3ba-6799-4c38-82d4-f4a0146601aa</publicId>
+                <version>
+                    <componentUuid>c49749a1-f41c-4ef8-9931-14622fc29804</componentUuid>
+                    <incrementalVersion>1.12</incrementalVersion>
+                    <lastInChain>true</lastInChain>
+                    <lastModified>2018-06-15T10:30:56Z</lastModified>
+                    <versionUuid>b6f882d5-93d2-4260-8fd8-81d872cd816f</versionUuid>
+                </version>
+                <answers>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Link to pdf</answer>
+                        <answerCode>link_to_pdf</answerCode>
+                        <answerHtml></answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-06-15T10:29:54Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>1</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>bucket where to upload</answer>
+                        <answerCode>bucket_where_to_upload</answerCode>
+                        <answerHtml></answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2018-06-15T10:34:31Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>2</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                </answers>
+                <machineWorkSettingType>ETL</machineWorkSettingType>
+                <template>
+                    <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;config xmlns="http://web-harvest.sourceforge.net/schema/1.0/config" charset="UTF-8"&gt;
+  
+    &lt;var-def name="document_link"&gt;
+     	{{link_to_pdf}}
+    &lt;/var-def&gt;
+    
+    &lt;var-def name="bucket"&gt;
+     	{{bucket_where_to_upload}}
+    &lt;/var-def&gt;
+  
+    &lt;var-def name="document_uuid"&gt;
+         &lt;script return="uuid"&gt;&lt;![CDATA[
+			String uuid = UUID.randomUUID().toString();
+		]]&gt;&lt;/script&gt;
+    &lt;/var-def&gt;   
+  
+        &lt;script&gt;&lt;![CDATA[
+            import java.io.BufferedReader;
+            import java.io.File;
+            import java.io.IOException;
+            import java.io.InputStreamReader;
+            import java.net.URL;
+            import com.itextpdf.text.Image;
+     
+            import com.google.common.io.Files;
+            import org.apache.commons.io.FileUtils;
+            import org.apache.commons.io.FilenameUtils;
+            import com.freedomoss.workfusion.utils.gson.GsonUtils;
+     
+            static File convert(String documentLink) throws IOException, InterruptedException {
+                File baseDir = Files.createTempDir();
+                 
+                File inputFolder = new File(baseDir, "input");
+     
+                URL documentUrl = new URL(documentLink);
+                String inputFileName = FilenameUtils.getName(documentUrl.getPath());
+                if (inputFileName == null || inputFileName.isEmpty()) {
+                    inputFileName = "input.pdf";
+                }
+     
+                File inputFile = new File(inputFolder, inputFileName);
+                FileUtils.copyURLToFile(documentUrl, inputFile);
+                 
+                File outputFolder = new File(baseDir, "output");
+                FileUtils.forceMkdir(outputFolder);
+     
+                File result = new File(outputFolder, "output.tiff");                 
+     
+
+                invoke(new ProcessBuilder(new String[] {
+                				"magick",
+                                "convert",
+                                "-density","288",
+                                inputFile.getAbsolutePath(),
+                        "-resize", "25%",                      
+                                result.getAbsolutePath()}
+                              ));
+                return result;
+            }
+     
+            static void invoke(ProcessBuilder builder) throws IOException, InterruptedException {
+                builder.redirectErrorStream(true);
+     
+                System.out.println(builder.command());
+                Process process = builder.start();
+     
+                BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                String line;
+                while ((line = in.readLine()) != null) {
+                    System.out.println(line);
+                }
+                in.close();
+     
+                int code = process.waitFor();
+                if (code != 0) {
+                    throw new RuntimeException("Failed to invoke process: " + builder.command() + ". Return code: " + code);
+                }
+            }
+            File output = convert(document_link.getWrappedObject().get(0).getWrappedObject());
+            sys.defineVariable("convertedTiffLink", output);
+ 
+         ]]&gt;&lt;/script&gt;
+     
+    &lt;var-def name="content"&gt;
+        &lt;file path="${convertedTiffLink}" type="binary"/&gt;
+    &lt;/var-def&gt;
+     
+    &lt;var-def name="converted_tiff_link"&gt;
+        &lt;s3  bucket="${bucket}"&gt;
+         	&lt;s3-put-public path="convert/${document_uuid}.tiff" content="${content}" content-type="image/tiff" content-disposition="inline"/&gt;
+        &lt;/s3&gt;
+    &lt;/var-def&gt;
+  
+	&lt;export include-original-data="true"&gt;
+    	&lt;single-column name="converted_tiff_link" value="${converted_tiff_link}" /&gt;
+	&lt;/export&gt;
+&lt;/config&gt;</content>
+                    <name>pdf2tiff</name>
+                    <origination>CREATED_MANUALLY</origination>
+                    <status>ACTIVE</status>
+                    <type>BASE_MACHINE</type>
+                    <uuid>46add37e-c361-4c19-9300-e4993fc5257a</uuid>
+                    <version>
+                        <componentUuid>ea088ded-d9c7-45e6-81a7-49ecbae0c1bd</componentUuid>
+                        <incrementalVersion>1.4</incrementalVersion>
+                        <lastInChain>true</lastInChain>
+                        <lastModified>2018-06-15T10:29:01Z</lastModified>
+                        <versionUuid>eb662d23-c101-40b9-9ceb-37fa3e373ebb</versionUuid>
+                    </version>
+                </template>
+            </machineWorkSetting>
+            <hashCode>788806097</hashCode>
+        </objectContainer>
+    </objects>
+</objectListWrapper>

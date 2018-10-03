@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
+<objectListWrapper>
+    <objects>
+        <objectContainer>
+            <machineWorkSetting>
+                <category>
+                    <automation>false</automation>
+                    <description></description>
+                    <enabled>true</enabled>
+                    <executingType>MACHINE</executingType>
+                    <name>ETL</name>
+                    <private>false</private>
+                    <publicId>0ef23179-3fa8-4750-86ca-f6da84f6e16d</publicId>
+                </category>
+                <contentType>NORMAL</contentType>
+                <description>Extracts body and all attachments from a MSG file</description>
+                <enabled>true</enabled>
+                <name>Email message (MSG) parsing 1</name>
+                <publicId>08de60a4-6348-4c80-9dea-68de64c99e9c</publicId>
+                <version>
+                    <componentUuid>ca6634be-9e5b-45e2-84ce-e8991783e5ee</componentUuid>
+                    <incrementalVersion>1.14</incrementalVersion>
+                    <lastInChain>true</lastInChain>
+                    <lastModified>2018-06-14T16:10:35Z</lastModified>
+                    <versionUuid>5f4dddf8-42f0-4231-97e3-0af7edd51113</versionUuid>
+                </version>
+                <answers>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>msg_link</answer>
+                        <answerCode>msg_link</answerCode>
+                        <answerHtml>Path to an MSG message</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2017-03-07T10:13:57Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>1</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>source_bucket</answer>
+                        <answerCode>source_bucket</answerCode>
+                        <answerHtml>Bucket where to look for an MSG</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2017-03-07T10:23:50Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>false</required>
+                        <sequenceNumber>2</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                </answers>
+                <machineWorkSettingType>ETL</machineWorkSettingType>
+                <template>
+                    <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;config xmlns="http://web-harvest.sourceforge.net/schema/1.0/config"
+	scriptlang="groovy"&gt;
+
+	&lt;var-def name="msg_link"&gt;
+		{{msg_link}}
+	&lt;/var-def&gt;
+
+	&lt;var-def name="source_bucket"&gt;
+		{{source_bucket}}
+	&lt;/var-def&gt;
+
+	&lt;script&gt;&lt;![CDATA[
+		msg_link = msg_link.toString().substring(msg_link.toString().lastIndexOf("/") + 1, msg_link.toString().length());
+		String path = "input_msg/" +  java.net.URLDecoder.decode(msg_link.toString());
+		sys.defineVariable("path", path);
+	]]&gt;&lt;/script&gt;
+
+	&lt;s3 bucket="${source_bucket}"&gt;
+		&lt;var-def name="msg_content"&gt;
+			&lt;s3-get name="${path}" /&gt;
+		&lt;/var-def&gt;
+	&lt;/s3&gt;
+
+	&lt;script&gt;&lt;![CDATA[
+		import com.google.common.io.Files;
+		import org.apache.commons.io.FileUtils;
+		import org.apache.poi.hsmf.MAPIMessage;
+		import org.apache.poi.hsmf.datatypes.AttachmentChunks;
+		import org.apache.poi.hsmf.datatypes.StringChunk;
+		import java.util.UUID;
+
+		List listAbsolutePathAttachment = new ArrayList();
+		List listAbsolutePathText = new ArrayList();
+		List listLinksTextS3 = new ArrayList();
+		Map linksS3toJSON = new HashMap();
+
+		//	URL s3link = new URL(msg_link.toString());
+		File baseDir = Files.createTempDir();
+		File inputFolder = new File(baseDir, "input");
+		File outputFolder = new File(baseDir, "output");
+		FileUtils.forceMkdir(outputFolder);
+		File message = new File(inputFolder, "message.msg");
+		//FileUtils.copyURLToFile(s3link, message);
+
+		FileUtils.writeByteArrayToFile(message, msg_content.getWrappedObject().get(0).getWrappedObject());
+
+		MAPIMessage msg = new MAPIMessage(message.getAbsolutePath());
+		File outputFile = null;
+		String outputFileName = "";
+
+		String detectedType = "";
+		String attachExtension = "";
+		AttachmentChunks[] attachmentFiles = msg.getAttachmentFiles();
+		AttachmentChunks attachment = null;
+
+		String textBody = msg.getTextBody();
+		outputFileName = java.util.UUID.randomUUID().toString() + ".txt";
+		outputFile = new File(outputFolder, outputFileName);
+		FileUtils.writeStringToFile(outputFile, textBody, "UTF-8");
+		listAbsolutePathText.add(outputFile.getAbsolutePath().toString());
+
+		if (attachmentFiles.length != 0) {
+			for(AttachmentChunks attach: attachmentFiles){
+				StringChunk aExtension = attach.attachExtension;
+				String attachExt = "";
+				if(aExtension != null){
+					attachExt = aExtension.getValue().toLowerCase();
+				}
+
+				if(!attachExt.isEmpty()){
+					attachment = attach;
+					attachExtension = attachExt;
+					outputFileName = java.util.UUID.randomUUID().toString() + attachExtension;
+					outputFile = new File(outputFolder, outputFileName);
+					FileUtils.writeByteArrayToFile(outputFile, attachment.attachData.getValue());
+					listAbsolutePathAttachment.add(outputFile.getAbsolutePath().toString());
+				}else{
+					//TODO here we will process embded msgs
+				}
+			}
+		}
+		sys.defineVariable("list_attachment", listAbsolutePathAttachment);
+		sys.defineVariable("listLinksTextS3", listLinksTextS3);
+		sys.defineVariable("linksS3toJSON", linksS3toJSON);
+		sys.defineVariable("list_text", listAbsolutePathText);
+		sys.defineVariable("baseDir", baseDir);
+	]]&gt;&lt;/script&gt;
+
+	&lt;loop item="absolute_link"&gt;
+		&lt;list&gt;
+			&lt;var name="list_attachment" /&gt;
+		&lt;/list&gt;
+		&lt;body&gt;
+			&lt;var-def name="content"&gt;
+				&lt;file path="${absolute_link}" type="binary" /&gt;
+			&lt;/var-def&gt;
+
+			&lt;script&gt;&lt;![CDATA[
+				String outputFileName = "";
+				outputFileName = absolute_link.toString().substring(absolute_link.toString().lastIndexOf("/") + 1, absolute_link.toString().length());
+			]]&gt;&lt;/script&gt;
+
+			&lt;var-def name="link_attachment_s3"&gt;
+				&lt;s3 bucket="${source_bucket}"&gt;
+					&lt;s3-put-public path="attachments/${outputFileName}"
+						content="${content}" content-disposition="inline" /&gt;
+				&lt;/s3&gt;
+			&lt;/var-def&gt;
+			&lt;script&gt;&lt;![CDATA[
+				listLinksTextS3.add(link_attachment_s3.toString());
+			]]&gt;&lt;/script&gt;
+
+		&lt;/body&gt;
+	&lt;/loop&gt;
+
+	&lt;script&gt;&lt;![CDATA[
+		linksS3toJSON.getWrappedObject().put("attachments", listLinksTextS3);
+	]]&gt;&lt;/script&gt;
+
+	&lt;loop item="absolute_link"&gt;
+		&lt;list&gt;
+			&lt;var name="list_text" /&gt;
+		&lt;/list&gt;
+		&lt;body&gt;
+			&lt;var-def name="content"&gt;
+				&lt;file path="${absolute_link}" type="binary" /&gt;
+			&lt;/var-def&gt;
+
+			&lt;script&gt;&lt;![CDATA[
+				String outputFileName = "";
+				outputFileName = absolute_link.toString().substring(absolute_link.toString().lastIndexOf("\\") + 1, absolute_link.toString().length());
+				sys.defineVariable("outputFileName", outputFileName);
+			]]&gt;&lt;/script&gt;
+
+			&lt;var-def name="link_text_s3"&gt;
+				&lt;s3 bucket="${source_bucket}"&gt;
+					&lt;s3-put-public path="attachments/${outputFileName}"
+						content="${content}" content-disposition="inline" /&gt;
+				&lt;/s3&gt;
+			&lt;/var-def&gt;
+
+			&lt;script&gt;&lt;![CDATA[
+				linksS3toJSON.getWrappedObject().put("text", link_text_s3.toString());
+			]]&gt;&lt;/script&gt;
+
+		&lt;/body&gt;
+	&lt;/loop&gt;
+
+	&lt;script&gt;&lt;![CDATA[
+		import com.google.gson.Gson;
+		String jsonString = new Gson().toJson(linksS3toJSON);
+		sys.defineVariable("s3_links_json",  jsonString);
+	]]&gt;&lt;/script&gt;
+
+	&lt;script&gt;&lt;![CDATA[
+		import org.apache.commons.io.FileUtils;
+ 		/* if(baseDir.getWrappedObject() != null){
+			FileUtils.deleteDirectory(baseDir.getWrappedObject());
+		} */
+	]]&gt;&lt;/script&gt;
+
+	&lt;export include-original-data="true"&gt;
+		&lt;single-column name="s3_links_json" value="${s3_links_json}" /&gt;
+	&lt;/export&gt;
+
+&lt;/config&gt;</content>
+                    <name>Email message (MSG) parsing </name>
+                    <origination>CREATED_MANUALLY</origination>
+                    <status>ACTIVE</status>
+                    <type>BASE_MACHINE</type>
+                    <uuid>fd777ec4-3850-401e-9bb5-fdec08efaa18</uuid>
+                    <version>
+                        <componentUuid>3c359a4a-bd20-4a5c-a2fa-4c6c3d7f212e</componentUuid>
+                        <incrementalVersion>1.32</incrementalVersion>
+                        <lastInChain>true</lastInChain>
+                        <lastModified>2018-06-14T16:07:18Z</lastModified>
+                        <versionUuid>879f13b4-9709-4d46-b5f3-395fe9f078e6</versionUuid>
+                    </version>
+                </template>
+            </machineWorkSetting>
+            <hashCode>1638351234</hashCode>
+        </objectContainer>
+    </objects>
+</objectListWrapper>

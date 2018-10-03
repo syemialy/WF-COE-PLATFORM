@@ -1,0 +1,142 @@
+<#-- 
+	Information Extraction Autosave Plugin
+	Author: Pavel Valetka <pvaletka@workfusion.com>
+	Version: 0.2
+-->
+<script type="text/javascript">
+
+var IE_AUTOSAVE_STATE_RESTORED = false;
+var IE_AUTOSAVE_DB_NAME = "ieAutosaveState";
+var IE_AUTOSAVE_DB_VERSION = 1;
+var IE_AUTOSAVE_STORAGE_KEY = "${taskId!}";
+
+var getStorageKey = function(ext){
+    var suffix = ext ? ext : IE_CURRENT_DOC_NAME;
+    if(suffix !== 'undefined'){
+        return IE_AUTOSAVE_STORAGE_KEY + "_"+suffix;
+    }else{
+        return IE_AUTOSAVE_STORAGE_KEY;
+    }
+}
+
+var iDb = function(callback){
+    var request = indexedDB.open(IE_AUTOSAVE_DB_NAME, IE_AUTOSAVE_DB_VERSION);
+
+    request.onerror = function(e){
+        console.log("Error opening database!");
+    }
+
+    request.onupgradeneeded = function(event) {
+        var db = event.target.result;
+        var objectStore = db.createObjectStore(IE_AUTOSAVE_DB_NAME);
+        console.log("New object store is created");
+    };
+
+    request.onsuccess = function(event) {
+        var db = event.target.result;
+        var transaction = db.transaction(IE_AUTOSAVE_DB_NAME, "readwrite");
+        var idb = transaction.objectStore(IE_AUTOSAVE_DB_NAME);
+
+        callback(idb);
+    }
+}
+
+var getCurrentStateFromDB = function(storageKey, callback){
+    iDb(function(idb){
+        idb.openCursor(storageKey).onsuccess = function(event){
+            var savedState;
+            if(event.target.result){
+                savedState = event.target.result.value;
+            }
+            typeof callback === 'function' && callback(savedState);
+        }
+    });
+}
+
+var saveStateToDB = function(callback){
+    iDb(function(idb) {
+        var state = {};
+        TaggedTextProcessor.fetchTaggedText();
+        state.taggedText = $('.ie_tagged_text').val();
+
+        idb.put(state, getStorageKey()).onsuccess = function(event){ 
+            typeof callback === 'function' && callback(state);
+        };
+    });
+}
+
+var cleanupDB = function(storageKey, callback){
+    iDb(function(idb) {
+        idb.delete(storageKey).onsuccess = function(event){ 
+            if(typeof callback !== 'undefined'){ callback(); }
+        };
+    });
+}
+
+var restoreState = function(state){
+    Restore.restoreTaggedText(state.taggedText);
+    IE_AUTOSAVE_STATE_RESTORED = true;
+}
+
+var initializeModel = function(callback) {
+    DocumentInfo.blockIndexes = [-1];
+    getCurrentStateFromDB(getStorageKey(), function(savedState){
+        if(typeof savedState == 'undefined'){
+            saveStateToDB(callback);
+        } else {
+            callback(savedState);
+        }
+    });
+};
+
+var newSubmitAction = function(e){
+    preValidateForm();
+    if(!valid(RequiredValidation.onValidationFailure)){
+        return false;
+    };
+    if(submitForm()){
+        submitWorkfusionAndMturk();
+        cleanupDB(getStorageKey());
+    };
+}
+	
+$(function(){
+	Application.subscribe(Events.Restore.ON_RESTORE_TAGGED_TEXT_COMPLETE, function(){
+		if(IE_AUTOSAVE_STATE_RESTORED){return;}
+
+		initializeModel(function(state){
+			restoreState(state);
+	        Application.subscribe(Events.Tags.ON_TAGGING_COMPLETE, function(){
+	            saveStateToDB();
+	        }, this);
+
+	        Application.subscribe(Events.Tags.ON_TAG_REMOVED, function(){
+	            saveStateToDB();
+	        }, this);
+
+	        Application.subscribe(Events.Tags.ON_SELECT_SUGGESTION, function(){
+	            saveStateToDB();
+	        }, this);
+
+	        Application.subscribe(Events.Tags.ON_CANCEL_SUGGESTION, function(){
+	            saveStateToDB();
+	        }, this);
+
+	        Application.subscribe(Events.Answers.ON_MANUAL_ANSWER_SAVE_COMPLETE, function(){
+	            saveStateToDB();
+	        }, this);
+
+	        Application.subscribe(Events.UndoRedo.ON_UNDO, function(){
+	            saveStateToDB();
+	        }, this);
+	        Application.subscribe(Events.UndoRedo.ON_REDO, function(){
+	            saveStateToDB();
+	        }, this);	
+		});
+	});
+
+	$('.hit-submit-btn .submit-btn')[0].onclick = null;
+	$('.hit-submit-btn .submit-btn')[0].onclick = newSubmitAction;
+})
+
+</script>

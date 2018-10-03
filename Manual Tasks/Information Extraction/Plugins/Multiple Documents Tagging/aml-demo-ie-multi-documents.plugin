@@ -1,0 +1,176 @@
+<#-- 
+	Information Extraction Multiple Documents Tagging Plugin
+	Author: Pavel Valetka <pvaletka@workfusion.com>
+	Version: 0.1
+-->
+
+<#--
+	Input data format:
+	[{
+		doc_name: "document 1",
+		doc_type: "Invoice",
+		doc_text: "https://docurl", // you also can use text here
+		doc_tagged_text: "https://taggeddocurl", // you also can use text here
+		doc_pdf_link: "https://link_to_show_in_preview_popup"
+	},
+	{
+	.......
+	}]
+-->
+<#include "ie-autosave.plugin" parse=true/>
+
+<style type="text/css">
+.hit-submit-btn{
+	display: inline;
+	float: right;
+	margin: -15px 0 4px 10px;
+}
+</style>
+
+<script type="text/javascript">
+
+	var IE_MULTIDOC_INPUT_DATA;
+	var IE_CURRENT_DOC_NAME;
+
+    cleanupAnswersPanel = function(){
+        var currentState = Answers.saveState();
+        var emptyState = currentState.clone();
+        emptyState.singleAnswers.answers.forEach(function(answer) {
+            answer.status = StateStatus.TO_REMOVE;
+        });
+        emptyState.multiAnswers.forEach(function(answer) {
+            answer.status = StateStatus.TO_REMOVE;
+        });
+        if (AnswerGroupManager.getAnswerGroupManager()) {
+            emptyState.group.status = StateStatus.CHANGED;
+            emptyState.group.tabs.forEach(function(tab, i) {
+                if (i === 0) {
+                    tab.status = StateStatus.CHANGED;
+                    tab.singleAnswers.answers.forEach(function(answer) {
+                        answer.status = StateStatus.TO_REMOVE;
+                    });
+                } else {
+                    tab.status = StateStatus.TO_REMOVE;
+                }
+            });
+        }
+        AnswersStateManager.loadState(emptyState);
+    }
+
+    var setDocTitle = function(doc){
+    	$(".answer-label").text("").append('<strong>Entity: </strong>'+doc.search_request+'<br><a href="'+doc.news_link+'" target="blank">'+doc.news_link+'</a>');
+    }
+
+    var loadDocument = function(doc, reload){
+    	IE_AUTOSAVE_STATE_RESTORED = false;
+    	IE_CURRENT_DOC_NAME = doc.link_html;
+        setDocTitle(doc);
+
+        var extractionController = ExtractionAnswer.getExtractionController();
+
+    	extractionController.getUrl("ORIGINAL_APPEARANCE_EXTRACTOR", doc.link_html, function(data){
+	        DocumentContainer.updateContent(data);
+	        getCurrentStateFromDB(getStorageKey(), function(state){
+	        	if(state){
+	        		restoreState(state);
+	        	}
+	        })
+    	});
+    }
+
+	var switchDocTo = function(docName){
+		saveStateToDB(function(state){
+			cleanupAnswersPanel();
+
+			var doc = IE_MULTIDOC_INPUT_DATA.find(function(elem){
+				return elem.news_link === docName;
+			})
+
+			loadDocument(doc, true);
+		});
+	}
+
+	var drawDocumentsMenu = function(data){
+		var $menu = $(".doc-list");
+
+		data.forEach(function(doc){
+			$docItem = $('<a href="#" onclick="return false;" class="doc-element"/>');
+			$docItem.append($('<div class="doc-title"/>').text(doc.title));
+			$docItem.append($('<div class="doc-credits"/>').text(doc.author + " - " + doc.date));
+			$docItem.click(function() {
+			    var $this = $(this);
+			    $this.closest('.doc-list').find('.doc-element').removeClass('doc-element-selected');
+			    $this.addClass('doc-element-selected');
+			    switchDocTo(doc.news_link)
+			});
+
+			$menu.append($docItem);
+		})
+	}
+
+	//START: override IE functions
+    function initIEAnswer(containerId) {
+      	console.log("New IE intialization!");
+
+      	// parse the input data
+      	var $appContainer = $("#"+containerId);
+      	var inputValue = $appContainer.find('.ie-document-source').val();
+      	IE_MULTIDOC_INPUT_DATA = JSON.parse(inputValue);
+
+      	drawDocumentsMenu(IE_MULTIDOC_INPUT_DATA);
+
+        Application.build(getApplicationConfiguration(containerId));
+
+        var extractionController = ExtractionAnswer.getExtractionController();
+
+    	extractionController.questionUrl = IE_MULTIDOC_INPUT_DATA[0].link_html;
+    	IE_CURRENT_DOC_NAME = IE_MULTIDOC_INPUT_DATA[0].link_html;
+    	$(".doc-list .doc-element").first().addClass("doc-element-selected");
+    	setDocTitle(IE_MULTIDOC_INPUT_DATA[0]);
+    	extractionController.loadUrlImpl(false);
+
+        $(".ie-table-preview-on-icon").off("click").click(function(){
+            generateTable(this);
+            showTablePreview(this, false);
+        });
+    }
+    //END: override IE functions
+
+
+    var submitResults = function(data, counter){
+    	if(counter == data.length){
+    		console.log("Submitting...", data);
+    		ExtractionAnswer.getExtractionController().$container.find('.ie_tagged_text').val(JSON.stringify(data));
+	        data.forEach(function(doc){
+		        cleanupDB(getStorageKey(doc.link_html));
+	        });
+	        setTimeout(function(){
+		        submitWorkfusionAndMturk();
+	        }, 200);
+    	}
+    }
+
+	var newSubmitAction = function(e){
+	    preValidateForm();
+	    if(!valid(RequiredValidation.onValidationFailure)){
+	        return false;
+	    };
+	    if(submitForm()){
+	    	saveStateToDB(function(state){
+	    		var docsChecked = 0;
+		    	IE_MULTIDOC_INPUT_DATA.forEach(function(doc){
+		    		getCurrentStateFromDB(getStorageKey(doc.link_html), function(model){
+		    			docsChecked++;
+		    			if(typeof model !== 'undefined'){
+		    				doc.link_html_tagged = model.taggedText;
+		    			}
+		    			submitResults(IE_MULTIDOC_INPUT_DATA, docsChecked);
+		    		})
+		    	});
+	    	})
+	    };
+	}
+
+</script>
+
+

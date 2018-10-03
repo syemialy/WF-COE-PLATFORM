@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
+<objectListWrapper>
+    <objects>
+        <objectContainer>
+            <machineWorkSetting>
+                <category>
+                    <automation>false</automation>
+                    <description></description>
+                    <enabled>true</enabled>
+                    <executingType>MACHINE</executingType>
+                    <name>ETL</name>
+                    <private>false</private>
+                    <publicId>0ef23179-3fa8-4750-86ca-f6da84f6e16d</publicId>
+                </category>
+                <contentType>NORMAL</contentType>
+                <description>Downloads data from SFTP</description>
+                <enabled>true</enabled>
+                <name>FTP Download1</name>
+                <publicId>c9d02999-ff3f-4df4-95d3-1832bfb099a3</publicId>
+                <version>
+                    <componentUuid>9368dca1-82b6-4fc0-91a5-d2659b5d82fc</componentUuid>
+                    <incrementalVersion>1.2</incrementalVersion>
+                    <lastInChain>true</lastInChain>
+                    <lastModified>2018-06-08T10:01:20Z</lastModified>
+                    <versionUuid>d83fa4e0-1e3f-4545-9aa0-7142ddd94054</versionUuid>
+                </version>
+                <answers>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>File Path</answer>
+                        <answerCode>file_path</answerCode>
+                        <answerHtml>Path to file on SFTP server</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <category></category>
+                        <constantable>false</constantable>
+                        <defaultValue></defaultValue>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <htmlClasses></htmlClasses>
+                        <lastModified>2017-03-07T16:05:34Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>1</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>SFTP Server</answer>
+                        <answerCode>ftp_server</answerCode>
+                        <answerHtml>SFTP Server</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2017-03-07T16:05:34Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>2</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>SFTP Port</answer>
+                        <answerCode>ftp_port</answerCode>
+                        <answerHtml>SFTP Port. Default is 21</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>NUMBERS</answerTypeGroup>
+                            <code>NUMBER</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Number</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2017-03-07T16:05:34Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>false</required>
+                        <sequenceNumber>3</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Output Column Name</answer>
+                        <answerCode>output_column_name</answerCode>
+                        <answerHtml>Output Column Name</answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <category></category>
+                        <constantable>false</constantable>
+                        <defaultValue></defaultValue>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <htmlClasses></htmlClasses>
+                        <lastModified>2017-03-07T16:06:12Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>false</required>
+                        <sequenceNumber>4</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                </answers>
+                <machineWorkSettingType>ETL</machineWorkSettingType>
+                <template>
+                    <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;config xmlns="http://web-harvest.sourceforge.net/schema/1.0/config" scriptlang="groovy"&gt;
+    
+
+    &lt;required name="file_path"&gt;&lt;/required&gt;
+	&lt;required name="ftp_server"&gt;&lt;/required&gt;
+	
+  	&lt;var-def name="file_path"&gt;
+      &lt;template&gt;{{file_path}}&lt;/template&gt;
+	&lt;/var-def&gt;
+  	&lt;var-def name="ftp_server"&gt;
+      &lt;template&gt;{{ftp_server}}&lt;/template&gt;
+	&lt;/var-def&gt;
+  	&lt;var-def name="ftp_port"&gt;
+      &lt;template&gt;{{ftp_port}}&lt;/template&gt;
+	&lt;/var-def&gt;
+
+  	&lt;case&gt;
+		&lt;if condition="${'${'+'ftp_port.toString().isEmpty()' + '}'}"&gt;
+			&lt;var-def name="ftp_port"&gt;
+				&lt;template&gt;21&lt;/template&gt;
+			&lt;/var-def&gt;
+		&lt;/if&gt;
+	&lt;/case&gt;
+  
+  	 	
+    &lt;var-def name="fileContent"&gt;
+  		&lt;ftp server="${ftp_server}" port="${ftp_port}"&gt;
+			&lt;ftp-get path="${file_path}"&gt;&lt;/ftp-get&gt;
+		&lt;/ftp&gt;
+  	&lt;/var-def&gt;
+       
+        
+    &lt;export include-original-data="true"&gt;
+      &lt;#noparse&gt;
+        &lt;single-column name="{{output_column_name}}" value="${fileContent}" /&gt;
+      &lt;/#noparse&gt;
+    &lt;/export&gt;  
+
+&lt;/config&gt;</content>
+                    <name>Download from SFTP</name>
+                    <origination>CREATED_MANUALLY</origination>
+                    <status>ACTIVE</status>
+                    <type>BASE_MACHINE</type>
+                    <uuid>0b8bce5a-80df-40e2-9502-5c493baf3288</uuid>
+                    <version>
+                        <componentUuid>f2aa2d4e-536a-49ae-a783-ceefd094d088</componentUuid>
+                        <incrementalVersion>1.8</incrementalVersion>
+                        <lastInChain>true</lastInChain>
+                        <lastModified>2017-03-07T16:06:12Z</lastModified>
+                        <versionUuid>040f9c56-1651-4aef-8449-68523ba56fa5</versionUuid>
+                    </version>
+                </template>
+            </machineWorkSetting>
+            <hashCode>1479454995</hashCode>
+        </objectContainer>
+    </objects>
+</objectListWrapper>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
+<objectListWrapper>
+    <objects>
+        <objectContainer>
+            <machineWorkSetting>
+                <category>
+                    <automation>false</automation>
+                    <description></description>
+                    <enabled>true</enabled>
+                    <executingType>MACHINE</executingType>
+                    <name>ETL</name>
+                    <private>false</private>
+                    <publicId>0ef23179-3fa8-4750-86ca-f6da84f6e16d</publicId>
+                </category>
+                <contentType>NORMAL</contentType>
+                <description>Execute command with optional params via shell</description>
+                <enabled>true</enabled>
+                <name>execute command with optional params via shell1</name>
+                <publicId>4f9d7503-c7a0-4e77-80a5-d915dd107c87</publicId>
+                <version>
+                    <componentUuid>6f2e1919-03e8-4eb5-846c-e9b97c3dd4b9</componentUuid>
+                    <incrementalVersion>1.2</incrementalVersion>
+                    <lastInChain>true</lastInChain>
+                    <lastModified>2018-06-08T09:47:35Z</lastModified>
+                    <versionUuid>69fc8c9d-40cb-48f2-9327-41ce4dc396ea</versionUuid>
+                </version>
+                <answers>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Command</answer>
+                        <answerCode>command</answerCode>
+                        <answerHtml></answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2017-03-07T11:34:12Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>1</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                </answers>
+                <machineWorkSettingType>ETL</machineWorkSettingType>
+                <template>
+                    <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;config charset="UTF-8"&gt;
+
+  	&lt;var-def name = "command"&gt;
+      	&lt;template&gt;{{command}}&lt;template&gt;
+  	&lt;/var-def&gt;  
+  
+    &lt;script&gt;&lt;![CDATA[
+        import java.io.BufferedReader;
+        import java.io.File;
+        import java.io.IOException;
+        import java.io.InputStreamReader;
+        import java.net.URL;
+        import com.itextpdf.text.Image;
+        
+        import com.google.common.io.Files;
+        import org.apache.commons.io.FileUtils;
+        import org.apache.commons.io.FilenameUtils;
+        import com.freedomoss.workfusion.utils.gson.GsonUtils;
+    	
+  		String[] cmdArray = command.toString().split("\\s+");    
+    	invoke(new ProcessBuilder(cmdArray));
+               
+        static void invoke(ProcessBuilder builder) throws IOException, InterruptedException {
+               builder.redirectErrorStream(true);
+               
+               System.out.println(builder.command());
+               Process process = builder.start();
+               
+               BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+               String line;
+               while ((line = in.readLine()) != null) {
+               		System.out.println(line);
+               }
+               in.close();
+               
+               int code = process.waitFor();
+               if (code != 0) {
+               		throw new RuntimeException("Failed to invoke process: " + builder.command() + ". Return code: " + code);
+               }
+       }
+               
+   ]]&gt;&lt;/script&gt;
+
+&lt;/config&gt;</content>
+                    <name>execute command with optional params via shell</name>
+                    <origination>CREATED_MANUALLY</origination>
+                    <status>ACTIVE</status>
+                    <type>BASE_MACHINE</type>
+                    <uuid>24386472-5d66-4ef6-8290-3a373eaaaf11</uuid>
+                    <version>
+                        <componentUuid>12d2a7c4-5f1b-4b6b-b999-26e97db1c294</componentUuid>
+                        <incrementalVersion>1.1</incrementalVersion>
+                        <lastInChain>true</lastInChain>
+                        <lastModified>2017-03-07T11:34:25Z</lastModified>
+                        <versionUuid>3284e3bc-c9c0-4172-b69a-52fdaee6fb93</versionUuid>
+                    </version>
+                </template>
+            </machineWorkSetting>
+            <hashCode>1030312227</hashCode>
+        </objectContainer>
+    </objects>
+</objectListWrapper>

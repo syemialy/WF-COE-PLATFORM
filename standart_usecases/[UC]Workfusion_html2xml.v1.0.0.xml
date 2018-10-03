@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
+<objectListWrapper>
+    <objects>
+        <objectContainer>
+            <machineWorkSetting>
+                <category>
+                    <automation>false</automation>
+                    <description></description>
+                    <enabled>true</enabled>
+                    <executingType>MACHINE</executingType>
+                    <name>ETL</name>
+                    <private>false</private>
+                    <publicId>0ef23179-3fa8-4750-86ca-f6da84f6e16d</publicId>
+                </category>
+                <contentType>NORMAL</contentType>
+                <description>Convert html to xml</description>
+                <enabled>true</enabled>
+                <name>html2xml</name>
+                <publicId>23aa0125-7c83-4f51-97a7-10a0c0696f60</publicId>
+                <version>
+                    <componentUuid>19c10744-b43c-44c5-b428-51915a861baf</componentUuid>
+                    <incrementalVersion>1.9</incrementalVersion>
+                    <lastInChain>true</lastInChain>
+                    <lastModified>2018-06-08T10:03:23Z</lastModified>
+                    <versionUuid>fbd57615-29cb-439a-a9fc-eae777d76f5a</versionUuid>
+                </version>
+                <answers>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Html link</answer>
+                        <answerCode>html_link</answerCode>
+                        <answerHtml></answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2017-03-06T14:03:30Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>1</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                </answers>
+                <machineWorkSettingType>ETL</machineWorkSettingType>
+                <template>
+                    <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+ 
+&lt;config&gt;
+    &lt;var-def name="html_link"&gt;
+      	&lt;template&gt;{{html_link}}&lt;/template&gt;
+    &lt;/var-def&gt;
+  
+  	&lt;var-def name="xml_content"&gt;
+        &lt;html-to-xml&gt;
+          	&lt;http url="${html_link}"/&gt;
+        &lt;/html-to-xml&gt;
+    &lt;/var-def&gt;
+  
+  	&lt;export include-original-data="true"&gt;
+     	&lt;single-column name="xml_result" value="${xml_content}"/&gt;
+    &lt;/export&gt;
+  
+&lt;/config&gt;</content>
+                    <name>html2xml</name>
+                    <origination>CREATED_MANUALLY</origination>
+                    <status>ACTIVE</status>
+                    <type>BASE_MACHINE</type>
+                    <uuid>b721b6e2-558e-4141-9f97-f0d420e877fc</uuid>
+                    <version>
+                        <componentUuid>3b2b935b-e386-4df2-a7a9-e6eb35ed0f54</componentUuid>
+                        <incrementalVersion>1.2</incrementalVersion>
+                        <lastInChain>true</lastInChain>
+                        <lastModified>2017-03-07T11:40:41Z</lastModified>
+                        <versionUuid>aa44d3ae-49c7-400d-9089-2696fe4d815f</versionUuid>
+                    </version>
+                </template>
+            </machineWorkSetting>
+            <hashCode>587193696</hashCode>
+        </objectContainer>
+    </objects>
+</objectListWrapper>

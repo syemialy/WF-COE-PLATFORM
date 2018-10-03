@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
+<objectListWrapper>
+    <objects>
+        <objectContainer>
+            <machineWorkSetting>
+                <category>
+                    <automation>false</automation>
+                    <description></description>
+                    <enabled>true</enabled>
+                    <executingType>MACHINE</executingType>
+                    <name>ETL</name>
+                    <private>false</private>
+                    <publicId>0ef23179-3fa8-4750-86ca-f6da84f6e16d</publicId>
+                </category>
+                <contentType>NORMAL</contentType>
+                <description>Convert html to text</description>
+                <enabled>true</enabled>
+                <name>2text</name>
+                <publicId>0a2ee3a5-6b70-4121-bb7c-8f49a2ef441d</publicId>
+                <version>
+                    <componentUuid>bde7f880-a7e9-4d58-b5e9-17d4e9c46918</componentUuid>
+                    <incrementalVersion>1.9</incrementalVersion>
+                    <lastInChain>true</lastInChain>
+                    <lastModified>2018-06-08T10:04:43Z</lastModified>
+                    <versionUuid>8df842da-1001-4fb9-8b61-53dc585cd8be</versionUuid>
+                </version>
+                <answers>
+                    <answer>
+                        <allowNA>false</allowNA>
+                        <answer>Html link</answer>
+                        <answerCode>html_link</answerCode>
+                        <answerHtml></answerHtml>
+                        <answerTypeObject>
+                            <answerTypeGroup>UNCONSTRAINED_TEXT</answerTypeGroup>
+                            <code>FREE_TEXT</code>
+                            <description></description>
+                            <optionsAvailable>false</optionsAvailable>
+                            <showDefaultValue>true</showDefaultValue>
+                            <showForFieldScheme>true</showForFieldScheme>
+                            <showForHumanTask>true</showForHumanTask>
+                            <showForMachineConfig>true</showForMachineConfig>
+                            <title>Free Text</title>
+                            <valueType>SINGLEVALUE</valueType>
+                        </answerTypeObject>
+                        <appendDataStoreOptions>false</appendDataStoreOptions>
+                        <autocompleteField>false</autocompleteField>
+                        <constantable>false</constantable>
+                        <doNotNormalizeTaggedText>false</doNotNormalizeTaggedText>
+                        <doNotUseInAdjudication>false</doNotUseInAdjudication>
+                        <findMajorityForAllAtomicValues>false</findMajorityForAllAtomicValues>
+                        <lastModified>2017-03-07T11:43:15Z</lastModified>
+                        <letCustomValues>false</letCustomValues>
+                        <manualField>false</manualField>
+                        <multiValue>false</multiValue>
+                        <percentRequired>false</percentRequired>
+                        <range>false</range>
+                        <required>true</required>
+                        <sequenceNumber>1</sequenceNumber>
+                        <useBlocks>false</useBlocks>
+                        <useEmptyCell>false</useEmptyCell>
+                    </answer>
+                </answers>
+                <machineWorkSettingType>ETL</machineWorkSettingType>
+                <template>
+                    <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;config charset="UTF-8"&gt;
+  
+    &lt;var-def name="html_link"&gt;
+      	&lt;template&gt;{{html_link}}&lt;/template&gt;
+    &lt;/var-def&gt;
+     
+    &lt;var-def name="html_text"&gt;
+        &lt;to-text&gt;
+            &lt;http url="${html_link}"/&gt;
+        &lt;/to-text&gt;
+    &lt;/var-def&gt;
+  
+	&lt;export include-original-data="true"&gt;
+    	&lt;single-column name="html_text" value="${html_text}" /&gt;
+	&lt;/export&gt;
+&lt;/config&gt;</content>
+                    <name>2text</name>
+                    <origination>CREATED_MANUALLY</origination>
+                    <status>ACTIVE</status>
+                    <type>BASE_MACHINE</type>
+                    <uuid>a42c9b54-f03f-4417-b98f-af24774cd0a1</uuid>
+                    <version>
+                        <componentUuid>fef71d7e-9bd1-4210-a948-795994d5b7ef</componentUuid>
+                        <incrementalVersion>1.0</incrementalVersion>
+                        <lastInChain>true</lastInChain>
+                        <lastModified>2017-03-07T10:26:56Z</lastModified>
+                        <versionUuid>80eb9338-2b69-4a14-9ff0-1f70e9784323</versionUuid>
+                    </version>
+                </template>
+            </machineWorkSetting>
+            <hashCode>-1665986519</hashCode>
+        </objectContainer>
+    </objects>
+</objectListWrapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
+<objectListWrapper>
+    <objects>
+        <objectContainer>
+            <template>
+                <code>ie/plugins/ie-freetext-validator.plugin</code>
+<content><![CDATA[
+
+<#--
+    Information Extraction Custom Validator Plugin
+    Author: Pavel Valetka <pvaletka@workfusion.com>
+    Version: 0.1
+-->
+
+<#macro ieValidateFieldRegex answerCode regex errorMessage="Selected value is not valid" correctExample="&nbsp;">
+<script type="text/javascript">
+    $(function(){
+	    var applyCustomValidator = function(controller){
+
+            controller.answerWrapper.$warning.find(".sub-ie-warning-selected").text("${errorMessage}");
+            controller.answerWrapper.$warning.find(".sub-ie-warning-selected-text").remove();
+            controller.answerWrapper.$warning.find(".sub-ie-warning-selected").append("<span style='display: block;color: #000;'>${correctExample}</span>");
+
+	        controller.answerWrapper.validateInputs = function(){
+		        var fieldValue = this.$answerInput.val();
+		        var isValid = (fieldValue.match(/${regex}/) !== null);
+		        if(!isValid){
+		            this.$warning.show();
+		            return false;
+		        }else{
+		            this.$warning.hide();
+		            return true;
+		        }
+			};
+
+	        controller.converter.validate = function(str){
+	        	return (str.match(/${regex}/) !== null);
+	        };
+	    }
+
+        Application.subscribe(Events.Restore.ON_RESTORE_TAGGED_TEXT_COMPLETE, function(){
+            Answers.getTaggingControllersByTag("${answerCode}").forEach(function(controller){
+                applyCustomValidator(controller);
+            })
+        });
+
+        Application.subscribe(Events.Groups.ON_NEW_TABS_INIT_ANSWER_UTILS, function(event){
+            var controllers = event.get('_CONTROLLERS_TO_INIT');
+            controllers.forEach(function (controller) {
+                if(controller.getAnswerCode() == "${answerCode}"){
+                    applyCustomValidator(controller);
+                }
+            });
+        }, this);
+    });
+</script>
+</#macro>
+]]></content>
+                <name>ie/plugins/ie-freetext-validator.plugin</name>
+                <origination>CREATED_MANUALLY</origination>
+                <status>ACTIVE</status>
+                <type>MACRO</type>
+                <uuid>ie/plugins/ie-freetext-validator.plugin</uuid>
+            </template>
+        </objectContainer>
+    </objects>
+</objectListWrapper>
