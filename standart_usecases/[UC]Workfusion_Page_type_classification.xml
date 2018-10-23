@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
+<objectListWrapper>
+    <objects>
+        <objectContainer>
+            <machineWorkSetting>
+                <category>
+                    <automation>false</automation>
+                    <description></description>
+                    <enabled>true</enabled>
+                    <executingType>MACHINE</executingType>
+                    <name>Other</name>
+                    <private>false</private>
+                    <publicId>dd92f240-144b-4fef-8476-4ec0acbc1105</publicId>
+                </category>
+                <contentType>NORMAL</contentType>
+                <description></description>
+                <enabled>true</enabled>
+                <name>Page type classification</name>
+                <publicId>3ae49ff6-88ed-477e-9bcf-8c8b72e98408</publicId>
+                <version>
+                    <componentUuid>dc302574-0e4c-4273-b1b2-b8542069b0de</componentUuid>
+                    <incrementalVersion>1.0</incrementalVersion>
+                    <lastInChain>true</lastInChain>
+                    <lastModified>2018-10-23T15:57:32Z</lastModified>
+                    <versionUuid>19f302dc-e80a-498d-8086-c92d2b29e2ff</versionUuid>
+                </version>
+                <answers/>
+                <machineWorkSettingType>BASIC</machineWorkSettingType>
+                <template>
+                    <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;config xmlns="http://web-harvest.sourceforge.net/schema/1.0/config" scriptlang="groovy"&gt;
+	
+	&lt;log level="DEBUG" message="Entering Rule Based Bot: email_uid = ${email_uid}, subject = ${subject}"&gt;&lt;/log&gt;
+  	
+  	&lt;script&gt;&lt;![CDATA[
+		currentBotName = "Rule Based Classification"
+	]]&gt;&lt;/script&gt;
+  
+	&lt;var-def name="s3_attachment_link"&gt;
+		&lt;template&gt;
+			${s3_attachment_link}
+		&lt;/template&gt;
+	&lt;/var-def&gt;
+
+	&lt;var-def name="email_uid"&gt;
+		&lt;template&gt;
+			${email_uid}
+		&lt;/template&gt;
+	&lt;/var-def&gt;
+
+	&lt;!-- &lt;var-def name="document_uid"&gt;
+		&lt;template&gt;
+			${document_uid}
+		&lt;/template&gt;
+	&lt;/var-def&gt; --&gt;
+
+	&lt;var-def name="page_number"&gt;
+		&lt;template&gt;
+			${page_number}
+		&lt;/template&gt;
+	&lt;/var-def&gt;
+
+	&lt;var-def name="page_uid"&gt;
+		&lt;template&gt;
+			${page_uid}
+		&lt;/template&gt;
+	&lt;/var-def&gt;
+
+	&lt;var-def name="ocr_xml"&gt;
+		&lt;http-extended url="${s3_page_link_xml}"&gt;&lt;/http-extended&gt;
+	&lt;/var-def&gt;
+	
+	&lt;var-def name="ocr_xml_link"&gt;
+		&lt;template&gt;${s3_page_link_xml}&lt;/template&gt;
+	&lt;/var-def&gt;
+
+	&lt;var-def name="s3_folder_path"&gt;files/conversion/results&lt;/var-def&gt;
+
+	&lt;var-def name="uuid"&gt;
+		&lt;template&gt;${java.util.UUID.randomUUID()}&lt;/template&gt;
+	&lt;/var-def&gt;
+
+	&lt;create-datastore name="${document_page_datastore}"&gt;
+		&lt;datastore-column name="email_uid" /&gt;
+		&lt;!-- &lt;datastore-column name="document_uid" /&gt; --&gt;
+		&lt;datastore-column name="attachment_uid" /&gt;
+		&lt;datastore-column name="page_number" /&gt;
+		&lt;datastore-column name="calculated_class" /&gt;
+		&lt;datastore-column name="page_xml" /&gt;
+		&lt;datastore-column name="page_pdf" /&gt;
+		&lt;datastore-column name="pdf_link" /&gt;
+		&lt;datastore-column name="page_uid" /&gt;
+		&lt;datastore-column name="judged_class" /&gt;
+      	&lt;datastore-column name="status" /&gt;
+	&lt;/create-datastore&gt;
+
+	&lt;script&gt;&lt;![CDATA[
+		import org.apache.commons.lang3.StringUtils;
+
+		import java.util.List;
+
+		public class KeywordBasedClassifier {
+
+			private String className;
+
+			private List&lt;String&gt; positiveKeywords;
+			private List&lt;List&lt;String&gt;&gt; positiveKeywordCombinations;
+			private List&lt;String&gt; negativeKeywords;
+			private List&lt;List&lt;String&gt;&gt; negativeKeywordCombinations;
+
+			public KeywordBasedClassifier(String className,
+			List&lt;String&gt; positiveKeywords,
+			List&lt;List&lt;String&gt;&gt; positiveKeywordCombinations,
+			List&lt;String&gt; negativeKeywords,
+			List&lt;List&lt;String&gt;&gt; negativeKeywordCombinations) {
+				this.className = className;
+				//this.positiveKeywords = positiveKeywords.stream().map(w -&gt; w.replaceAll("\\s", "")).collect(Collectors.toList());
+				this.positiveKeywords = positiveKeywords.collect{w -&gt; w.replaceAll("\\s", "")};
+				this.positiveKeywordCombinations = positiveKeywordCombinations;
+				//this.negativeKeywords = negativeKeywords.stream().map(w -&gt; w.replaceAll("\\s", "")).collect(Collectors.toList());
+				this.negativeKeywords = negativeKeywords.collect{w -&gt; w.replaceAll("\\s", "")};
+				this.negativeKeywordCombinations = negativeKeywordCombinations;
+			}
+			
+			
+			public String classify(String documentText) {
+				documentText = modifyText(documentText);
+
+				boolean containsPositiveKeyword = containsAny(documentText, positiveKeywords);
+				//        System.out.println(className + " contains positive " + containsPositiveKeyword);
+				boolean containsPositiveCombination = containsAnyCombination(documentText, positiveKeywordCombinations);
+				//        System.out.println(className + " contains positive combination " + containsPositiveCombination);
+				boolean containsNegativeKeyword = containsAny(documentText, negativeKeywords);
+				//        System.out.println(className + " contains negative " + containsNegativeKeyword);
+				boolean containsNegativeCombination = containsAnyCombination(documentText, negativeKeywordCombinations);
+				//        System.out.println(className + " contains negative combination " + containsNegativeCombination);
+				if ((containsPositiveKeyword || containsPositiveCombination)
+				&amp;&amp; !containsNegativeKeyword
+				&amp;&amp; !containsNegativeCombination) {
+					return className;
+				}
+
+				return null;
+			}
+
+			private String modifyText(String rawText) {
+				//return StringUtils.normalizeSpace(rawText.toLowerCase());
+				return rawText.replaceAll("\\s", "").toLowerCase();
+			}
+
+			private boolean containsAny(String documentText, List&lt;String&gt; keywords) {
+				for (String keyword : keywords) {
+					if (documentText.contains(keyword)) {
+						return true;
+					}
+				}
+				return false;
+			}
+
+			private boolean containsAnyCombination(String documentText, List&lt;List&lt;String&gt;&gt; keywordCombinations) {
+				for (List&lt;String&gt; keywordCombination : keywordCombinations) {
+					if (containsAll(documentText, keywordCombination)) {
+						return true;
+					}
+				}
+				return false;
+			}
+
+			private boolean containsAll(String documentText, List&lt;String&gt; keywords) {
+				for (String keyword : keywords) {
+					if (!documentText.contains(keyword)) {
+						return false;
+					}
+				}
+				return true;
+			}
+		}
+
+		import com.google.common.collect.Lists;
+		import org.apache.commons.lang3.StringUtils;
+		import org.jsoup.Jsoup;
+		import org.jsoup.nodes.Document;
+
+		import com.freedomoss.crowdcontrol.webharvest.plugin.datastore.dto.DataStoreRow;
+		import com.freedomoss.crowdcontrol.webharvest.plugin.datastore.enums.DataStoreColumnType;
+
+		import java.io.IOException;
+		import java.net.URL;
+		import java.util.List;
+		import java.util.Map;
+		import java.util.regex.Matcher;
+		import java.util.regex.Pattern;
+
+		import static java.util.Collections.emptyList;
+
+		List&lt;String&gt; invoicePositive = Lists.newArrayList(
+				"proforma invoice",
+				"pro forma invoice",
+				"pro-forma invoice",
+				"commercial invoice",
+				"customs invoice",
+				//"invoice", //Commenting out - MS
+				"canada customs",
+				//            "sales order",
+				"order acknowledgement",
+				"origin and invoice",
+				"send invoice to",
+				"total usd",
+				"total cad",
+				"remit to",
+				"remitto",
+				//Adding below keywords Sept 4, 2018 - MS
+				"hs tariff code",//dk
+				"unit price",//dk++
+				"total price", //dk
+				"invoice total",
+				"form no. 14",
+				"based on sales",
+				"manifest detail",//dk
+				"shipping invoice summary",//dk
+				"invoice total"
+				//                "purchase order"
+				);
+
+		List&lt;String&gt; invoiceNegative = Lists.newArrayList(
+				"dear ",
+				"please ensure invoice"//MS
+				);
+
+		List&lt;List&lt;String&gt;&gt; invoiceNegativeCombinations = Lists.newArrayList(
+				//            Lists.newArrayList("bill", "lading"),
+				//            Lists.newArrayList("packing", "slip"),
+				//            Lists.newArrayList("packing", "list")
+				);
+
+		List&lt;List&lt;String&gt;&gt; invoicePositiveCombinations = Lists.newArrayList(
+				Lists.newArrayList("invoice", "declaration"),
+				Lists.newArrayList("proforma", "invoice"),
+				Lists.newArrayList("pro-forma", "invoice"),
+				Lists.newArrayList("pro forma", "invoice"),
+        	    Lists.newArrayList("bill","lading","mev","tech", "invoice")
+				);
+
+		List&lt;List&lt;String&gt;&gt; othersPositiveCombinations = Lists.newArrayList(
+				Lists.newArrayList("bill", "lading"),
+				Lists.newArrayList("certificate", "origin"),
+				//Lists.newArrayList("packing", "slip"),//Commenting out - MS
+				Lists.newArrayList("packing", "list")
+				);
+
+		List&lt;String&gt; othersPositive = Lists.newArrayList(
+				"control act",
+				//Adding below keywords Sept 4, 2018 - MS
+				"statement of compliance",
+				"shipping paper", //dk
+				"picking list",//dk
+				"packing list",//dk
+				"shipper's declaration",
+				"shipper&#8217;s security endorsement",//dk
+				"goods returned",
+				"letter",//dk
+				"customs form 434a",
+				//Done adding keywords Sept 4, 2018 - MS
+				"shipping list",
+				"shipping slip",
+				"shipping manifest",
+				"pick ticket",
+				"picking ticket",
+				"packing declaration",
+				"pack list",
+				"supplier information",
+				"certificate of origin",
+				"instructions for completion",
+				"statement regarding",
+				//"dear ",//Commenting out - MS
+				"to whom it may concern",
+				"declaration form",
+				"veterinary certificate",
+				"certification of material"
+				);
+
+		List&lt;String&gt; othersNegative = Lists.newArrayList(
+				"proforma invoice",
+				//"pro forma invoice", //Commenting out - MS
+				"pro-forma invoice",
+				//                "commercial invoice",
+				//"customs invoice", //Commenting out - MS
+				//"canada customs", //Commenting out - MS
+				"order acknowledgement",
+				"total usd",
+				"remit to"
+				);
+
+		List&lt;List&lt;String&gt;&gt; othersNegativeCombinations = Lists.newArrayList(
+					Lists.newArrayList("carrier", "confirmation"),
+					Lists.newArrayList("carrier", "dispatch", "report"),
+					Lists.newArrayList("proforma", "invoice"),
+					Lists.newArrayList("pro-forma", "invoice"),
+					Lists.newArrayList("bill","lading","mev", "tech"),
+					Lists.newArrayList("bill", "lading","invoice"),
+					Lists.newArrayList("commercial","invoice","amount")
+			);
+
+
+		List&lt;String&gt; carrierConfirmationPositiveKeywords = Lists.newArrayList(
+				//"pickup order",//Commenting out - MS
+				//"carrier confirmation",//Commenting out - MS
+				"load confirmation",
+				"shipping order",
+				"dispatch order",
+				"dispatch confirmation",
+				"dispatch notification",
+				"delivery notification",
+				"boarder instructions",
+				"cartage advice",
+				"pickup request"
+				);
+
+		List&lt;List&lt;String&gt;&gt; carrierConfirmationPositiveCombinations = Lists.newArrayList(
+				Lists.newArrayList("carrier", "confirmation"),
+				Lists.newArrayList("carrier", "dispatch", "report")
+				);
+
+		List&lt;List&lt;String&gt;&gt; carrierConfirmationNegativeCombinations = Lists.newArrayList(
+				//                Lists.newArrayList("bill", "lading"),
+				Lists.newArrayList("certificate", "origin"),
+				Lists.newArrayList("packing", "slip"),
+				Lists.newArrayList("packing", "list"),
+				//Adding below keywords Sept 4, 2018 - MS
+				Lists.newArrayList("invoice", "declaration"),
+				Lists.newArrayList("proforma", "invoice"),
+				Lists.newArrayList("pro-forma", "invoice"),
+				Lists.newArrayList("pro forma", "invoice")
+				//Done adding keywords Sept 4, 2018 - MS
+				);
+
+		boolean hasMorePrices(String documentText, int threshold) {
+			Pattern pricePattern = Pattern.compile("(?:^|\\s|[(\"'\\[{:\$])((?:\\d+(?:[,.]\\d{3})*(?:[,.]\\d{2}))|([,.]\\d{2}))(?:\$|\\s|[,.]\\s|[.]\$|[)\"'\\]}\$])");
+			Matcher m = pricePattern.matcher(documentText);
+			int count = 0;
+			while (m.find()) {
+				count++;
+			}
+			if (count &gt; threshold) {
+				return true;
+			}
+			return false;
+		}
+
+		Document document = Jsoup.parse(ocr_xml.toString());
+		String text = document.text();
+		/*if (text.length() &gt; 600) {
+			int index = text.length() / 4;
+			text = text.substring(0, index);
+		}*/
+
+		KeywordBasedClassifier invoiceClassifier =
+				new KeywordBasedClassifier("invoice",
+				invoicePositive,
+				invoicePositiveCombinations,
+				invoiceNegative,
+				invoiceNegativeCombinations);
+
+		KeywordBasedClassifier othersClassifier =
+				new KeywordBasedClassifier("others",
+				othersPositive,
+				othersPositiveCombinations,
+				othersNegative,
+				othersNegativeCombinations);
+
+		KeywordBasedClassifier carrierConfirmationClassifier =
+				new KeywordBasedClassifier("carrier_confirmation",
+				carrierConfirmationPositiveKeywords,
+				carrierConfirmationPositiveCombinations,
+				invoicePositive,
+				carrierConfirmationNegativeCombinations);
+
+		String status = "NOT_CLASSIFIED";
+		String predictedClass = carrierConfirmationClassifier.classify(text);
+		
+		if (predictedClass == null) {
+			predictedClass = othersClassifier.classify(text);
+		}
+		
+		if (predictedClass == null) {
+			predictedClass = invoiceClassifier.classify(text);
+		}
+		if (predictedClass == null &amp;&amp; hasMorePrices(text, 5)) {
+			predictedClass = "invoice";
+		}
+		/* //Rearranging order, moving it to first - MS
+		if (predictedClass == null) {
+			predictedClass = othersClassifier.classify(text);
+		}
+		*/
+		if (predictedClass == null) {
+			if("true".equals(not_classified_to_others.getWrappedObject())){
+				predictedClass = "others";
+			}else{
+				predictedClass = StringUtils.EMPTY;
+			}
+		} else {
+			status = "AUTO_CLASSIFIED";
+		}
+
+		sys.defineVariable("classification", predictedClass)
+		sys.defineVariable("classification_status", status)
+		sys.defineVariable("invoiceType", "")
+
+	]]&gt;&lt;/script&gt;
+  
+   &lt;datastore name="${document_page_datastore}"&gt;
+        &lt;template&gt;
+            update @this set calculated_class = '${classification}', status = '${classification_status}' where page_uid  = '${page_uid}' and email_uid = '${email_uid}'
+        &lt;/template&gt;
+    &lt;/datastore&gt;
+  
+	&lt;datastore name="${inbox_email_datastore}"&gt;
+		&lt;template&gt;
+			update @this
+			set
+			status_description =
+			'${currentBotName}'
+			where uid =
+			'${String.valueOf(email_uid)}';
+		&lt;/template&gt;
+	&lt;/datastore&gt;
+  
+  	&lt;log level="DEBUG" message="Leaving Rule Based Bot: email_uid = ${email_uid}, subject = ${subject}"&gt;&lt;/log&gt;
+
+	&lt;export include-original-data="true"&gt;
+		&lt;single-column name="classification" value="${classification}"&gt;&lt;/single-column&gt;
+		&lt;single-column name="invoice_type" value="${invoiceType}"&gt;&lt;/single-column&gt;
+		&lt;single-column name="status_description" value='${currentBotName}' /&gt;
+	&lt;/export&gt;
+&lt;/config&gt;</content>
+                    <name>[TMPL] Page Type rule based classification</name>
+                    <origination>CREATED_MANUALLY</origination>
+                    <status>ACTIVE</status>
+                    <type>BASE_MACHINE</type>
+                    <uuid>15eb8d61-dd6a-426a-9f35-d89ed650d2e6</uuid>
+                    <version>
+                        <componentUuid>bdf105cc-68d1-4036-bc94-a047409d9b68</componentUuid>
+                        <incrementalVersion>1.1</incrementalVersion>
+                        <lastInChain>true</lastInChain>
+                        <lastModified>2018-10-23T15:52:44Z</lastModified>
+                        <versionUuid>b5a81e20-c64c-472d-8531-6151addfca14</versionUuid>
+                    </version>
+                </template>
+            </machineWorkSetting>
+            <hashCode>-1649346904</hashCode>
+        </objectContainer>
+    </objects>
+</objectListWrapper>
