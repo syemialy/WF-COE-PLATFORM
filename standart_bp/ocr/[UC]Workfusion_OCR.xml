@@ -13,16 +13,16 @@
                     <publicId>dd92f240-144b-4fef-8476-4ec0acbc1104</publicId>
                 </category>
                 <contentType>NORMAL</contentType>
-                <description></description>
+                <description>Version 2.5 with skip_ocr_cache, no duplicate OCR submit image, escaped custom_region</description>
                 <enabled>true</enabled>
                 <name>Workfusion OCR with cache (UseCase)</name>
                 <publicId>50aa941b-68a6-425c-b82a-fdb7ea67b866</publicId>
                 <version>
                     <componentUuid>67b25587-31eb-4ec6-9d02-b8284ffd09c5</componentUuid>
-                    <incrementalVersion>1.0</incrementalVersion>
+                    <incrementalVersion>1.3</incrementalVersion>
                     <lastInChain>true</lastInChain>
-                    <lastModified>2018-05-25T10:24:02Z</lastModified>
-                    <versionUuid>1f56c492-d60d-48d2-90af-65db8735d62a</versionUuid>
+                    <lastModified>2018-11-05T08:20:20Z</lastModified>
+                    <versionUuid>b24a6dbc-bf52-4129-a65d-6801fdb95ca7</versionUuid>
                 </version>
                 <automationQualityThreshold>80</automationQualityThreshold>
                 <campaign>
@@ -30,13 +30,14 @@
                     <businessRules/>
                     <campaignMaps>
                         <campaignMap>
+                            <activateTracking>false</activateTracking>
                             <blockSize>1</blockSize>
                             <businessRule>
                                 <content>#RuleContext.APPROVE_ALL_RULE</content>
                                 <name>Approve All</name>
                                 <ruleType>WORKFLOW_RULE</ruleType>
                                 <ruleTypeUI>Composite</ruleTypeUI>
-                                <uuid>2b92e509-dd17-49bb-823e-d0ed51b6545c</uuid>
+                                <uuid>8f1cb86c-0365-4e3a-879b-fe44ea0b3ead</uuid>
                                 <workflowRuleMode>SIMPLE</workflowRuleMode>
                             </businessRule>
                             <campaign>
@@ -49,6 +50,7 @@
                                 <goldRatio>0</goldRatio>
                                 <goldSource>Empty</goldSource>
                                 <goldType>Percentage</goldType>
+                                <includeOriginalData>false</includeOriginalData>
                                 <machineConfig>
                                     <answers/>
                                     <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -57,13 +59,14 @@
 Step to configure OCR parameters
 
 @Author: Alexey Shalak
-@Version: 1.0
+@Version: 1.1
 Workfusion 2018, RPA Express 2.0
 --&gt;
 
 &lt;config xmlns="http://web-harvest.sourceforge.net/schema/1.0/config"
 	scriptlang="groovy"&gt;
   
+    &lt;required name="original_document_url"/&gt;
   	&lt;required name="s3_bucket_name"/&gt;
   	&lt;required name="ocr_type"/&gt;
   	&lt;required name="cache_datastore"/&gt;
@@ -93,7 +96,7 @@ Workfusion 2018, RPA Express 2.0
 		sys.defineVariable("ocrXmlCharRecognition", ocr_xml_char_recognition);
 
 		if( !sys.isVariableDefined("allowed_region_types") || allowed_region_types == null || allowed_region_types.toString().isEmpty()) {
-			allowed_region_types = "BT_Table,BT_Text,BT_Separator,BT_SeparatorGroup,BT_Checkmark,BT_CheckmarkGroup,BT_AutoAnalysis";
+			allowed_region_types = "BT_Text,BT_Table,BT_VectorPicture";
 		} else {
 			allowed_region_types = allowed_region_types.toString().replace("|", ",");
 		}
@@ -182,7 +185,7 @@ Workfusion 2018, RPA Express 2.0
                                             <componentUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</componentUuid>
                                             <incrementalVersion>1.0</incrementalVersion>
                                             <lastInChain>true</lastInChain>
-                                            <lastModified>2018-07-04T11:58:10Z</lastModified>
+                                            <lastModified>2018-05-28T11:12:13Z</lastModified>
                                             <versionUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</versionUuid>
                                         </version>
                                         <answers/>
@@ -233,10 +236,10 @@ Workfusion 2018, RPA Express 2.0
                                     <uuid>87bbbceb-15e6-4081-baa6-c574fffd4c66</uuid>
                                     <version>
                                         <componentUuid>6c6e68e8-1ffb-42c6-bfe9-c80f599cd743</componentUuid>
-                                        <incrementalVersion>1.26</incrementalVersion>
-                                        <lastInChain>false</lastInChain>
-                                        <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                        <versionUuid>129d83fc-8a5c-4819-8211-4fda176be93c</versionUuid>
+                                        <incrementalVersion>1.28</incrementalVersion>
+                                        <lastInChain>true</lastInChain>
+                                        <lastModified>2018-07-24T10:27:55Z</lastModified>
+                                        <versionUuid>326fa47a-e652-442e-a820-3b0ea01940c7</versionUuid>
                                     </version>
                                 </machineConfig>
                                 <moderation>false</moderation>
@@ -254,26 +257,28 @@ Workfusion 2018, RPA Express 2.0
                                 <version>
                                     <componentUuid>16050d15-967b-4f3c-9304-e4cccda3e1db</componentUuid>
                                     <incrementalVersion>1.12</incrementalVersion>
-                                    <lastInChain>false</lastInChain>
-                                    <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                    <versionUuid>f7a7a1fa-a753-4817-bc22-b9b9cd87628b</versionUuid>
+                                    <lastInChain>true</lastInChain>
+                                    <lastModified>2018-07-24T10:27:55Z</lastModified>
+                                    <versionUuid>1798d477-d5c9-492b-ba08-604f52ba9117</versionUuid>
                                 </version>
                                 <workSettingBase>false</workSettingBase>
                             </campaign>
                             <deleted>false</deleted>
+                            <skipForSTPCalculation>false</skipForSTPCalculation>
                             <stepIndex>1</stepIndex>
                             <stepPosition>START</stepPosition>
                             <streamed>false</streamed>
-                            <uuid>2c278764-c540-44fb-9ebb-d18a9b761414</uuid>
+                            <uuid>8fdce086-76ce-44f0-82b9-6e1b22035534</uuid>
                         </campaignMap>
                         <campaignMap>
+                            <activateTracking>false</activateTracking>
                             <blockSize>1</blockSize>
                             <businessRule>
                                 <content>#RuleContext.APPROVE_ALL_RULE</content>
                                 <name>Approve All</name>
                                 <ruleType>WORKFLOW_RULE</ruleType>
                                 <ruleTypeUI>Composite</ruleTypeUI>
-                                <uuid>b4be6405-00de-4252-99b3-decfe9207c2e</uuid>
+                                <uuid>dca899e5-fc18-4df1-86f5-5353c4a6a387</uuid>
                                 <workflowRuleMode>SIMPLE</workflowRuleMode>
                             </businessRule>
                             <campaign>
@@ -287,6 +292,7 @@ Workfusion 2018, RPA Express 2.0
                                 <goldRatio>0</goldRatio>
                                 <goldSource>Empty</goldSource>
                                 <goldType>Percentage</goldType>
+                                <includeOriginalData>false</includeOriginalData>
                                 <machineConfig>
                                     <answers/>
                                     <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -340,7 +346,7 @@ Workfusion 2018, RPA Express 2.0
 	&lt;/s3&gt;
   
 	&lt;var-def name="imageLink"&gt;
-		&lt;script return="getJSONValue(json_file_urls_for_manual.toString(), jsonKey.toString())"&gt;&lt;![CDATA[
+		&lt;script return="getJSONValue(json_file_urls.toString(), jsonKey.toString())"&gt;&lt;![CDATA[
 			import org.json.XML;
 			import java.util.List;
 			import java.util.ArrayList;
@@ -366,9 +372,9 @@ Workfusion 2018, RPA Express 2.0
 	&lt;/var-def&gt;
 
 &lt;!-- XSLT transformation
-@date: 07/04/2018
+@date: 07/17/2018
 @Author: Mikalai Yatskevich mikalai_yatskevich@epam.com
- v2
+ v3
 --&gt;
 	&lt;var-def name="htmlWordsDocumentRaw"&gt;
 		&lt;xslt&gt;
@@ -383,19 +389,19 @@ Workfusion 2018, RPA Express 2.0
         &lt;xsl:value-of select="sum(//page/@height)"/&gt;
     &lt;/xsl:variable&gt;
     &lt;xsl:variable name="isLineHeight"&gt;
-        &lt;xsl:value-of select="${lineHeight}()"/&gt;
+        &lt;xsl:value-of select="true()"/&gt;
     &lt;/xsl:variable&gt;
     &lt;xsl:variable name="minimalFontHeight"&gt;
         &lt;xsl:value-of select="15"/&gt;
     &lt;/xsl:variable&gt;
     &lt;xsl:variable name="stopChars"&gt;
-        &lt;xsl:value-of select='"&amp;apos;&amp;gt;&amp;lt;`&#8217;~""!@#$%^\*()_-=+[]{}&#172;;:,./?|&#8220;&#174;&#171;&#187;&#8212;&#176;| "'/&gt;
+        &lt;xsl:value-of select='"&amp;apos;&amp;gt;&amp;lt;`&#8217;~!@#$%^\*()_-=+[]{}&#172;;:,./?|&#8220;&#174;&#171;&#187;&#8212;&#176;| "'/&gt;
     &lt;/xsl:variable&gt;
     &lt;xsl:variable name="stopCharsFirstWordInLine"&gt;
-        &lt;xsl:value-of select='"&amp;apos;&amp;gt;&amp;lt;`&#8217;~""!@#$%^\*()_=+[]{}&#172;;:?|&#8220;&#174;&#171;&#187;&#8212;&#176;|"'/&gt;
+        &lt;xsl:value-of select='"&amp;apos;&amp;gt;&amp;lt;`&#8217;~!@#$%^\/*()_-=+[]{}&#172;;:?|&#8220;&#174;&#171;&#187;&#8212;&#176;|"'/&gt;
     &lt;/xsl:variable&gt;
     &lt;xsl:variable name="numberChars"&gt;
-        &lt;xsl:value-of select="'1234567890'"/&gt;
+        &lt;xsl:value-of select="'-1234567890'"/&gt;
     &lt;/xsl:variable&gt;
     &lt;xsl:variable name="numberSeparators"&gt;
         &lt;xsl:value-of select="'., '"/&gt;
@@ -410,7 +416,7 @@ Workfusion 2018, RPA Express 2.0
         &lt;html&gt;
             &lt;xsl:text disable-output-escaping="yes"&gt;&amp;lt;!-- Version 1.7 --&amp;gt;&lt;/xsl:text&gt;
             &lt;head&gt;
-                &lt;style type="text/css"&gt;div.n {position:absolute;border: 1px solid rgba(27, 138, 0, .2);white-space:nowrap;text-align:left;vertical-align:bottom;letter-spacing:0px;word-spacing:0px;} div.rc {position:absolute;border: 1px solid rgba(27, 138, 0, .2);-ms-layout-flow: vertical-ideographic;writing-mode: vertical-lr;white-space:nowrap;} div.rcc {position:absolute;border: 1px solid rgba(27, 138, 0, .2);-ms-layout-flow: vertical-ideographic;writing-mode: vertical-rl;transform: rotate(180deg);white-space:nowrap;} div.t {position:absolute;border: 1px solid rgba(27, 138, 0, .2);white-space:nowrap;}&lt;/style&gt;
+                &lt;style type="text/css"&gt;div.n {position:absolute;white-space:nowrap;text-align:left;vertical-align:bottom;letter-spacing:0px;word-spacing:0px;} div.rc {position:absolute;-ms-layout-flow: vertical-ideographic;writing-mode: vertical-lr;white-space:nowrap;} div.rcc {position:absolute;-ms-layout-flow: vertical-ideographic;writing-mode: vertical-rl;transform: rotate(180deg);white-space:nowrap;} div.t {position:absolute;white-space:nowrap;}&lt;/style&gt;
             &lt;/head&gt;
             &lt;body&gt;
                 &lt;xsl:attribute name="style"&gt;width:&lt;xsl:value-of select="./page/@width"/&gt;px; height:&lt;xsl:value-of select="$currentHeight"/&gt;px; border: 1px solid black; background-repeat: no-repeat; font-family: 'Helvetica', 'Arial', sans-serif; padding: 0;
@@ -439,7 +445,6 @@ Workfusion 2018, RPA Express 2.0
             &lt;xsl:text disable-output-escaping="yes"&gt;&amp;lt;img src="&lt;/xsl:text&gt;
             &lt;xsl:value-of select="$src"/&gt; &lt;xsl:text disable-output-escaping="yes"&gt;" style="&lt;/xsl:text&gt;position:absolute;top:&lt;xsl:value-of select="$pageHeight"/&gt;px;width:&lt;xsl:value-of select="@width"/&gt;px; height:&lt;xsl:value-of select="@height"/&gt;px; opacity:0.1; margin-left: 0px; margin-top: 0px;
             &lt;xsl:text disable-output-escaping="yes"&gt;" &amp;gt;&amp;lt;/img&amp;gt;&lt;/xsl:text&gt;
-
             &lt;xsl:apply-templates select="./wfocr:block"/&gt;
         &lt;/page&gt;
     &lt;/xsl:template&gt;
@@ -509,6 +514,10 @@ Workfusion 2018, RPA Express 2.0
 
             &lt;xsl:variable name="pageHeight"&gt;
                 &lt;xsl:value-of select="number(sum(preceding::*[@resolution]/@height))"/&gt;
+            &lt;/xsl:variable&gt;
+
+            &lt;xsl:variable name="lineId"&gt;
+                &lt;xsl:value-of select="generate-id(.)"/&gt;
             &lt;/xsl:variable&gt;
 
             &lt;xsl:variable name="lineTop"&gt;
@@ -591,14 +600,14 @@ Workfusion 2018, RPA Express 2.0
                         &lt;xsl:value-of select="$lineHeightOld"/&gt;
                     &lt;/xsl:when&gt;
                     &lt;xsl:otherwise&gt;
-                &lt;xsl:choose&gt;
-                    &lt;xsl:when test="number($lineHeightComputed) &amp;lt; number($minimalFontHeight)"&gt;
-                        &lt;xsl:value-of select="number($minimalFontHeight)"/&gt;
-                    &lt;/xsl:when&gt;
-                    &lt;xsl:otherwise&gt;
-                        &lt;xsl:value-of select="number($lineHeightComputed)"/&gt;
-                    &lt;/xsl:otherwise&gt;
-                &lt;/xsl:choose&gt;
+                        &lt;xsl:choose&gt;
+                            &lt;xsl:when test="number($lineHeightComputed) &amp;lt; number($minimalFontHeight)"&gt;
+                                &lt;xsl:value-of select="number($minimalFontHeight)"/&gt;
+                            &lt;/xsl:when&gt;
+                            &lt;xsl:otherwise&gt;
+                                &lt;xsl:value-of select="number($lineHeightComputed)"/&gt;
+                            &lt;/xsl:otherwise&gt;
+                        &lt;/xsl:choose&gt;
                     &lt;/xsl:otherwise&gt;
                 &lt;/xsl:choose&gt;
             &lt;/xsl:variable&gt;
@@ -774,6 +783,39 @@ Workfusion 2018, RPA Express 2.0
                             &lt;xsl:variable name="rightCharValueThatCanBeEmpty"&gt;
                                 &lt;xsl:value-of select="normalize-space(./following::wfocr:charParams[1]/text()[1])"/&gt;
                             &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="followingTagId"&gt;
+                                &lt;xsl:value-of select="generate-id(./following::wfocr:*[1])"/&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="followingCharParamsTagId"&gt;
+                                &lt;xsl:value-of select="generate-id(./following::wfocr:charParams[1])"/&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="precedingTagId"&gt;
+                                &lt;xsl:value-of select="generate-id(./preceding::wfocr:*[1])"/&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="precedingCharParamsTagId"&gt;
+                                &lt;xsl:value-of select="generate-id(./preceding-sibling::wfocr:charParams[1])"/&gt;
+                            &lt;/xsl:variable&gt;
+
+                            &lt;xsl:variable name="isLastCharInLine"&gt;
+                                &lt;xsl:choose&gt;
+                                    &lt;xsl:when test="($followingTagId &amp;lt; $followingCharParamsTagId) or ($followingTagId &amp;gt; $followingCharParamsTagId)"&gt;
+                                        &lt;xsl:value-of select="true()"/&gt;
+                                    &lt;/xsl:when&gt;
+                                    &lt;xsl:otherwise&gt;
+                                        &lt;xsl:value-of select="false()"/&gt;
+                                    &lt;/xsl:otherwise&gt;
+                                &lt;/xsl:choose&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="isFirstCharInLineNew"&gt;
+                                &lt;xsl:choose&gt;
+                                    &lt;xsl:when test="($precedingTagId &amp;lt; $precedingCharParamsTagId) or ($precedingTagId &amp;gt; $precedingCharParamsTagId)"&gt;
+                                        &lt;xsl:value-of select="true()"/&gt;
+                                    &lt;/xsl:when&gt;
+                                    &lt;xsl:otherwise&gt;
+                                        &lt;xsl:value-of select="false()"/&gt;
+                                    &lt;/xsl:otherwise&gt;
+                                &lt;/xsl:choose&gt;
+                            &lt;/xsl:variable&gt;
                             &lt;xsl:variable name="rightCharValue"&gt;
                                 &lt;xsl:choose&gt;
                                     &lt;xsl:when test="string-length($rightCharValueThatCanBeEmpty)&gt;0"&gt;
@@ -784,11 +826,63 @@ Workfusion 2018, RPA Express 2.0
                                     &lt;/xsl:otherwise&gt;
                                 &lt;/xsl:choose&gt;
                             &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="followingNumberChar"&gt;
+                                &lt;xsl:choose&gt;
+                                    &lt;xsl:when test="string-length(normalize-space(following::wfocr:charParams[not(self::*[@charConfidence])][contains($numberChars,normalize-space(self::*/text()))][1]/@l[1])) &amp;gt; 0"&gt;
+                                        &lt;xsl:value-of select="number(normalize-space(following::wfocr:charParams[not(self::*[@charConfidence])][contains($numberChars,normalize-space(self::*/text()))][1]/@l[1]))"/&gt;
+                                    &lt;/xsl:when&gt;
+                                    &lt;xsl:otherwise&gt;
+                                        &lt;xsl:value-of select="$lineRightValue"/&gt;
+                                    &lt;/xsl:otherwise&gt;
+                                &lt;/xsl:choose&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="followingLetter"&gt;
+                                &lt;xsl:choose&gt;
+                                    &lt;xsl:when test="string-length(normalize-space(following::wfocr:charParams[not(self::*[@charConfidence])][not(contains($numberChars,normalize-space(self::*/text()))) and not(contains($stopChars,normalize-space(self::*/text())))][1]/@l[1])) &amp;gt; 0"&gt;
+                                        &lt;xsl:value-of select="number(normalize-space(following::wfocr:charParams[not(self::*[@charConfidence])][not(contains($numberChars,normalize-space(self::*/text()))) and not(contains($stopChars,normalize-space(self::*/text())))][1]/@l[1]))"/&gt;
+                                    &lt;/xsl:when&gt;
+                                    &lt;xsl:otherwise&gt;
+                                        &lt;xsl:value-of select="$lineRightValue"/&gt;
+                                    &lt;/xsl:otherwise&gt;
+                                &lt;/xsl:choose&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="isNumberChar"&gt;
+                                &lt;xsl:value-of select="contains($numberChars,$charValue)"/&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="isLetterChar"&gt;
+                                &lt;xsl:value-of select="not(contains($numberChars,$charValue)) and not(contains($stopChars,$charValue))"/&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="isRightNumberChar"&gt;
+                                &lt;xsl:choose&gt;
+                                &lt;xsl:when test="string-length($rightCharValueThatCanBeEmpty)&gt;0"&gt;
+                                &lt;xsl:value-of select="contains($numberChars,$rightCharValue)"/&gt;
+                                &lt;/xsl:when&gt;
+                                &lt;xsl:otherwise&gt;
+                                    &lt;xsl:value-of select="false()"/&gt;
+                                &lt;/xsl:otherwise&gt;
+                                &lt;/xsl:choose&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="isRightLetterChar"&gt;
+                                &lt;xsl:value-of select="not(contains($numberChars,$rightCharValue)) and not(contains($stopChars,$rightCharValue))"/&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="followingNumberLetterFirst"&gt;
+                                &lt;xsl:choose&gt;
+                                    &lt;xsl:when test="$isNumberChar"&gt;
+                                        &lt;xsl:value-of select="$followingLetter"/&gt;
+                                    &lt;/xsl:when&gt;
+                                    &lt;xsl:when test="$isLetterChar"&gt;
+                                        &lt;xsl:value-of select="$followingNumberChar"/&gt;
+                                    &lt;/xsl:when&gt;
+                                    &lt;xsl:otherwise&gt;
+                                        &lt;xsl:value-of select="$lineRightValue"/&gt;
+                                    &lt;/xsl:otherwise&gt;
+                                &lt;/xsl:choose&gt;
+                            &lt;/xsl:variable&gt;
 
 
                             &lt;xsl:variable name="preFstSymbolLeft"&gt;
                                 &lt;xsl:value-of select="following::wfocr:charParams[not(contains($numberSeparators,normalize-space(self::*/text()))) and
-                    not(contains($dateSeparators,normalize-space(self::*/text()))) and
+                    (not(contains($numberChars, $charValue)) or (contains($numberChars, $charValue) and  not(contains($dateSeparators,normalize-space(self::*/text()))))) and
                     not(contains($numberChars,normalize-space(self::*/text()))) and
                     string-length(normalize-space(self::*/text())) &amp;gt; 0][1]/@l[1]"/&gt;
                             &lt;/xsl:variable&gt;
@@ -860,51 +954,50 @@ Workfusion 2018, RPA Express 2.0
 
                             &lt;xsl:variable name="followingSpaceFst"&gt;
                                 &lt;xsl:choose&gt;
-                                &lt;xsl:when test="string-length($preFstSymbolLeft) = 0"&gt;
-                                    &lt;xsl:value-of select="$lineRightValue"/&gt;
-                                &lt;/xsl:when&gt;
-                                &lt;xsl:otherwise&gt;
-                                &lt;xsl:choose&gt;
-                                    &lt;xsl:when test="(string-length(normalize-space(following-sibling::*[not(self::*[@charConfidence])][1]/@l[1])) &amp;gt; 0) and (not(contains($numberChars, $rightCharValue)))"&gt;
-                                        &lt;xsl:value-of select="number(normalize-space(following-sibling::*[not(self::*[@charConfidence])][1]/@l[1]))"/&gt;
-                                    &lt;/xsl:when&gt;
-                                    &lt;xsl:when test="contains($numberChars, $rightCharValue) and ($fstSpaceLeft &amp;gt; $fstSymbolLeft)"&gt;
-                                        &lt;xsl:value-of select="$fstSpaceLeft"/&gt;
-                                    &lt;/xsl:when&gt;
-                                    &lt;xsl:when test="contains($numberChars, $rightCharValue) and ($fstSpaceLeft &amp;lt;= $fstSymbolLeft)"&gt;
-                                        &lt;xsl:value-of select="$fstSymbolLeft"/&gt;
+                                    &lt;xsl:when test="string-length($preFstSymbolLeft) = 0"&gt;
+                                        &lt;xsl:value-of select="$lineRightValue"/&gt;
                                     &lt;/xsl:when&gt;
                                     &lt;xsl:otherwise&gt;
-                                        &lt;xsl:value-of select="$lineRightValue"/&gt;
+                                        &lt;xsl:choose&gt;
+                                            &lt;xsl:when test="(string-length(normalize-space(following-sibling::*[not(self::*[@charConfidence])][1]/@l[1])) &amp;gt; 0) and (not(contains($numberChars, $rightCharValue))) and (not(contains($numberSeparators, $rightCharValue))) and (not(contains($dateSeparators, $rightCharValue)))"&gt;
+                                                &lt;xsl:value-of select="number(normalize-space(following-sibling::*[not(self::*[@charConfidence])][1]/@l[1]))"/&gt;
+                                            &lt;/xsl:when&gt;
+                                            &lt;xsl:when test="contains($numberChars, $rightCharValue) and ($fstSpaceLeft &amp;gt; $fstSymbolLeft)"&gt;
+                                                &lt;xsl:value-of select="$fstSpaceLeft"/&gt;
+                                            &lt;/xsl:when&gt;
+                                            &lt;xsl:when test="contains($numberChars, $rightCharValue) and ($fstSpaceLeft &amp;lt;= $fstSymbolLeft)"&gt;
+                                                &lt;xsl:value-of select="$fstSymbolLeft"/&gt;
+                                            &lt;/xsl:when&gt;
+                                            &lt;xsl:otherwise&gt;
+                                                &lt;xsl:value-of select="$lineRightValue"/&gt;
+                                            &lt;/xsl:otherwise&gt;
+                                        &lt;/xsl:choose&gt;
                                     &lt;/xsl:otherwise&gt;
-                                &lt;/xsl:choose&gt;
-                                &lt;/xsl:otherwise&gt;
                                 &lt;/xsl:choose&gt;
                             &lt;/xsl:variable&gt;
                             &lt;xsl:variable name="followingStopCharFst"&gt;
                                 &lt;xsl:choose&gt;
-                                &lt;xsl:when test="string-length($preFstSymbolLeft) = 0"&gt;
-                                    &lt;xsl:value-of select="$lineRightValue"/&gt;
-                                &lt;/xsl:when&gt;
-                                &lt;xsl:otherwise&gt;
-                                &lt;xsl:choose&gt;
-                                    &lt;xsl:when test="(string-length(normalize-space(following-sibling::wfocr:charParams[contains($stopChars,normalize-space(self::*/text()))][not(contains($dateSeparators,normalize-space(self::*/text())))][1]/@l[1])) &amp;gt; 0) and (not(contains($numberChars, $rightCharValue)))"&gt;
-                                        &lt;xsl:value-of select="number(normalize-space(following-sibling::wfocr:charParams[contains($stopChars,normalize-space(self::*/text()))][not(contains($dateSeparators,normalize-space(self::*/text())))][1]/@l[1]))"/&gt;
-                                    &lt;/xsl:when&gt;
-                                    &lt;xsl:when test="contains($numberChars, $rightCharValue) and ($fstSpaceLeft &amp;gt; $fstSymbolLeft)"&gt;
-                                        &lt;xsl:value-of select="$fstSpaceLeft"/&gt;
-                                    &lt;/xsl:when&gt;
-                                    &lt;xsl:when test="contains($numberChars, $rightCharValue) and ($fstSpaceLeft &amp;lt;= $fstSymbolLeft)"&gt;
-                                        &lt;xsl:value-of select="$fstSymbolLeft"/&gt;
+                                    &lt;xsl:when test="string-length($preFstSymbolLeft) = 0"&gt;
+                                        &lt;xsl:value-of select="$lineRightValue"/&gt;
                                     &lt;/xsl:when&gt;
                                     &lt;xsl:otherwise&gt;
-                                        &lt;xsl:value-of select="$lineRightValue"/&gt;
+                                        &lt;xsl:choose&gt;
+                                            &lt;xsl:when test="(string-length(normalize-space(following-sibling::wfocr:charParams[contains($stopChars,normalize-space(self::*/text()))][1]/@l[1])) &amp;gt; 0) and (not(contains($numberChars, $rightCharValue))) and (not(contains($numberSeparators, $rightCharValue))) and (not(contains($dateSeparators, $rightCharValue)))"&gt;
+                                                &lt;xsl:value-of select="number(normalize-space(following-sibling::wfocr:charParams[contains($stopChars,normalize-space(self::*/text()))][1]/@l[1]))"/&gt;
+                                            &lt;/xsl:when&gt;
+                                            &lt;xsl:when test="contains($numberChars, $rightCharValue) and ($fstSpaceLeft &amp;gt; $fstSymbolLeft)"&gt;
+                                                &lt;xsl:value-of select="$fstSpaceLeft"/&gt;
+                                            &lt;/xsl:when&gt;
+                                            &lt;xsl:when test="contains($numberChars, $rightCharValue) and ($fstSpaceLeft &amp;lt;= $fstSymbolLeft)"&gt;
+                                                &lt;xsl:value-of select="$fstSymbolLeft"/&gt;
+                                            &lt;/xsl:when&gt;
+                                            &lt;xsl:otherwise&gt;
+                                                &lt;xsl:value-of select="$lineRightValue"/&gt;
+                                            &lt;/xsl:otherwise&gt;
+                                        &lt;/xsl:choose&gt;
                                     &lt;/xsl:otherwise&gt;
                                 &lt;/xsl:choose&gt;
-                                &lt;/xsl:otherwise&gt;
-                                &lt;/xsl:choose&gt;
                             &lt;/xsl:variable&gt;
-
                             &lt;xsl:variable name="followingSpaceFirst"&gt;
                                 &lt;xsl:choose&gt;
                                     &lt;xsl:when test="(string-length(normalize-space(following::wfocr:charParams[not(self::*[@charConfidence])][1]/@l[1])) &amp;gt; 0) and (not(contains($numberChars, $rightCharValue))) "&gt;
@@ -936,8 +1029,14 @@ Workfusion 2018, RPA Express 2.0
                             &lt;/xsl:variable&gt;
                             &lt;xsl:variable name="right"&gt;
                                 &lt;xsl:choose&gt;
-                                    &lt;xsl:when test="number($followingSpaceFst) &amp;lt; number($followingStopCharFst)"&gt;
+                                    &lt;xsl:when test="(number($followingSpaceFst) &amp;lt;= number($followingStopCharFst)) and (number($followingSpaceFst) &amp;lt;= number($followingNumberLetterFirst))"&gt;
                                         &lt;xsl:value-of select="number($followingSpaceFst)"/&gt;
+                                    &lt;/xsl:when&gt;
+                                    &lt;xsl:when test="(number($followingStopCharFst) &amp;lt;= number($followingSpaceFst)) and (number($followingStopCharFst) &amp;lt;= number($followingNumberLetterFirst))"&gt;
+                                        &lt;xsl:value-of select="$followingStopCharFst"/&gt;
+                                    &lt;/xsl:when&gt;
+                                    &lt;xsl:when test="(number($followingNumberLetterFirst) &amp;lt;= number($followingSpaceFst)) and (number($followingNumberLetterFirst) &amp;lt;= number($followingStopCharFst))"&gt;
+                                        &lt;xsl:value-of select="$followingNumberLetterFirst"/&gt;
                                     &lt;/xsl:when&gt;
                                     &lt;xsl:otherwise&gt;
                                         &lt;xsl:value-of select="number($followingStopCharFst)"/&gt;
@@ -999,7 +1098,7 @@ Workfusion 2018, RPA Express 2.0
                                     &lt;/xsl:when&gt;
                                     &lt;xsl:otherwise&gt;
                                         &lt;xsl:choose&gt;
-                                            &lt;xsl:when test="number($rightFst)-number($left) &amp;gt; 1"&gt;
+                                            &lt;xsl:when test="number($rightFst)-number($left) &amp;gt; 0"&gt;
                                                 &lt;xsl:value-of select="number($rightFst)-number($left)"/&gt;
                                             &lt;/xsl:when&gt;
                                             &lt;xsl:otherwise&gt;
@@ -1009,112 +1108,123 @@ Workfusion 2018, RPA Express 2.0
                                     &lt;/xsl:otherwise&gt;
                                 &lt;/xsl:choose&gt;
                             &lt;/xsl:variable&gt;
-                                &lt;xsl:variable name="isFirstCharInLine"&gt;
-                                    &lt;xsl:choose&gt;
-                                        &lt;xsl:when test="number($lineFirstCharacterLeft) = number(./@l[1])"&gt;
-                                            &lt;xsl:value-of select="1"/&gt;
-                                        &lt;/xsl:when&gt;
-                                        &lt;xsl:otherwise&gt;
-                                            &lt;xsl:value-of select="0"/&gt;
-                                        &lt;/xsl:otherwise&gt;
-                                    &lt;/xsl:choose&gt;
-                                &lt;/xsl:variable&gt;
-                                &lt;xsl:variable name="leftCharValueThatCanBeEmpty"&gt;
-                                    &lt;xsl:value-of select="normalize-space(./preceding::wfocr:charParams[1]/text()[1])"/&gt;
-                                &lt;/xsl:variable&gt;
-                                &lt;xsl:variable name="leftCharValue"&gt;
-                                    &lt;xsl:choose&gt;
-                                        &lt;xsl:when test="string-length($leftCharValueThatCanBeEmpty)&gt;0"&gt;
-                                            &lt;xsl:value-of select="$leftCharValueThatCanBeEmpty"/&gt;
-                                        &lt;/xsl:when&gt;
-                                        &lt;xsl:otherwise&gt;
-                                            &lt;xsl:value-of select="'1'"/&gt;
-                                        &lt;/xsl:otherwise&gt;
-                                    &lt;/xsl:choose&gt;
-                                &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="isFirstCharInLine"&gt;
+                                &lt;xsl:choose&gt;
+                                    &lt;xsl:when test="number($lineFirstCharacterLeft) = number(./@l[1])"&gt;
+                                        &lt;xsl:value-of select="1"/&gt;
+                                    &lt;/xsl:when&gt;
+                                    &lt;xsl:otherwise&gt;
+                                        &lt;xsl:value-of select="0"/&gt;
+                                    &lt;/xsl:otherwise&gt;
+                                &lt;/xsl:choose&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="leftCharValueThatCanBeEmpty"&gt;
+                                &lt;xsl:value-of select="normalize-space(./preceding::wfocr:charParams[1]/text()[1])"/&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="leftCharValue"&gt;
+                                &lt;xsl:choose&gt;
+                                    &lt;xsl:when test="string-length($leftCharValueThatCanBeEmpty)&gt;0"&gt;
+                                        &lt;xsl:value-of select="$leftCharValueThatCanBeEmpty"/&gt;
+                                    &lt;/xsl:when&gt;
+                                    &lt;xsl:otherwise&gt;
+                                        &lt;xsl:value-of select="'1'"/&gt;
+                                    &lt;/xsl:otherwise&gt;
+                                &lt;/xsl:choose&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="isLeftCharNumber"&gt;
+                                &lt;xsl:choose&gt;
+                                    &lt;xsl:when test="string-length($leftCharValueThatCanBeEmpty)&gt;0"&gt;
+                                        &lt;xsl:value-of select="contains($numberChars,$leftCharValue)"/&gt;
+                                    &lt;/xsl:when&gt;
+                                    &lt;xsl:otherwise&gt;
+                                        &lt;xsl:value-of select="false()"/&gt;
+                                    &lt;/xsl:otherwise&gt;
+                                &lt;/xsl:choose&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="isLeftLetterChar"&gt;
+                                &lt;xsl:value-of select="not(contains($numberChars,$leftCharValue)) and not(contains($stopChars,$leftCharValue))"/&gt;
+                            &lt;/xsl:variable&gt;
 
-                                &lt;xsl:variable name="charRight"&gt;
-                                    &lt;xsl:value-of select="./following-sibling::wfocr:charParams[1]/@l[1]"/&gt;
-                                &lt;/xsl:variable&gt;
-                                &lt;xsl:variable name="charLength"&gt;
-                                    &lt;xsl:value-of select="string-length(normalize-space($charValue))"/&gt;
-                                &lt;/xsl:variable&gt;
-                                &lt;xsl:variable name="textValue"&gt;
-                                    &lt;xsl:value-of select="normalize-space(./text())"/&gt;
-                                &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="charRight"&gt;
+                                &lt;xsl:value-of select="./following-sibling::wfocr:charParams[1]/@l[1]"/&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="charLength"&gt;
+                                &lt;xsl:value-of select="string-length(normalize-space($charValue))"/&gt;
+                            &lt;/xsl:variable&gt;
+                            &lt;xsl:variable name="textValue"&gt;
+                                &lt;xsl:value-of select="normalize-space(./text())"/&gt;
+                            &lt;/xsl:variable&gt;
                             &lt;xsl:variable name="followingSibling"&gt;
                                 &lt;xsl:value-of select="normalize-space(following-sibling::wfocr:charParams[1]/text()[1])"/&gt;
                             &lt;/xsl:variable&gt;
 
-                                &lt;xsl:choose&gt;
-                                    &lt;xsl:when test="((((not($charValue) or contains($stopChars, $charValue)) ) or
-                                    (contains($numberChars, $charValue) and not(contains($numberChars, $followingSibling)) and not(contains($stopChars, $followingSibling))) or
-                                    (not(contains($numberChars, $charValue)) and not(contains($stopChars, $followingSibling)) and not(contains($numberSeparators, $charValue)) and not(contains($stopChars, $charValue)) and contains($numberChars,$rightCharValue) and (string-length($rightCharValueThatCanBeEmpty) &amp;gt; 0)) or
-                                    (contains($numberChars, $leftCharValue) and not(contains($numberSeparators, $charValue)) and not(contains($numberChars,$charValue)) and contains($stopChars, $rightCharValue)) or
-                                (contains($numberChars, $leftCharValue) and not(contains($numberChars, $charValue)) and contains($numberChars, $rightCharValue) and not(contains($stopChars, $charValue)) and not($isFirstCharInLine='1'))) ) and
-                            (($charLength &amp;gt; 0 and not(contains($numberSeparators, $charValue))) or
-                            ($charLength=0 and not(contains($numberChars, $leftCharValue) and contains($numberChars, $rightCharValue))) or
-                            (($charLength &amp;gt; 0) and not(contains($numberSeparators, $charValue) and contains($numberChars, $leftCharValue) and contains($numberChars, $rightCharValue)))) and
-                            (($charLength &amp;gt; 0 and not(contains($dateSeparators, $charValue))) or
-                            ($charLength=0 and not(contains($numberChars, $leftCharValue) and contains($numberChars, $rightCharValue))) or
-                            (($charLength &amp;gt; 0) and not(contains($dateSeparators, $charValue) and contains($numberChars, $leftCharValue) and contains($numberChars, $rightCharValue))))"&gt;
+                                                        &lt;xsl:choose&gt;
+                                                            &lt;xsl:when test="((((not($charValue) or contains($stopChars, $charValue)) ) or
+                                                        (contains($isLetterChar,'true') and contains($isLeftCharNumber, 'true') and contains($isFirstCharInLineNew, 'false')) or (contains($isNumberChar,'true') and contains($isLeftLetterChar,'true') and contains($isFirstCharInLineNew, 'false') ) or
+                                                            (contains($numberChars, $leftCharValue) and not(contains($numberChars, $charValue)) and contains($numberChars, $rightCharValue) and not(contains($stopChars, $charValue)) and not($isFirstCharInLine='1'))) ) and
+                                                        (($charLength &amp;gt; 0 and not(contains($numberSeparators, $charValue))) or
+                                                        ($charLength=0 and not(contains($numberChars, $leftCharValue) and contains($numberChars, $rightCharValue))) or
+                                                        (($charLength &amp;gt; 0) and not(contains($numberSeparators, $charValue) and contains($numberChars, $leftCharValue) and contains($numberChars, $rightCharValue)))) and
+                                                        (($charLength &amp;gt; 0 and not(contains($dateSeparators, $charValue))) or
+                                                        ($charLength=0 and not(contains($numberChars, $leftCharValue) and contains($numberChars, $rightCharValue))) or
+                                                        (($charLength &amp;gt; 0) and not(contains($dateSeparators, $charValue) and contains($numberChars, $leftCharValue) and contains($numberChars, $rightCharValue))))"&gt;
 
-                                        &lt;xsl:variable name="followingSpace"&gt;
-                                            &lt;xsl:choose&gt;
-                                                &lt;xsl:when test="string-length(normalize-space(following-sibling::*[not(self::*[@charConfidence])][1]/@l[1])) &amp;gt; 0"&gt;
-                                                    &lt;xsl:value-of select="number(normalize-space(following-sibling::*[not(self::*[@charConfidence])][1]/@l[1]))"/&gt;
-                                                &lt;/xsl:when&gt;
-                                                &lt;xsl:otherwise&gt;
-                                                    &lt;xsl:value-of select="$lineRightValue"/&gt;
-                                                &lt;/xsl:otherwise&gt;
-                                            &lt;/xsl:choose&gt;
-                                        &lt;/xsl:variable&gt;
-                                        &lt;xsl:variable name="followingStopChar"&gt;
-                                            &lt;xsl:choose&gt;
-                                                &lt;xsl:when test="string-length(normalize-space(following-sibling::wfocr:charParams[contains($stopChars,normalize-space(self::*/text()))][1]/@l[1])) &amp;gt; 0"&gt;
-                                                    &lt;xsl:value-of select="number(normalize-space(following-sibling::wfocr:charParams[contains($stopChars,normalize-space(self::*/text()))][1]/@l[1]))"/&gt;
-                                                &lt;/xsl:when&gt;
-                                                &lt;xsl:otherwise&gt;
-                                                    &lt;xsl:value-of select="$lineRightValue"/&gt;
-                                                &lt;/xsl:otherwise&gt;
-                                            &lt;/xsl:choose&gt;
-                                        &lt;/xsl:variable&gt;
-                                        &lt;xsl:if test="number($width) &amp;gt; -1"&gt;
-                                            &lt;xsl:text disable-output-escaping="yes"&gt;&amp;lt;/div&amp;gt;&amp;lt;/word&amp;gt;&lt;/xsl:text&gt;
-                                            &lt;xsl:if test="(string-length(normalize-space($charValue)) &amp;gt; 0)"&gt;
+                                                                &lt;xsl:variable name="followingSpace"&gt;
+                                                                    &lt;xsl:choose&gt;
+                                                                        &lt;xsl:when test="string-length(normalize-space(following-sibling::*[not(self::*[@charConfidence])][1]/@l[1])) &amp;gt; 0"&gt;
+                                                                            &lt;xsl:value-of select="number(normalize-space(following-sibling::*[not(self::*[@charConfidence])][1]/@l[1]))"/&gt;
+                                                                        &lt;/xsl:when&gt;
+                                                                        &lt;xsl:otherwise&gt;
+                                                                            &lt;xsl:value-of select="$lineRightValue"/&gt;
+                                                                        &lt;/xsl:otherwise&gt;
+                                                                    &lt;/xsl:choose&gt;
+                                                                &lt;/xsl:variable&gt;
+                                                                &lt;xsl:variable name="followingStopChar"&gt;
+                                                                    &lt;xsl:choose&gt;
+                                                                        &lt;xsl:when test="string-length(normalize-space(following-sibling::wfocr:charParams[contains($stopChars,normalize-space(self::*/text()))][1]/@l[1])) &amp;gt; 0"&gt;
+                                                                            &lt;xsl:value-of select="number(normalize-space(following-sibling::wfocr:charParams[contains($stopChars,normalize-space(self::*/text()))][1]/@l[1]))"/&gt;
+                                                                        &lt;/xsl:when&gt;
+                                                                        &lt;xsl:otherwise&gt;
+                                                                            &lt;xsl:value-of select="$lineRightValue"/&gt;
+                                                                        &lt;/xsl:otherwise&gt;
+                                                                    &lt;/xsl:choose&gt;
+                                                                &lt;/xsl:variable&gt;
+                                                                &lt;xsl:if test="number($width) &amp;gt; -1"&gt;
+                                                                    &lt;xsl:text disable-output-escaping="yes"&gt;&amp;lt;/div&amp;gt;&amp;lt;/word&amp;gt;&lt;/xsl:text&gt;
+                                                                    &lt;xsl:if test="(string-length(normalize-space($charValue)) &amp;gt; 0)"&gt;
 
-                                                                            &lt;word&gt;
-                                                                                &lt;xsl:attribute name="t"&gt;
-                                                                                    &lt;xsl:value-of select="number(./@t[1])"/&gt;
-                                                                                &lt;/xsl:attribute&gt;
-                                                                                &lt;xsl:attribute name="b"&gt;
-                                                                                    &lt;xsl:value-of select="number(./@b[1])"/&gt;
-                                                                                &lt;/xsl:attribute&gt;
-                                                                                &lt;xsl:attribute name="l"&gt;
-                                                                                    &lt;xsl:value-of select="number(./@l[1])"/&gt;
-                                                                                &lt;/xsl:attribute&gt;
-                                                                                &lt;xsl:attribute name="r"&gt;
-                                                                                    &lt;xsl:value-of select="number(./@r[1])"/&gt;
-                                                                                &lt;/xsl:attribute&gt;
-                                                                                &lt;xsl:attribute name="isTab"&gt;
-                                                                                    &lt;xsl:value-of select="'1'"/&gt;
-                                                                                &lt;/xsl:attribute&gt;
-                                                                                &lt;div&gt;
-                                                                                    &lt;xsl:attribute name="style"&gt;top:&lt;xsl:value-of select="number($lineTop)+number($pageHeight)"/&gt;px;left:&lt;xsl:value-of select="number(./@l[1])"/&gt;px; width:&lt;xsl:value-of select="number(./@r[1])-number(./@l[1])"/&gt;px; height:&lt;xsl:value-of select="number($lineHeight)"/&gt;px; font-size: &lt;xsl:value-of select="number($fontHeight)"/&gt;px;line-height:&lt;xsl:value-of select="number($fontHeight)"/&gt;px;&lt;/xsl:attribute&gt;
-                                                                                    &lt;xsl:attribute name="class"&gt;n&lt;/xsl:attribute&gt;
-                                                                                    &lt;xsl:value-of select="./text()"/&gt;
-                                                                                &lt;/div&gt;
-                                                                            &lt;/word&gt;
-                                            &lt;/xsl:if&gt;
-                                        &lt;xsl:text disable-output-escaping="yes"&gt;&amp;lt;word t&lt;/xsl:text&gt;="&lt;xsl:value-of select="number($lineTop)+number($pageHeight)"/&gt;" b="&lt;xsl:value-of select="number($lineTop)+number($pageHeight)+number($lineHeight)"/&gt;" r="&lt;xsl:value-of select="number(./@r)+number($width)"/&gt;" l="&lt;xsl:value-of select="$left"/&gt;"&lt;xsl:text disable-output-escaping="yes"&gt; charConfidence="&lt;/xsl:text&gt;
-                                        &lt;xsl:value-of select="number($charConfidence)"/&gt; &lt;xsl:text disable-output-escaping="yes"&gt;"&amp;gt;&amp;lt;div style&lt;/xsl:text&gt;= "top:&lt;xsl:value-of select="number($lineTop+$pageHeight)"/&gt;px;left:&lt;xsl:value-of select="$left"/&gt;px; width:&lt;xsl:value-of select="number($widthFst)"/&gt;px; height:&lt;xsl:value-of select="number($lineHeight)"/&gt;px; font-size: &lt;xsl:value-of select="number($fontHeight)"/&gt;px;line-height:&lt;xsl:value-of select="number($fontHeight)"/&gt;px;" &lt;xsl:text disable-output-escaping="yes"&gt; class="n"&amp;gt;&lt;/xsl:text&gt;
-                                        &lt;/xsl:if&gt;
-                                    &lt;/xsl:when&gt;
-                                    &lt;xsl:otherwise&gt;
-                                        &lt;xsl:value-of select="normalize-space(./text())"/&gt;
-                                    &lt;/xsl:otherwise&gt;
-                                &lt;/xsl:choose&gt;
-&lt;!--                            &lt;/xsl:if&gt;--&gt;
+                                                                        &lt;word&gt;
+                                                                            &lt;xsl:attribute name="t"&gt;
+                                                                                &lt;xsl:value-of select="number(./@t[1])"/&gt;
+                                                                            &lt;/xsl:attribute&gt;
+                                                                            &lt;xsl:attribute name="b"&gt;
+                                                                                &lt;xsl:value-of select="number(./@b[1])"/&gt;
+                                                                            &lt;/xsl:attribute&gt;
+                                                                            &lt;xsl:attribute name="l"&gt;
+                                                                                &lt;xsl:value-of select="number(./@l[1])"/&gt;
+                                                                            &lt;/xsl:attribute&gt;
+                                                                            &lt;xsl:attribute name="r"&gt;
+                                                                                &lt;xsl:value-of select="number(./@r[1])"/&gt;
+                                                                            &lt;/xsl:attribute&gt;
+                                                                            &lt;xsl:attribute name="isTab"&gt;
+                                                                                &lt;xsl:value-of select="'1'"/&gt;
+                                                                            &lt;/xsl:attribute&gt;
+                                                                            &lt;div&gt;
+                                                                                &lt;xsl:attribute name="style"&gt;top:&lt;xsl:value-of select="number($lineTop)+number($pageHeight)"/&gt;px;left:&lt;xsl:value-of select="number(./@l[1])"/&gt;px; width:&lt;xsl:value-of select="number(./@r[1])-number(./@l[1])"/&gt;px; height:&lt;xsl:value-of select="number($lineHeight)"/&gt;px; font-size: &lt;xsl:value-of select="number($fontHeight)"/&gt;px;line-height:&lt;xsl:value-of select="number($fontHeight)"/&gt;px;&lt;/xsl:attribute&gt;
+                                                                                &lt;xsl:attribute name="class"&gt;n&lt;/xsl:attribute&gt;
+                                                                                &lt;xsl:value-of select="./text()"/&gt;
+                                                                            &lt;/div&gt;
+                                                                        &lt;/word&gt;
+                                                                    &lt;/xsl:if&gt;
+                                                                    &lt;xsl:text disable-output-escaping="yes"&gt;&amp;lt;word t&lt;/xsl:text&gt;="&lt;xsl:value-of select="number($lineTop)+number($pageHeight)"/&gt;" b="&lt;xsl:value-of select="number($lineTop)+number($pageHeight)+number($lineHeight)"/&gt;" r="&lt;xsl:value-of select="number(./@r)+number($width)"/&gt;" l="&lt;xsl:value-of select="$left"/&gt;"&lt;xsl:text disable-output-escaping="yes"&gt; charConfidence="&lt;/xsl:text&gt;
+                                                                    &lt;xsl:value-of select="number($charConfidence)"/&gt; &lt;xsl:text disable-output-escaping="yes"&gt;"&amp;gt;&amp;lt;div style&lt;/xsl:text&gt;= "top:&lt;xsl:value-of select="number($lineTop+$pageHeight)"/&gt;px;left:&lt;xsl:value-of select="$left"/&gt;px; width:&lt;xsl:value-of select="number($widthFst)"/&gt;px; height:&lt;xsl:value-of select="number($lineHeight)"/&gt;px; font-size: &lt;xsl:value-of select="number($fontHeight)"/&gt;px;line-height:&lt;xsl:value-of select="number($fontHeight)"/&gt;px;" &lt;xsl:text disable-output-escaping="yes"&gt; class="n"&amp;gt;&lt;/xsl:text&gt;
+                                                                &lt;/xsl:if&gt;
+                                                            &lt;/xsl:when&gt;
+                                                            &lt;xsl:otherwise&gt;
+                                                                &lt;xsl:value-of select="normalize-space(./text())"/&gt;
+                                                            &lt;/xsl:otherwise&gt;
+                                                        &lt;/xsl:choose&gt;
+                                                        &lt;!--                            &lt;/xsl:if&gt;--&gt;
                         &lt;/xsl:for-each&gt;
                         &lt;xsl:text disable-output-escaping="yes"&gt;&amp;lt;/div&amp;gt;&amp;lt;/word&amp;gt;&lt;/xsl:text&gt;
                     &lt;/xsl:when&gt;
@@ -1407,7 +1517,7 @@ Workfusion 2018, RPA Express 2.0
                                             <componentUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</componentUuid>
                                             <incrementalVersion>1.0</incrementalVersion>
                                             <lastInChain>true</lastInChain>
-                                            <lastModified>2018-07-04T11:58:10Z</lastModified>
+                                            <lastModified>2018-05-28T11:12:13Z</lastModified>
                                             <versionUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</versionUuid>
                                         </version>
                                         <answers/>
@@ -1484,10 +1594,10 @@ Workfusion 2018, RPA Express 2.0
                                     <uuid>cae2c910-a0a2-4118-8c1c-7a2f1119fda7</uuid>
                                     <version>
                                         <componentUuid>37562edc-07fc-4069-bd66-567758de3173</componentUuid>
-                                        <incrementalVersion>1.22</incrementalVersion>
-                                        <lastInChain>true</lastInChain>
-                                        <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                        <versionUuid>dbf8f680-0428-4b53-94b3-b3d79b9466ff</versionUuid>
+                                        <incrementalVersion>1.17</incrementalVersion>
+                                        <lastInChain>false</lastInChain>
+                                        <lastModified>2018-07-24T11:11:03Z</lastModified>
+                                        <versionUuid>2ac3d0c5-76ee-4551-b68d-bdb662a27f69</versionUuid>
                                     </version>
                                 </machineConfig>
                                 <moderation>false</moderation>
@@ -1504,27 +1614,29 @@ Workfusion 2018, RPA Express 2.0
                                 <validWorkflow>false</validWorkflow>
                                 <version>
                                     <componentUuid>75a7459e-a2ee-4869-937a-d31a9fe92c2b</componentUuid>
-                                    <incrementalVersion>1.12</incrementalVersion>
-                                    <lastInChain>true</lastInChain>
-                                    <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                    <versionUuid>0f746c58-3de5-48f0-a45f-68e63eb8e66f</versionUuid>
+                                    <incrementalVersion>1.6</incrementalVersion>
+                                    <lastInChain>false</lastInChain>
+                                    <lastModified>2018-07-25T08:55:38Z</lastModified>
+                                    <versionUuid>811b4bb8-d2dd-4281-9102-561dfc81e11d</versionUuid>
                                 </version>
                                 <workSettingBase>false</workSettingBase>
                             </campaign>
                             <deleted>false</deleted>
+                            <skipForSTPCalculation>false</skipForSTPCalculation>
                             <stepIndex>2</stepIndex>
                             <stepPosition>INTERMEDIATE</stepPosition>
                             <streamed>false</streamed>
-                            <uuid>f5358993-8ecf-4fda-80ae-9aa4badde0dd</uuid>
+                            <uuid>c9cc8253-7ba8-4f3e-a88e-905ba7004bd1</uuid>
                         </campaignMap>
                         <campaignMap>
+                            <activateTracking>false</activateTracking>
                             <blockSize>1</blockSize>
                             <businessRule>
                                 <content>#RuleContext.APPROVE_ALL_RULE</content>
                                 <name>Approve All</name>
                                 <ruleType>WORKFLOW_RULE</ruleType>
                                 <ruleTypeUI>Composite</ruleTypeUI>
-                                <uuid>395fe23c-faa5-4d48-ba3c-1072b0c46475</uuid>
+                                <uuid>96876126-d181-4af7-91be-a6f6e6b16b72</uuid>
                                 <workflowRuleMode>SIMPLE</workflowRuleMode>
                             </businessRule>
                             <campaign>
@@ -1537,6 +1649,7 @@ Workfusion 2018, RPA Express 2.0
                                 <goldRatio>0</goldRatio>
                                 <goldSource>Empty</goldSource>
                                 <goldType>Percentage</goldType>
+                                <includeOriginalData>false</includeOriginalData>
                                 <machineConfig>
                                     <answers/>
                                     <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -1551,8 +1664,6 @@ Workfusion 2018, RPA Express 2.0
 
 &lt;config charset="UTF-8"&gt;
 
-  	&lt;required name="original_document_url"/&gt;
-	
     &lt;var-def name="document_link"&gt;
      	 &lt;template&gt;${original_document_url.toString()}&lt;/template&gt;
     &lt;/var-def&gt; 
@@ -1754,7 +1865,7 @@ Workfusion 2018, RPA Express 2.0
                                             <componentUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</componentUuid>
                                             <incrementalVersion>1.0</incrementalVersion>
                                             <lastInChain>true</lastInChain>
-                                            <lastModified>2018-07-04T11:58:10Z</lastModified>
+                                            <lastModified>2018-05-28T11:12:13Z</lastModified>
                                             <versionUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</versionUuid>
                                         </version>
                                         <answers/>
@@ -1805,10 +1916,10 @@ Workfusion 2018, RPA Express 2.0
                                     <uuid>6efb69b7-d014-47b3-9e69-a7ae7b892467</uuid>
                                     <version>
                                         <componentUuid>6994caad-7870-4ba3-a219-7927539c1ca9</componentUuid>
-                                        <incrementalVersion>1.11</incrementalVersion>
+                                        <incrementalVersion>1.8</incrementalVersion>
                                         <lastInChain>false</lastInChain>
-                                        <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                        <versionUuid>969d7d3a-d5b5-45e9-909b-98df5826ee8c</versionUuid>
+                                        <lastModified>2018-11-05T08:16:41Z</lastModified>
+                                        <versionUuid>4e6a8dc5-d7b1-4de0-a614-525a4ce932aa</versionUuid>
                                     </version>
                                 </machineConfig>
                                 <moderation>false</moderation>
@@ -1825,27 +1936,29 @@ Workfusion 2018, RPA Express 2.0
                                 <validWorkflow>false</validWorkflow>
                                 <version>
                                     <componentUuid>661a211a-16b8-4d0c-a4da-ad2fa1cf8db4</componentUuid>
-                                    <incrementalVersion>1.10</incrementalVersion>
+                                    <incrementalVersion>1.3</incrementalVersion>
                                     <lastInChain>false</lastInChain>
-                                    <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                    <versionUuid>82a2ebea-2451-4dd3-b76d-5bb3f8903d2e</versionUuid>
+                                    <lastModified>2018-05-30T14:19:25Z</lastModified>
+                                    <versionUuid>b8427ba5-6e51-4a7e-8025-a85162864331</versionUuid>
                                 </version>
                                 <workSettingBase>false</workSettingBase>
                             </campaign>
                             <deleted>false</deleted>
+                            <skipForSTPCalculation>false</skipForSTPCalculation>
                             <stepIndex>3</stepIndex>
                             <stepPosition>INTERMEDIATE</stepPosition>
                             <streamed>false</streamed>
-                            <uuid>f15a9e5c-d0bc-4eb0-ae34-e57fa4fe7236</uuid>
+                            <uuid>3934bf2b-b068-4155-bb09-cf0d5fcf20dd</uuid>
                         </campaignMap>
                         <campaignMap>
+                            <activateTracking>false</activateTracking>
                             <blockSize>1</blockSize>
                             <businessRule>
                                 <content>#RuleContext.APPROVE_ALL_RULE</content>
                                 <name>Approve All</name>
                                 <ruleType>WORKFLOW_RULE</ruleType>
                                 <ruleTypeUI>Composite</ruleTypeUI>
-                                <uuid>866681cb-ac18-4556-849b-1f699d099ce6</uuid>
+                                <uuid>8201640a-6eb1-45aa-9ee1-5e45ec83928b</uuid>
                                 <workflowRuleMode>SIMPLE</workflowRuleMode>
                             </businessRule>
                             <campaign>
@@ -1858,6 +1971,7 @@ Workfusion 2018, RPA Express 2.0
                                 <goldRatio>0</goldRatio>
                                 <goldSource>Empty</goldSource>
                                 <goldType>Percentage</goldType>
+                                <includeOriginalData>false</includeOriginalData>
                                 <machineConfig>
                                     <answers/>
                                     <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -1866,140 +1980,124 @@ Workfusion 2018, RPA Express 2.0
 Step to make request to the OCR api, with our input parameters , but before, get one OCR taskId for all pages of document and make valid OCR api URL.
 
 @Author: Alexey Shalak
-@Version: 1.0
+@Author: Sergey Emelianov
+@Version: 2.5
 Workfusion 2018, RPA Express 2.0
 --&gt;
 
 &lt;config xmlns="http://web-harvest.sourceforge.net/schema/1.0/config"
-	scriptlang="java"&gt;
+    scriptlang="java"&gt;
 
-	&lt;!-- reading pNG from S3 --&gt;
-	&lt;script&gt;&lt;![CDATA[
-		import org.json.XML;
-		import java.util.List;
-		import java.util.ArrayList;
-		import org.json.JSONObject;
-		import org.json.JSONArray;
-		import com.freedomoss.workfusion.utils.gson.GsonUtils;
+    &lt;!-- reading pNG from S3 --&gt;
+    &lt;script&gt;&lt;![CDATA[
+        import org.json.XML;
+        import java.util.List;
+        import java.util.ArrayList;
+        import org.json.JSONObject;
+        import org.json.JSONArray;
+        import com.freedomoss.workfusion.utils.gson.GsonUtils;
 
-		static String getJSONValue(String jsonString, String key) {
-			try{
-				JSONObject json = new JSONObject(jsonString);
-				return json.get(key).get("directUrl").toString();
-			} catch (Exception e){
-				return "";
-			}
-		}
-	]]&gt;&lt;/script&gt;
+        static String getJSONValue(String jsonString, String key) {
+            try{
+                JSONObject json = new JSONObject(jsonString);
+                return json.get(key).get("directUrl").toString();
+            } catch (Exception e){
+                return "";
+            }
+        }
+    ]]&gt;&lt;/script&gt;
   
-	&lt;var-def name="jsonSize"&gt;
-		&lt;var name="pages" /&gt;
-	&lt;/var-def&gt;
+    &lt;var-def name="jsonSize"&gt;
+        &lt;var name="pages" /&gt;
+    &lt;/var-def&gt;
   
-	&lt;while condition="true" maxloops="${jsonSize.toInt()}" index="i"&gt;
-		&lt;var-def name="jsonKey"&gt;
-			&lt;template&gt;fileList-${i.toInt()}&lt;/template&gt;
-		&lt;/var-def&gt;
-		&lt;!-- reading pNG from S3 --&gt;
-		&lt;var-def name="jsonValue-${i}"&gt;
-			&lt;script return="getJSONValue(json_file_urls.toString(), jsonKey.toString())" /&gt;
-		&lt;/var-def&gt;
-	&lt;/while&gt;
+    &lt;while condition="true" maxloops="${jsonSize.toInt()}" index="i"&gt;
+        &lt;var-def name="jsonKey"&gt;
+            &lt;template&gt;fileList-${i.toInt()}&lt;/template&gt;
+        &lt;/var-def&gt;
+        &lt;!-- reading pNG from S3 --&gt;
+        &lt;var-def name="jsonValue-${i}"&gt;
+            &lt;script return="getJSONValue(json_file_urls.toString(), jsonKey.toString())" /&gt;
+        &lt;/var-def&gt;
+    &lt;/while&gt;
 
-	&lt;var-def name="pagesList"&gt;
-		&lt;while condition="true" maxloops="${jsonSize.toInt()}" index="i"&gt;
-			&lt;var name="jsonValue-${i}" /&gt;
-		&lt;/while&gt;
-	&lt;/var-def&gt;
+    &lt;var-def name="pagesList"&gt;
+        &lt;while condition="true" maxloops="${jsonSize.toInt()}" index="i"&gt;
+            &lt;var name="jsonValue-${i}" /&gt;
+        &lt;/while&gt;
+    &lt;/var-def&gt;
 
-  	&lt;var-def name="ocr_url"&gt;
-  		&lt;var-global name="ocr_url"/&gt;
-  	&lt;/var-def&gt;
+    &lt;var-def name="ocr_url"&gt;
+        &lt;var-global name="ocr_url"/&gt;
+    &lt;/var-def&gt;
   
     &lt;var-def name="ocr_username"&gt;
-  		&lt;var-global name="ocr_username"/&gt;
-  	&lt;/var-def&gt;
+        &lt;var-global name="ocr_username"/&gt;
+    &lt;/var-def&gt;
   
     &lt;var-def name="ocr_password"&gt;
-  		&lt;var-global name="ocr_password"/&gt;
-  	&lt;/var-def&gt;
+        &lt;var-global name="ocr_password"/&gt;
+    &lt;/var-def&gt;
   
-  	&lt;var-def name="submitImage"&gt;
-      	&lt;case&gt;
-			&lt;if condition='${ocr_username.toString().isEmpty() || ocr_password.toString().isEmpty()}'&gt;
-				&lt;http url="${ocr_url}/submitImage" method="post" multipart="true"&gt;
-					&lt;http-param name="file" isfile="true"&gt;
-						&lt;http url="${original_document_url}" /&gt;
-					&lt;/http-param&gt;
-				&lt;/http&gt;
-			&lt;/if&gt;
-          	&lt;else&gt;
-            	&lt;http url="${ocr_url}/submitImage" method="post" multipart="true" username="${ocr_username.toString()}" password="${ocr_password.toString()}"&gt;
-					&lt;http-param name="file" isfile="true"&gt;
-						&lt;http url="${original_document_url}" /&gt;
-					&lt;/http-param&gt;
-				&lt;/http&gt;
-          	&lt;/else&gt;
-		&lt;/case&gt;
-	&lt;/var-def&gt;
-  	
-	&lt;var-def name="taskId"&gt;
-		&lt;xpath expression="string(//response/task/@id)"&gt;
-			&lt;var name="submitImage" /&gt;
-		&lt;/xpath&gt;
-	&lt;/var-def&gt;
-  
-  	&lt;case&gt;
-		&lt;if condition="${pagesList.toList().size() &amp;gt; 1}"&gt;
-			&lt;loop item="pagesListElement"&gt;
-				&lt;list&gt;
-					&lt;var name="pagesList" /&gt;
-				&lt;/list&gt;
-				&lt;body&gt;
-                  	&lt;http url="${ocr_url}/submitImage" method="post" multipart="true"&gt;
-						&lt;http-param name="file" isfile="true"&gt;
-							&lt;http url="${pagesListElement}" /&gt;
-						&lt;/http-param&gt;
-                      	&lt;http-param name="taskId" isfile="${taskId}" /&gt;
-					&lt;/http&gt;
-                  &lt;/body&gt;
-			&lt;/loop&gt;
-		&lt;/if&gt;
-	&lt;/case&gt;
-  
-  	&lt;script&gt;&lt;![CDATA[
-		//-------------------------------------------------------making processDocument url-------------------------------------------------------
-		String url = ocr_url.toString() + "/processDocument?taskId=" + taskId.toString() + "&amp;exportFormat=" + no_cached_export_format.toString() + "&amp;language=" + document_language.toString() + "&amp;xml:writeRecognitionVariants=" + ocr_xml_char_recognition.toString() + "&amp;correctSkew=true&amp;correctOrientation=true&amp;allowedRegionTypes=" + allowed_region_types.toString() + "&amp;invertImage=" + invert_image.toString() + "&amp;discardColorImage=" + discard_color_image.toString() + "&amp;removeColorObjectsType=" + remove_color_objects_type.toString();
-		StringBuilder process_document_url = new StringBuilder(url.toString());
-		
-		if( !custom_regions.toString().isEmpty()) {
-			process_document_url.append("&amp;customRegions=" + custom_regions.toString());
-		}
+    &lt;var-def name="submitImage"&gt;
+        &lt;case&gt;
+            &lt;if condition='${ocr_username.toString().isEmpty() || ocr_password.toString().isEmpty()}'&gt;
+                &lt;http url="${ocr_url}/submitImage" method="post" multipart="true"&gt;
+                    &lt;http-param name="file" isfile="true"&gt;
+                        &lt;http url="${original_document_url}" /&gt;
+                    &lt;/http-param&gt;
+                &lt;/http&gt;
+            &lt;/if&gt;
+            &lt;else&gt;
+                &lt;http url="${ocr_url}/submitImage" method="post" multipart="true" username="${ocr_username.toString()}" password="${ocr_password.toString()}"&gt;
+                    &lt;http-param name="file" isfile="true"&gt;
+                        &lt;http url="${original_document_url}" /&gt;
+                    &lt;/http-param&gt;
+                &lt;/http&gt;
+            &lt;/else&gt;
+        &lt;/case&gt;
+    &lt;/var-def&gt;
+    
+    &lt;var-def name="taskId"&gt;
+        &lt;xpath expression="string(//response/task/@id)"&gt;
+            &lt;var name="submitImage" /&gt;
+        &lt;/xpath&gt;
+    &lt;/var-def&gt;
+    &lt;log level="INFO" message="task id ${taskId}"/&gt;
+      
+    &lt;script&gt;&lt;![CDATA[
+        //-------------------------------------------------------making processDocument url-------------------------------------------------------
+        String url = ocr_url.toString() + "/processDocument?taskId=" + taskId.toString() + "&amp;exportFormat=" + no_cached_export_format.toString() + "&amp;language=" + document_language.toString() + "&amp;xml:writeRecognitionVariants=" + ocr_xml_char_recognition.toString() + "&amp;correctSkew=true&amp;correctOrientation=true&amp;allowedRegionTypes=" + allowed_region_types.toString() + "&amp;invertImage=" + invert_image.toString() + "&amp;discardColorImage=" + discard_color_image.toString() + "&amp;removeColorObjectsType=" + remove_color_objects_type.toString();
+        StringBuilder process_document_url = new StringBuilder(url.toString());
+        
+        if( !custom_regions.toString().isEmpty()) {
+            process_document_url.append("&amp;customRegions=" + custom_regions.toString());
+        }
 
-		if( !change_dpi.toString().isEmpty()) {
-			process_document_url.append("&amp;changeDPI=" + change_dpi.toString());
-		}
+        if( !change_dpi.toString().isEmpty()) {
+            process_document_url.append("&amp;changeDPI=" + change_dpi.toString());
+        }
 
-		if( !remove_color_objects.toString().isEmpty()) {
-			process_document_url.append("&amp;removeColorObjects=" + remove_color_objects.toString());
-		}
-		sys.defineVariable("processDocumentUrl", process_document_url)
-	]]&gt;&lt;/script&gt;
+        if( !remove_color_objects.toString().isEmpty()) {
+            process_document_url.append("&amp;removeColorObjects=" + remove_color_objects.toString());
+        }
+        sys.defineVariable("processDocumentUrl", process_document_url)
+    ]]&gt;&lt;/script&gt;
+  	&lt;log level="INFO" message="process document url: + ${processDocumentUrl.toString()}"/&gt;
+    &lt;var-def name="processDocument"&gt;
+        &lt;case&gt;
+            &lt;if condition='${ocr_username.toString().isEmpty() || ocr_password.toString().isEmpty()}'&gt;
+                &lt;http url="${processDocumentUrl.toString()}" method="get" /&gt;
+            &lt;/if&gt;
+            &lt;else&gt;
+                &lt;http url="${processDocumentUrl.toString()}" method="get" username="${ocr_username.toString()}" password="${ocr_password.toString()}" /&gt;
+            &lt;/else&gt;
+        &lt;/case&gt;
+    &lt;/var-def&gt;
   
-	&lt;var-def name="processDocument"&gt;
-      	&lt;case&gt;
-			&lt;if condition='${ocr_username.toString().isEmpty() || ocr_password.toString().isEmpty()}'&gt;
-				&lt;http url="${processDocumentUrl.toString()}" method="get" /&gt;
-			&lt;/if&gt;
-          	&lt;else&gt;
-            	&lt;http url="${processDocumentUrl.toString()}" method="get" username="${ocr_username.toString()}" password="${ocr_password.toString()}" /&gt;
-          	&lt;/else&gt;
-		&lt;/case&gt;
-	&lt;/var-def&gt;
-  
-	&lt;export include-original-data="true"&gt;
-		&lt;single-column name="ocr_task_id" value="${taskId}"/&gt;
-	&lt;/export&gt;
+    &lt;export include-original-data="true"&gt;
+        &lt;single-column name="ocr_task_id" value="${taskId}"/&gt;
+    &lt;/export&gt;
 &lt;/config&gt;</content>
                                     <description></description>
                                     <includedConfigs/>
@@ -2024,7 +2122,7 @@ Workfusion 2018, RPA Express 2.0
                                             <componentUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</componentUuid>
                                             <incrementalVersion>1.0</incrementalVersion>
                                             <lastInChain>true</lastInChain>
-                                            <lastModified>2018-07-04T11:58:10Z</lastModified>
+                                            <lastModified>2018-05-28T11:12:13Z</lastModified>
                                             <versionUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</versionUuid>
                                         </version>
                                         <answers/>
@@ -2075,10 +2173,10 @@ Workfusion 2018, RPA Express 2.0
                                     <uuid>244984e9-ae97-45d8-bea4-606c707c4e3e</uuid>
                                     <version>
                                         <componentUuid>e39c0408-4ef1-4448-a091-a4098ad921e4</componentUuid>
-                                        <incrementalVersion>1.39</incrementalVersion>
+                                        <incrementalVersion>1.35</incrementalVersion>
                                         <lastInChain>false</lastInChain>
-                                        <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                        <versionUuid>51dd31a1-c379-4b7f-ac80-a77968705ad5</versionUuid>
+                                        <lastModified>2018-11-05T08:16:41Z</lastModified>
+                                        <versionUuid>9455b2f1-4026-450c-9e3b-4b5b04ba99d0</versionUuid>
                                     </version>
                                 </machineConfig>
                                 <moderation>false</moderation>
@@ -2095,20 +2193,22 @@ Workfusion 2018, RPA Express 2.0
                                 <validWorkflow>false</validWorkflow>
                                 <version>
                                     <componentUuid>aa2d51d8-62b0-4114-bc55-856f662381bc</componentUuid>
-                                    <incrementalVersion>1.19</incrementalVersion>
+                                    <incrementalVersion>1.14</incrementalVersion>
                                     <lastInChain>false</lastInChain>
-                                    <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                    <versionUuid>33951235-d35f-4f54-a2aa-e8be21b87c23</versionUuid>
+                                    <lastModified>2018-07-24T12:00:44Z</lastModified>
+                                    <versionUuid>c4c183e6-0e06-4c12-921f-da00f9056b93</versionUuid>
                                 </version>
                                 <workSettingBase>false</workSettingBase>
                             </campaign>
                             <deleted>false</deleted>
+                            <skipForSTPCalculation>false</skipForSTPCalculation>
                             <stepIndex>4</stepIndex>
                             <stepPosition>INTERMEDIATE</stepPosition>
                             <streamed>false</streamed>
-                            <uuid>058327c7-71ca-4dd2-b3f6-9a44d2f32519</uuid>
+                            <uuid>f9281b3d-31cf-40c6-b7c2-ff8dcb1a6d79</uuid>
                         </campaignMap>
                         <campaignMap>
+                            <activateTracking>false</activateTracking>
                             <blockSize>1</blockSize>
                             <businessRule>
                                 <content># Rule.Definition={"moderationRule":false,"approveAllRule":false,"splitData":false,"splitRule":false,"splitRuleSuffix":"","joinRule":false,"joinRuleSuffix":"","streamingRule":false,"streamingRuleSuffix":"","namedRule":false,"namedRuleName":""}
@@ -2217,7 +2317,7 @@ end</content>
                                 <name>OCR Router</name>
                                 <ruleType>WORKFLOW_RULE</ruleType>
                                 <ruleTypeUI>Composite</ruleTypeUI>
-                                <uuid>ec98f6c1-851f-4c04-8d57-b3f2d7d2467c</uuid>
+                                <uuid>1793d295-1ea7-46d2-b710-598f521d9449</uuid>
                                 <workflowRuleMode>SIMPLE</workflowRuleMode>
                             </businessRule>
                             <campaign>
@@ -2230,6 +2330,7 @@ end</content>
                                 <goldRatio>0</goldRatio>
                                 <goldSource>Empty</goldSource>
                                 <goldType>Percentage</goldType>
+                                <includeOriginalData>false</includeOriginalData>
                                 <machineConfig>
                                     <answers/>
                                     <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -2275,7 +2376,7 @@ Workfusion 2018, RPA Express 2.0
           	&lt;/else&gt;
 		&lt;/case&gt;
 	&lt;/var-def&gt;
-    &lt;log&gt;&lt;template&gt;${statusResponse}&lt;/template&gt;&lt;/log&gt;
+
 	&lt;var-def name="taskStatus"&gt;
       	&lt;xpath expression="string(//response/task/@status)"&gt;
 			&lt;var name="statusResponse" /&gt;
@@ -2283,11 +2384,11 @@ Workfusion 2018, RPA Express 2.0
 	&lt;/var-def&gt;
 
 	&lt;case&gt;
-&lt;!--		&lt;if
+		&lt;if
 			condition='${!"Completed".equals(taskStatus.toString()) @and !"ProcessingFailed".equals(taskStatus.toString())}'&gt;
 			&lt;release time-in-seconds="30" /&gt;
 			&lt;exit /&gt;
-		&lt;/if&gt;--&gt;
+		&lt;/if&gt;
 
 		&lt;if condition='${"ProcessingFailed".equals(taskStatus.toString())}'&gt;
 			&lt;script&gt;&lt;![CDATA[
@@ -2491,7 +2592,7 @@ Workfusion 2018, RPA Express 2.0
                                             <componentUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</componentUuid>
                                             <incrementalVersion>1.0</incrementalVersion>
                                             <lastInChain>true</lastInChain>
-                                            <lastModified>2018-07-04T11:58:10Z</lastModified>
+                                            <lastModified>2018-05-28T11:12:13Z</lastModified>
                                             <versionUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</versionUuid>
                                         </version>
                                         <answers/>
@@ -2542,10 +2643,10 @@ Workfusion 2018, RPA Express 2.0
                                     <uuid>828f5347-23ea-4771-bff5-a9136bb4b985</uuid>
                                     <version>
                                         <componentUuid>3727c3e8-e882-4658-9d0e-c71fa9b85bfe</componentUuid>
-                                        <incrementalVersion>1.67</incrementalVersion>
-                                        <lastInChain>true</lastInChain>
-                                        <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                        <versionUuid>81f87859-f560-4bf3-bde8-7fcf76d9c2cf</versionUuid>
+                                        <incrementalVersion>1.56</incrementalVersion>
+                                        <lastInChain>false</lastInChain>
+                                        <lastModified>2018-06-08T11:07:44Z</lastModified>
+                                        <versionUuid>1adf5068-7f3e-46ba-9f4e-21356377c35a</versionUuid>
                                     </version>
                                 </machineConfig>
                                 <moderation>false</moderation>
@@ -2562,20 +2663,22 @@ Workfusion 2018, RPA Express 2.0
                                 <validWorkflow>false</validWorkflow>
                                 <version>
                                     <componentUuid>8937f52e-41ba-4941-8588-c5cc81fe025a</componentUuid>
-                                    <incrementalVersion>1.45</incrementalVersion>
-                                    <lastInChain>true</lastInChain>
-                                    <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                    <versionUuid>95dcab93-9eb8-4ea7-bb1f-d4fa89f9a0ca</versionUuid>
+                                    <incrementalVersion>1.33</incrementalVersion>
+                                    <lastInChain>false</lastInChain>
+                                    <lastModified>2018-06-08T12:47:30Z</lastModified>
+                                    <versionUuid>b9460a24-5088-483d-a610-a604b747d249</versionUuid>
                                 </version>
                                 <workSettingBase>false</workSettingBase>
                             </campaign>
                             <deleted>false</deleted>
+                            <skipForSTPCalculation>false</skipForSTPCalculation>
                             <stepIndex>5</stepIndex>
                             <stepPosition>INTERMEDIATE</stepPosition>
                             <streamed>false</streamed>
-                            <uuid>9fa24264-40ed-4dee-95a5-3a38d869b507</uuid>
+                            <uuid>83f44c56-9d01-47aa-ac9c-0467113b7446</uuid>
                         </campaignMap>
                         <campaignMap>
+                            <activateTracking>false</activateTracking>
                             <blockSize>1</blockSize>
                             <businessRule>
                                 <content># Rule.Definition={"moderationRule":false,"approveAllRule":false,"splitData":false,"splitRule":false,"splitRuleSuffix":"","joinRule":false,"joinRuleSuffix":"","streamingRule":false,"streamingRuleSuffix":"","namedRule":false,"namedRuleName":""}
@@ -2651,7 +2754,7 @@ end</content>
                                 <name>OCR Type</name>
                                 <ruleType>WORKFLOW_RULE</ruleType>
                                 <ruleTypeUI>Composite</ruleTypeUI>
-                                <uuid>96da23d4-46cb-4726-b143-bf26a986ebb8</uuid>
+                                <uuid>f8adb9b7-a36b-4924-ac00-2c8e184ca5d7</uuid>
                                 <workflowRuleMode>SIMPLE</workflowRuleMode>
                             </businessRule>
                             <campaign>
@@ -2664,6 +2767,7 @@ end</content>
                                 <goldRatio>0</goldRatio>
                                 <goldSource>Empty</goldSource>
                                 <goldType>Percentage</goldType>
+                                <includeOriginalData>false</includeOriginalData>
                                 <machineConfig>
                                     <answers/>
                                     <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -2673,7 +2777,7 @@ Step to make row processing for all OCR result documents with "xml" format from 
 
 @Author: Alexey Shalak
 @Author: Denis Uraev
-@Version: 1.2
+@Version: 1.1
 Workfusion 2018, RPA Express 2.0
 --&gt;
 
@@ -2735,6 +2839,110 @@ Workfusion 2018, RPA Express 2.0
 							]]&gt;&lt;/stylesheet&gt;
 						&lt;/xslt&gt;
 					&lt;/var-def&gt;
+					
+
+					&lt;!--============================== Additional transformation for CT versions &lt; 8.5 ==============================--&gt;
+					
+					  	&lt;script&gt;&lt;![CDATA[ 
+	
+							System.setProperty("javax.xml.transform.TransformerFactory", "net.sf.saxon.TransformerFactoryImpl");
+							
+							//System.setProperty("javax.xml.transform.TransformerFactory", "org.apache.xalan.processor.TransformerFactoryImpl");
+							
+							System.setProperty("javax.xml.xpath.XPathFactory", "com.sun.org.apache.xpath.internal.jaxp.XPathFactoryImpl");
+						
+						]]&gt;&lt;/script&gt;
+					
+					    &lt;var-def name="viewer"&gt;
+					        &lt;![CDATA[ 
+					            &lt;link href="https://s3.amazonaws.com/workfusion-resources/ocr/ocr-xml-viewer-0.3-scale-to-width.css" rel="stylesheet" type="text/css"/&gt;
+					            &lt;script src="https://s3.amazonaws.com/workfusion-resources/jquery/core/1.8.3/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;
+					            &lt;script src="https://s3.amazonaws.com/workfusion-resources/ocr/ocr-xml-viewer-0.3-scale-to-width.js"&gt;&lt;/script&gt;
+					            
+					            &lt;script&gt;
+					                $(document).ready(function() {
+					                    generate($('body'), 1.8);
+					                });
+					            &lt;/script&gt;
+					         ]]&gt;
+					    &lt;/var-def&gt;
+					    
+					    &lt;var-def name="ocr_raw_processed_document" overwrite="true"&gt;
+						    &lt;xslt&gt;
+						        &lt;xml&gt;
+						            &lt;var name="ocr_raw_processed_document"/&gt;
+						        &lt;/xml&gt;
+						        &lt;stylesheet&gt;
+						            &lt;template&gt;
+						            &lt;![CDATA[
+						                &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+						                &lt;xsl:stylesheet version="1.0"
+							                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+							                xmlns:csl="http://www.w3.org/1999/XSL/Transform"&gt;
+						                    &lt;xsl:output method="html"/&gt;
+						                    &lt;xsl:output method="html"/&gt;
+						                    
+						                    &lt;xsl:template match="node()|@*"&gt;
+						                        &lt;xsl:copy&gt;
+						                            &lt;xsl:apply-templates select="node()|@*"/&gt;
+						                        &lt;/xsl:copy&gt;
+						                    &lt;/xsl:template&gt;
+						                    
+						                    &lt;xsl:template match="*:document"&gt;
+						                        &lt;!-- Adding newline after xml declaration (http://bugs.java.com/view_bug.do?bug_id=7150637 ???)--&gt;
+						                        &lt;xsl:text&gt;&amp;#xa;&lt;/xsl:text&gt;
+						                        &lt;xsl:copy&gt;
+						                            &lt;xsl:apply-templates select="@*"/&gt;
+						                         	&lt;xsl:text disable-output-escaping="yes"&gt;${sys.escapeXml(viewer)}&lt;/xsl:text&gt;
+						                            
+						                            &lt;xsl:apply-templates select="node()"/&gt;
+						                        &lt;/xsl:copy&gt;
+						                    &lt;/xsl:template&gt;
+						                    
+						                    &lt;xsl:template match="*:block[@blockType='Table' or @blocktype='Table']"&gt;
+						                        &lt;xsl:element name="table"&gt;
+						                            &lt;xsl:apply-templates select="node()|@*"/&gt;
+						                        &lt;/xsl:element&gt;
+						                    &lt;/xsl:template&gt;
+						                    &lt;xsl:template match="*:row"&gt;
+						                        &lt;xsl:if test="normalize-space(string(.)) != ''"&gt;
+						                            &lt;xsl:element name="tr"&gt;
+						                                &lt;xsl:apply-templates select="node()|@*"/&gt;
+						                            &lt;/xsl:element&gt;
+						                        &lt;/xsl:if&gt;
+						                    &lt;/xsl:template&gt;
+						                    &lt;xsl:template match="*:cell"&gt;
+						                        &lt;xsl:element name="td"&gt;
+						                            &lt;xsl:apply-templates select="node()|@*"/&gt;
+						                        &lt;/xsl:element&gt;
+						                    &lt;/xsl:template&gt;
+						                    &lt;xsl:template match="@width"&gt;
+						                       &lt;xsl:attribute name="w"&gt;
+						                          &lt;xsl:value-of select="."/&gt;
+						                       &lt;/xsl:attribute&gt;
+						                    &lt;/xsl:template&gt;
+						                    &lt;xsl:template match="@height"&gt;
+						                       &lt;xsl:attribute name="h"&gt;
+						                          &lt;xsl:value-of select="."/&gt;
+						                       &lt;/xsl:attribute&gt;
+						                    &lt;/xsl:template&gt;
+						                    
+						                    &lt;!-- Removing charParams and charRecVariants, leaving only the value itself. --&gt;
+						                    &lt;xsl:template match="*:charParams"&gt;
+						                        &lt;xsl:value-of select="text()[last()]"/&gt;
+						                    &lt;/xsl:template&gt;
+						                    
+						                    &lt;!-- Removing whitespaces before and after charParams nodex --&gt;
+						                    &lt;xsl:template match="text()[preceding-sibling::*:charParams or following-sibling::*:charParams]"&gt;
+						                    &lt;/xsl:template&gt;
+						                &lt;/xsl:stylesheet&gt;
+						                 ]]&gt;
+						                 &lt;/template&gt;
+						        &lt;/stylesheet&gt;
+						    &lt;/xslt&gt;
+					    &lt;/var-def&gt;
+					    
+					&lt;!--=================================================================================================================--&gt;
 
 					&lt;var-def name="ocr_raw_processed_document_url"&gt;
 						&lt;s3 bucket="${s3_bucket_name}"&gt;
@@ -2789,7 +2997,7 @@ Workfusion 2018, RPA Express 2.0
                                         <description>applies XSLT transformation to ocred text</description>
                                         <enabled>true</enabled>
                                         <name>XSLT node beauty</name>
-                                        <publicId>f2d7af30-1a5b-484d-b376-52d58f73c1e1</publicId>
+                                        <publicId>24e334d1-c1af-4525-a067-ae4315b4c27d</publicId>
                                         <version>
                                             <componentUuid>2555349d-5e72-4894-8b1a-a14d5fe45757</componentUuid>
                                             <incrementalVersion>1.0</incrementalVersion>
@@ -2848,7 +3056,7 @@ Workfusion 2018, RPA Express 2.0
                                             <origination>CREATED_MANUALLY</origination>
                                             <status>ACTIVE</status>
                                             <type>BASE_MACHINE</type>
-                                            <uuid>a395636d-e14c-484b-9ab6-f4a431a8656d</uuid>
+                                            <uuid>8ab3df92-4935-4316-82bf-0f52d21f8105</uuid>
                                             <version>
                                                 <componentUuid>3d384ef2-8ca8-41f5-8c30-e08ce0e693b4</componentUuid>
                                                 <incrementalVersion>1.0</incrementalVersion>
@@ -2865,14 +3073,14 @@ Workfusion 2018, RPA Express 2.0
                                     <template>
                                         <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;config charset="UTF-8"&gt;
-    
-    &lt;var-def name="resultXmlWithCharParams"&gt;
-        &lt;xslt&gt;
-            &lt;xml&gt;
-                &lt;var name="document_xml" /&gt;
-            &lt;/xml&gt;
-            &lt;stylesheet&gt;&lt;![CDATA[ &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-            &lt;xsl:stylesheet version="1.0"
+  	
+  	&lt;var-def name="resultXmlWithCharParams"&gt;
+		&lt;xslt&gt;
+			&lt;xml&gt;
+				&lt;var name="document_xml" /&gt;
+			&lt;/xml&gt;
+			&lt;stylesheet&gt;&lt;![CDATA[ &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+			&lt;xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:wfocr="http://ocr.crowdcomputingsystems.com/xml/schema-v1.xml" xmlns:csl="http://www.w3.org/1999/XSL/Transform"&gt;
 
@@ -2889,44 +3097,44 @@ Workfusion 2018, RPA Express 2.0
                 &lt;xsl:template match="wfocr:*/@wordNumeric" /&gt;
                 &lt;xsl:template match="wfocr:*/@wordNormal" /&gt;
                 &lt;xsl:template match="wfocr:*/@wordIdentifier" /&gt;
-            &lt;/xsl:stylesheet&gt;             
-            ]]&gt;&lt;/stylesheet&gt;
-        &lt;/xslt&gt;   
-    &lt;/var-def&gt;
+            &lt;/xsl:stylesheet&gt;				
+			]]&gt;&lt;/stylesheet&gt;
+		&lt;/xslt&gt;	
+  	&lt;/var-def&gt;
 
-    &lt;var-def name="documentXmlWithCharParamsLink"&gt;
-        &lt;s3 bucket="public"&gt;
-            &lt;s3-put-public path="${document_uuid}-with-char-params.xml"
-                content="${resultXmlWithCharParams}" content-type="text/html; charset=utf-8"
-                content-disposition="inline" /&gt;
-        &lt;/s3&gt;
-    &lt;/var-def&gt;
-    
-    &lt;export include-original-data="true"&gt;
+	&lt;var-def name="documentXmlWithCharParamsLink"&gt;
+		&lt;s3 bucket="public"&gt;
+			&lt;s3-put-public path="${document_uuid}-with-char-params.xml"
+				content="${resultXmlWithCharParams}" content-type="text/html; charset=utf-8"
+				content-disposition="inline" /&gt;
+		&lt;/s3&gt;
+	&lt;/var-def&gt;
+  	
+	&lt;export include-original-data="true"&gt;
       &lt;single-column name="documentXmlWithCharParamsLink" value="${documentXmlWithCharParamsLink}"/&gt;
       &lt;single-column name="resultXmlWithCharParams" value="${resultXmlWithCharParams}"/&gt;
-    &lt;/export&gt;
+	&lt;/export&gt;
 &lt;/config&gt;</content>
                                         <name>XSLT node ocr transformation1</name>
                                         <origination>CREATED_AUTOMATICALLY</origination>
                                         <status>ACTIVE</status>
                                         <type>MACHINE</type>
-                                        <uuid>0e321639-a81e-4b22-a85e-11ea2bca0f77</uuid>
+                                        <uuid>32acf8f6-3c89-4d73-8773-73f94acb0388</uuid>
                                         <version>
-                                            <componentUuid>148f6e41-ec62-480f-92fc-d4e6c8c228b6</componentUuid>
+                                            <componentUuid>0bf708c0-1e1a-4380-968d-412302c7cd2a</componentUuid>
                                             <incrementalVersion>1.0</incrementalVersion>
                                             <lastInChain>true</lastInChain>
-                                            <lastModified>2018-07-11T09:56:03Z</lastModified>
-                                            <versionUuid>7ee9d798-e213-497a-8ee2-ff71ae2ff031</versionUuid>
+                                            <lastModified>2018-05-28T09:49:54Z</lastModified>
+                                            <versionUuid>418d98eb-2022-4010-8c68-7cad5753c566</versionUuid>
                                         </version>
                                     </template>
                                     <uuid>a0b69c1c-0e45-44f3-b8ba-03b297e72b07</uuid>
                                     <version>
                                         <componentUuid>e929dfaf-f13f-4cc8-9c2f-12717dc17ad0</componentUuid>
-                                        <incrementalVersion>1.13</incrementalVersion>
-                                        <lastInChain>true</lastInChain>
-                                        <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                        <versionUuid>8f374c04-16f2-47aa-9eab-9beaf6e8d187</versionUuid>
+                                        <incrementalVersion>1.5</incrementalVersion>
+                                        <lastInChain>false</lastInChain>
+                                        <lastModified>2018-06-08T11:08:34Z</lastModified>
+                                        <versionUuid>23b068f6-b7b4-48ac-a700-51a2ab857ac7</versionUuid>
                                     </version>
                                 </machineConfig>
                                 <moderation>false</moderation>
@@ -2943,27 +3151,29 @@ Workfusion 2018, RPA Express 2.0
                                 <validWorkflow>false</validWorkflow>
                                 <version>
                                     <componentUuid>9aabab8e-13cd-44be-960f-0e05dac7689c</componentUuid>
-                                    <incrementalVersion>1.6</incrementalVersion>
-                                    <lastInChain>true</lastInChain>
-                                    <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                    <versionUuid>61570846-01f0-47d9-8d55-c362759ca530</versionUuid>
+                                    <incrementalVersion>1.5</incrementalVersion>
+                                    <lastInChain>false</lastInChain>
+                                    <lastModified>2018-06-08T12:47:30Z</lastModified>
+                                    <versionUuid>42e727ba-5c10-48cc-b938-6734c9f80749</versionUuid>
                                 </version>
                                 <workSettingBase>false</workSettingBase>
                             </campaign>
                             <deleted>false</deleted>
+                            <skipForSTPCalculation>false</skipForSTPCalculation>
                             <stepIndex>6</stepIndex>
                             <stepPosition>INTERMEDIATE</stepPosition>
                             <streamed>false</streamed>
-                            <uuid>ad265121-02a2-482b-ac95-bc331b3d0b02</uuid>
+                            <uuid>93043c89-a935-4d1c-8cea-ce1de7f84a09</uuid>
                         </campaignMap>
                         <campaignMap>
+                            <activateTracking>false</activateTracking>
                             <blockSize>1</blockSize>
                             <businessRule>
                                 <content>#RuleContext.APPROVE_ALL_RULE</content>
                                 <name>Approve All</name>
                                 <ruleType>WORKFLOW_RULE</ruleType>
                                 <ruleTypeUI>Composite</ruleTypeUI>
-                                <uuid>76d54af0-2713-470e-a536-f9d58592428e</uuid>
+                                <uuid>ecad2305-073a-465a-b5d5-cdcedfad1072</uuid>
                                 <workflowRuleMode>SIMPLE</workflowRuleMode>
                             </businessRule>
                             <campaign>
@@ -2976,6 +3186,7 @@ Workfusion 2018, RPA Express 2.0
                                 <goldRatio>0</goldRatio>
                                 <goldSource>Empty</goldSource>
                                 <goldType>Percentage</goldType>
+                                <includeOriginalData>false</includeOriginalData>
                                 <machineConfig>
                                     <answers/>
                                     <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -3046,7 +3257,7 @@ Workfusion 2018, RPA Express 2.0
 		}
 		sys.defineVariable("processDocumentUrl", process_document_url)
 	]]&gt;&lt;/script&gt;
-  
+  	&lt;log level="INFO" message="process document url: + ${processDocumentUrl.toString()}"/&gt;
 	&lt;var-def name="processDocument"&gt;
       	&lt;case&gt;
 			&lt;if condition='${ocr_username.toString().isEmpty() || ocr_password.toString().isEmpty()}'&gt;
@@ -3085,7 +3296,7 @@ Workfusion 2018, RPA Express 2.0
                                             <componentUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</componentUuid>
                                             <incrementalVersion>1.0</incrementalVersion>
                                             <lastInChain>true</lastInChain>
-                                            <lastModified>2018-07-04T11:58:10Z</lastModified>
+                                            <lastModified>2018-05-28T11:12:13Z</lastModified>
                                             <versionUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</versionUuid>
                                         </version>
                                         <answers/>
@@ -3136,10 +3347,10 @@ Workfusion 2018, RPA Express 2.0
                                     <uuid>1da30815-a3a5-4af4-98a2-afd3d91d5604</uuid>
                                     <version>
                                         <componentUuid>e5f34cc0-fd08-444d-b6ab-08b708dbf12a</componentUuid>
-                                        <incrementalVersion>1.31</incrementalVersion>
+                                        <incrementalVersion>1.29</incrementalVersion>
                                         <lastInChain>false</lastInChain>
-                                        <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                        <versionUuid>f42c0f6b-c0cc-4e75-8031-81de66de5a83</versionUuid>
+                                        <lastModified>2018-07-24T12:00:44Z</lastModified>
+                                        <versionUuid>09ab88bc-82b5-45f7-9fbe-18aba8e3e2a5</versionUuid>
                                     </version>
                                 </machineConfig>
                                 <moderation>false</moderation>
@@ -3156,27 +3367,29 @@ Workfusion 2018, RPA Express 2.0
                                 <validWorkflow>false</validWorkflow>
                                 <version>
                                     <componentUuid>b7743d5a-77a4-4c97-8250-ba124b9590cb</componentUuid>
-                                    <incrementalVersion>1.20</incrementalVersion>
+                                    <incrementalVersion>1.16</incrementalVersion>
                                     <lastInChain>false</lastInChain>
-                                    <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                    <versionUuid>82455dae-3f55-42e0-884d-a118ea601726</versionUuid>
+                                    <lastModified>2018-07-24T12:00:44Z</lastModified>
+                                    <versionUuid>8c170588-a980-4b28-a2fb-88f3734d3ada</versionUuid>
                                 </version>
                                 <workSettingBase>false</workSettingBase>
                             </campaign>
                             <deleted>false</deleted>
+                            <skipForSTPCalculation>false</skipForSTPCalculation>
                             <stepIndex>7</stepIndex>
                             <stepPosition>INTERMEDIATE</stepPosition>
                             <streamed>false</streamed>
-                            <uuid>af1844e0-1dc3-4a94-8ee6-db44e24d18ff</uuid>
+                            <uuid>f998ca3f-fdb0-4e51-bc99-8794b6dc87f5</uuid>
                         </campaignMap>
                         <campaignMap>
+                            <activateTracking>false</activateTracking>
                             <blockSize>1</blockSize>
                             <businessRule>
                                 <content>#RuleContext.APPROVE_ALL_RULE</content>
                                 <name>Approve All</name>
                                 <ruleType>WORKFLOW_RULE</ruleType>
                                 <ruleTypeUI>Composite</ruleTypeUI>
-                                <uuid>3576bd70-ec94-48eb-a0de-2c27f5f3bddd</uuid>
+                                <uuid>5f720c54-3add-4c4a-b28c-8e95fb8c785d</uuid>
                                 <workflowRuleMode>SIMPLE</workflowRuleMode>
                             </businessRule>
                             <campaign>
@@ -3189,6 +3402,7 @@ Workfusion 2018, RPA Express 2.0
                                 <goldRatio>0</goldRatio>
                                 <goldSource>Empty</goldSource>
                                 <goldType>Percentage</goldType>
+                                <includeOriginalData>false</includeOriginalData>
                                 <machineConfig>
                                     <answers/>
                                     <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -3291,7 +3505,7 @@ Workfusion 2018, RPA Express 2.0
                                             <componentUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</componentUuid>
                                             <incrementalVersion>1.0</incrementalVersion>
                                             <lastInChain>true</lastInChain>
-                                            <lastModified>2018-07-04T11:58:10Z</lastModified>
+                                            <lastModified>2018-05-28T11:12:13Z</lastModified>
                                             <versionUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</versionUuid>
                                         </version>
                                         <answers/>
@@ -3342,10 +3556,10 @@ Workfusion 2018, RPA Express 2.0
                                     <uuid>b95b288a-a28e-4d24-95ce-ab48e9a243ed</uuid>
                                     <version>
                                         <componentUuid>d92b7eb5-89f2-40ac-9873-11f9c60a6349</componentUuid>
-                                        <incrementalVersion>1.45</incrementalVersion>
+                                        <incrementalVersion>1.37</incrementalVersion>
                                         <lastInChain>false</lastInChain>
-                                        <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                        <versionUuid>f34e98f0-3079-4079-a9f6-1c892d42c646</versionUuid>
+                                        <lastModified>2018-06-02T06:15:56Z</lastModified>
+                                        <versionUuid>aadb154a-a9ec-4598-9f08-1638af11f1a0</versionUuid>
                                     </version>
                                 </machineConfig>
                                 <moderation>false</moderation>
@@ -3362,27 +3576,29 @@ Workfusion 2018, RPA Express 2.0
                                 <validWorkflow>false</validWorkflow>
                                 <version>
                                     <componentUuid>2ea6bec4-e356-4a19-817d-9824e3bff92d</componentUuid>
-                                    <incrementalVersion>1.26</incrementalVersion>
+                                    <incrementalVersion>1.17</incrementalVersion>
                                     <lastInChain>false</lastInChain>
-                                    <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                    <versionUuid>b5ff8dde-e5fc-4567-8635-c0065c251be9</versionUuid>
+                                    <lastModified>2018-06-02T06:15:56Z</lastModified>
+                                    <versionUuid>95748ae4-cf4f-46ec-a32b-2b2bafa68aa9</versionUuid>
                                 </version>
                                 <workSettingBase>false</workSettingBase>
                             </campaign>
                             <deleted>false</deleted>
+                            <skipForSTPCalculation>false</skipForSTPCalculation>
                             <stepIndex>8</stepIndex>
                             <stepPosition>INTERMEDIATE</stepPosition>
                             <streamed>false</streamed>
-                            <uuid>ea52ff24-dba9-44be-9053-bc5ff5af8db1</uuid>
+                            <uuid>53639cde-e933-47c8-855d-d5ba98a03a74</uuid>
                         </campaignMap>
                         <campaignMap>
+                            <activateTracking>false</activateTracking>
                             <blockSize>1</blockSize>
                             <businessRule>
                                 <content>#RuleContext.APPROVE_ALL_RULE</content>
                                 <name>Approve All</name>
                                 <ruleType>WORKFLOW_RULE</ruleType>
                                 <ruleTypeUI>Composite</ruleTypeUI>
-                                <uuid>b1744dfc-6b79-49a4-8502-4ddf5c273476</uuid>
+                                <uuid>8ac80b74-0b6d-44dd-b919-8ee6ff1b40e6</uuid>
                                 <workflowRuleMode>SIMPLE</workflowRuleMode>
                             </businessRule>
                             <campaign>
@@ -3395,15 +3611,17 @@ Workfusion 2018, RPA Express 2.0
                                 <goldRatio>0</goldRatio>
                                 <goldSource>Empty</goldSource>
                                 <goldType>Percentage</goldType>
+                                <includeOriginalData>false</includeOriginalData>
                                 <machineConfig>
                                     <answers/>
                                     <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
 &lt;!--
-Step to save all new OCR result JSON members into cache datastore.
+Step to save all new OCR result JSON members into cache data store. The special flag skip_ocr_cache can be set to 1 to force no cache for OCRed results
 
 @Author: Alexey Shalak
-@Version: 1.0
+@Author: Sergey Emelianov
+@Version: 2.5
 Workfusion 2018, RPA Express 2.0
 --&gt;
 
@@ -3411,7 +3629,11 @@ Workfusion 2018, RPA Express 2.0
 	&lt;var-def name="key"&gt;
 		&lt;template&gt;${document_hash}&lt;/template&gt;
 	&lt;/var-def&gt;
-
+	
+	&lt;var-def name="skip_ocr_cache"&gt;
+		&lt;template&gt;${skip_ocr_cache}&lt;/template&gt;
+	&lt;/var-def&gt;
+  
 	&lt;script language="groovy"&gt;&lt;![CDATA[
 		import groovy.json.JsonSlurper;
 
@@ -3447,15 +3669,18 @@ Workfusion 2018, RPA Express 2.0
 			&lt;var-def name="originalDataJson"&gt;
 				&lt;script return="new com.google.gson.Gson().toJson(originalData)" /&gt;
 			&lt;/var-def&gt;
-
-			&lt;insert-datastore datastore-name="${cache_datastore}"
-				json-value-map="${originalDataJson}" create="true" /&gt;
-
+			
+			&lt;case&gt;
+				&lt;if condition='${skip_ocr_cache.toString().length() &gt; 0 &amp;amp;&amp;amp; skip_ocr_cache.toString().equals("1") }'&gt;
+					&lt;log level="WARN" message="Process running with SKIP CACHE variable set to 1. No caching."/&gt;
+				&lt;/if&gt;
+				&lt;else&gt;
+					&lt;insert-datastore datastore-name="${cache_datastore}" json-value-map="${originalDataJson}" create="true" /&gt;
+				&lt;/else&gt;
+			&lt;/case&gt;
 		&lt;/body&gt;
 	&lt;/loop&gt;
-
-	&lt;export include-original-data="true"&gt;
-	&lt;/export&gt;
+	&lt;export include-original-data="true"/&gt;
 &lt;/config&gt;</content>
                                     <description></description>
                                     <includedConfigs/>
@@ -3480,7 +3705,7 @@ Workfusion 2018, RPA Express 2.0
                                             <componentUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</componentUuid>
                                             <incrementalVersion>1.0</incrementalVersion>
                                             <lastInChain>true</lastInChain>
-                                            <lastModified>2018-07-04T11:58:10Z</lastModified>
+                                            <lastModified>2018-05-28T11:12:13Z</lastModified>
                                             <versionUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</versionUuid>
                                         </version>
                                         <answers/>
@@ -3531,10 +3756,10 @@ Workfusion 2018, RPA Express 2.0
                                     <uuid>06555d37-c382-466a-9487-68fa314f2a68</uuid>
                                     <version>
                                         <componentUuid>fbc6e5af-3689-43e7-af9b-7c4e900ed34f</componentUuid>
-                                        <incrementalVersion>1.17</incrementalVersion>
+                                        <incrementalVersion>1.18</incrementalVersion>
                                         <lastInChain>false</lastInChain>
-                                        <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                        <versionUuid>521996e4-c095-4db3-ab0d-13d9c8ba3a37</versionUuid>
+                                        <lastModified>2018-11-05T08:16:41Z</lastModified>
+                                        <versionUuid>d08421aa-51aa-4ed3-a97e-8cd0d5908c48</versionUuid>
                                     </version>
                                 </machineConfig>
                                 <moderation>false</moderation>
@@ -3551,20 +3776,22 @@ Workfusion 2018, RPA Express 2.0
                                 <validWorkflow>false</validWorkflow>
                                 <version>
                                     <componentUuid>e87be71c-ad6a-44f9-b5ad-e0210a721997</componentUuid>
-                                    <incrementalVersion>1.16</incrementalVersion>
+                                    <incrementalVersion>1.12</incrementalVersion>
                                     <lastInChain>false</lastInChain>
-                                    <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                    <versionUuid>222ca75b-08e0-4c0b-87cb-51b471e54a07</versionUuid>
+                                    <lastModified>2018-11-05T07:54:24Z</lastModified>
+                                    <versionUuid>d9da61cd-dd69-4f07-bdd8-7a9342f1040e</versionUuid>
                                 </version>
                                 <workSettingBase>false</workSettingBase>
                             </campaign>
                             <deleted>false</deleted>
+                            <skipForSTPCalculation>false</skipForSTPCalculation>
                             <stepIndex>9</stepIndex>
                             <stepPosition>INTERMEDIATE</stepPosition>
                             <streamed>false</streamed>
-                            <uuid>227b1f25-7828-4c08-935c-839ca74a1c48</uuid>
+                            <uuid>8733e8de-e185-4acb-81ac-cc9adbaedb48</uuid>
                         </campaignMap>
                         <campaignMap>
+                            <activateTracking>false</activateTracking>
                             <blockSize>1</blockSize>
                             <businessRule>
                                 <content># Rule.Definition={"moderationRule":false,"approveAllRule":false,"splitData":false,"splitRule":false,"splitRuleSuffix":"","joinRule":false,"joinRuleSuffix":"","streamingRule":false,"streamingRuleSuffix":"","namedRule":false,"namedRuleName":""}
@@ -3627,7 +3854,7 @@ end</content>
                                 <name>Cache hit?</name>
                                 <ruleType>WORKFLOW_RULE</ruleType>
                                 <ruleTypeUI>Composite</ruleTypeUI>
-                                <uuid>ce894fca-f862-4c53-8f2f-ecedc21a2ee4</uuid>
+                                <uuid>9e2493cc-a6f6-413a-9523-1d28b277bb4a</uuid>
                                 <workflowRuleMode>SIMPLE</workflowRuleMode>
                             </businessRule>
                             <campaign>
@@ -3640,6 +3867,7 @@ end</content>
                                 <goldRatio>0</goldRatio>
                                 <goldSource>Empty</goldSource>
                                 <goldType>Percentage</goldType>
+                                <includeOriginalData>false</includeOriginalData>
                                 <machineConfig>
                                     <answers/>
                                     <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -3648,7 +3876,7 @@ end</content>
 Step to look for OCR cache for each OCR export format by all input parameters, and if it full hits we go to last BP step, otherwise go to the OCR step.
 
 @Author: Alexey Shalak
-@Version: 1.0
+@Version: 2.5
 Workfusion 2018, RPA Express 2.0
 --&gt;
 
@@ -3745,7 +3973,18 @@ Workfusion 2018, RPA Express 2.0
 			&lt;var-def name="cachedRecord"&gt;
 				&lt;datastore name="${cache_datastore}" max="1"&gt;
             		&lt;template&gt;
-            			SELECT * FROM @this WHERE "key"='${document_hash}' AND "ocr_type"='${ocr_type}' AND "export_format"='${format}' AND "document_language"='${document_language}' AND "ocr_xml_char_recognition"='${ocr_xml_char_recognition}' AND "allowed_region_types"='${allowed_region_types}' AND "custom_regions"='${custom_regions}' AND "change_dpi"='${change_dpi}' AND "invert_image"='${invert_image}' AND "discard_color_image"='${discard_color_image}' AND "remove_color_objects"='${remove_color_objects}' AND "remove_color_objects_type"='${remove_color_objects_type}'    
+            			SELECT * FROM @this 
+                      	WHERE "key"='${document_hash}' 
+                      		AND "ocr_type"='${ocr_type}' 
+                      		AND "export_format"='${format}' 
+                      		AND "document_language"='${document_language}' 
+                      		AND "ocr_xml_char_recognition"='${ocr_xml_char_recognition}' 
+                      		AND "allowed_region_types"='${allowed_region_types}' 
+                      		AND "custom_regions"='${static import org.apache.commons.lang.StringEscapeUtils.*; escapeSql(custom_regions.toString())}' 
+                      		AND "change_dpi"='${change_dpi}' AND "invert_image"='${invert_image}' 
+                      		AND "discard_color_image"='${discard_color_image}' 
+                      		AND "remove_color_objects"='${remove_color_objects}' 
+                      		AND "remove_color_objects_type"='${remove_color_objects_type}'    
           			&lt;/template&gt;
 				&lt;/datastore&gt;
 			&lt;/var-def&gt;
@@ -3782,8 +4021,8 @@ Workfusion 2018, RPA Express 2.0
 	&lt;export include-original-data="true"&gt;
 		&lt;single-column name="document_hash" value="${document_hash}" /&gt;
       	&lt;single-column name="no_cached_export_format" value="${no_cached_export_format}" /&gt;
-      	&lt;case&gt;
-            &lt;if condition='${no_cached_export_format_list.size() == export_format_list.size()}'&gt;
+      	&lt;case&gt; 
+          	&lt;if condition='${no_cached_export_format_list.size() == export_format_list.size()}'&gt;
             	&lt;single-column name="cache_hit" value="none"/&gt;
             &lt;/if&gt;
           	&lt;if condition='${no_cached_export_format_list.size() == 0}'&gt;
@@ -3820,7 +4059,7 @@ Workfusion 2018, RPA Express 2.0
                                             <componentUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</componentUuid>
                                             <incrementalVersion>1.0</incrementalVersion>
                                             <lastInChain>true</lastInChain>
-                                            <lastModified>2018-07-04T11:58:10Z</lastModified>
+                                            <lastModified>2018-05-28T11:12:13Z</lastModified>
                                             <versionUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</versionUuid>
                                         </version>
                                         <answers/>
@@ -3872,9 +4111,9 @@ Workfusion 2018, RPA Express 2.0
                                     <version>
                                         <componentUuid>7cb14104-af75-43fe-aff5-86e9d8780b4f</componentUuid>
                                         <incrementalVersion>1.67</incrementalVersion>
-                                        <lastInChain>false</lastInChain>
-                                        <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                        <versionUuid>3ccd5cf1-fce6-49d1-814a-e55254af1b44</versionUuid>
+                                        <lastInChain>true</lastInChain>
+                                        <lastModified>2018-11-05T08:16:41Z</lastModified>
+                                        <versionUuid>84608416-02e2-4902-bd20-fd04095f238e</versionUuid>
                                     </version>
                                 </machineConfig>
                                 <moderation>false</moderation>
@@ -3891,20 +4130,22 @@ Workfusion 2018, RPA Express 2.0
                                 <validWorkflow>false</validWorkflow>
                                 <version>
                                     <componentUuid>1339b2d0-655f-4d34-9ce0-9808950f4bb2</componentUuid>
-                                    <incrementalVersion>1.56</incrementalVersion>
-                                    <lastInChain>false</lastInChain>
-                                    <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                    <versionUuid>e630e419-5b59-43d9-8482-171efb5153e0</versionUuid>
+                                    <incrementalVersion>1.54</incrementalVersion>
+                                    <lastInChain>true</lastInChain>
+                                    <lastModified>2018-07-24T16:29:28Z</lastModified>
+                                    <versionUuid>80e3ec97-416f-4c70-aa49-877151e59ebb</versionUuid>
                                 </version>
                                 <workSettingBase>false</workSettingBase>
                             </campaign>
                             <deleted>false</deleted>
+                            <skipForSTPCalculation>false</skipForSTPCalculation>
                             <stepIndex>10</stepIndex>
                             <stepPosition>INTERMEDIATE</stepPosition>
                             <streamed>false</streamed>
-                            <uuid>83a0d85a-0903-48d2-a252-85f17a18fee9</uuid>
+                            <uuid>ac24a5e6-0439-4fd1-b1e6-494c6dc91cf0</uuid>
                         </campaignMap>
                         <campaignMap>
+                            <activateTracking>false</activateTracking>
                             <blockSize>1</blockSize>
                             <businessRule>
                                 <content># Rule.Definition={"moderationRule":false,"approveAllRule":false,"splitData":false,"splitRule":false,"splitRuleSuffix":"","joinRule":false,"joinRuleSuffix":"","streamingRule":false,"streamingRuleSuffix":"","namedRule":false,"namedRuleName":""}
@@ -3980,7 +4221,7 @@ end</content>
                                 <name>OCR Type</name>
                                 <ruleType>WORKFLOW_RULE</ruleType>
                                 <ruleTypeUI>Composite</ruleTypeUI>
-                                <uuid>dea61106-2df6-4e29-a382-fff00e9ea079</uuid>
+                                <uuid>486c2650-2323-41db-b648-09a168a6225d</uuid>
                                 <workflowRuleMode>SIMPLE</workflowRuleMode>
                             </businessRule>
                             <campaign>
@@ -3993,12 +4234,13 @@ end</content>
                                 <goldRatio>0</goldRatio>
                                 <goldSource>Empty</goldSource>
                                 <goldType>Percentage</goldType>
+                                <includeOriginalData>false</includeOriginalData>
                                 <machineConfig>
                                     <answers/>
                                     <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;config charset="UTF-8"&gt;
-    &lt;export include-original-data="true"&gt;
-    &lt;/export&gt;
+	&lt;export include-original-data="true"&gt;
+	&lt;/export&gt;
 &lt;/config&gt;</content>
                                     <description></description>
                                     <includedConfigs/>
@@ -4023,7 +4265,7 @@ end</content>
                                             <componentUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</componentUuid>
                                             <incrementalVersion>1.0</incrementalVersion>
                                             <lastInChain>true</lastInChain>
-                                            <lastModified>2018-07-04T11:58:10Z</lastModified>
+                                            <lastModified>2018-05-28T11:12:13Z</lastModified>
                                             <versionUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</versionUuid>
                                         </version>
                                         <answers/>
@@ -4074,10 +4316,10 @@ end</content>
                                     <uuid>076a16b2-8c1f-4dc1-bc0c-0f1603963316</uuid>
                                     <version>
                                         <componentUuid>0f2aeff6-0b70-4ce8-809c-155796e62792</componentUuid>
-                                        <incrementalVersion>1.2</incrementalVersion>
+                                        <incrementalVersion>1.1</incrementalVersion>
                                         <lastInChain>false</lastInChain>
-                                        <lastModified>2018-07-11T10:02:42Z</lastModified>
-                                        <versionUuid>5367fe7f-5ffb-4400-afde-83687d4cd2dd</versionUuid>
+                                        <lastModified>2018-06-02T06:15:56Z</lastModified>
+                                        <versionUuid>fabefed1-cd20-4d23-bd55-1cd2326fef1c</versionUuid>
                                     </version>
                                 </machineConfig>
                                 <moderation>false</moderation>
@@ -4094,348 +4336,22 @@ end</content>
                                 <validWorkflow>false</validWorkflow>
                                 <version>
                                     <componentUuid>abe90e37-fcae-4031-94c0-30fa05b2f5d9</componentUuid>
-                                    <incrementalVersion>1.2</incrementalVersion>
+                                    <incrementalVersion>1.1</incrementalVersion>
                                     <lastInChain>false</lastInChain>
-                                    <lastModified>2018-07-11T10:26:04Z</lastModified>
-                                    <versionUuid>495ab00e-5c77-47aa-bfc7-3ef1cfd0ddeb</versionUuid>
+                                    <lastModified>2018-06-02T06:15:56Z</lastModified>
+                                    <versionUuid>54e35fe9-6a35-4b51-ab63-65ec3438fb8f</versionUuid>
                                 </version>
                                 <workSettingBase>false</workSettingBase>
                             </campaign>
                             <deleted>false</deleted>
+                            <skipForSTPCalculation>false</skipForSTPCalculation>
                             <stepIndex>11</stepIndex>
                             <stepPosition>INTERMEDIATE</stepPosition>
                             <streamed>false</streamed>
-                            <uuid>277b09d1-4757-46cf-9be1-e7fafab0c9b2</uuid>
+                            <uuid>76e45d68-f9d1-4061-8041-2ea0a9705a24</uuid>
                         </campaignMap>
                         <campaignMap>
-                            <blockSize>1</blockSize>
-                            <businessRule>
-                                <content>#RuleContext.APPROVE_ALL_RULE</content>
-                                <name>Approve All</name>
-                                <ruleType>WORKFLOW_RULE</ruleType>
-                                <ruleTypeUI>Composite</ruleTypeUI>
-                                <uuid>ea231138-e758-4951-b5f2-d26a599ea69f</uuid>
-                                <workflowRuleMode>SIMPLE</workflowRuleMode>
-                            </businessRule>
-                            <campaign>
-                                <active>false</active>
-                                <businessRules/>
-                                <campaignMaps/>
-                                <campaigns/>
-                                <executingType>MACHINE</executingType>
-                                <goldBucketBlockSize>0</goldBucketBlockSize>
-                                <goldRatio>0</goldRatio>
-                                <goldSource>Empty</goldSource>
-                                <goldType>Percentage</goldType>
-                                <machineConfig>
-                                    <answers/>
-                                    <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;config charset="UTF-8"&gt;
-
-  	&lt;required name="original_document_url"/&gt;
-	
-    &lt;var-def name="document_link"&gt;
-     	 &lt;template&gt;${original_document_url}&lt;/template&gt;
-    &lt;/var-def&gt;
-  
-  	&lt;var-def name="name_of_page"&gt;
-     	 page_for_manual_tagging
-    &lt;/var-def&gt;
-  
-  	&lt;var-def name="desired_dpi"&gt;
-     	 &lt;template&gt;288&lt;/template&gt;
-    &lt;/var-def&gt;
-  
-  	&lt;var-def name="convert_path"&gt;
-     	 &lt;template&gt;${convert_lib_path}&lt;/template&gt;
-    &lt;/var-def&gt;
-
-    &lt;var-def name="document_uuid"&gt;
-         &lt;script return="uuid"&gt;&lt;![CDATA[String uuid = UUID.randomUUID().toString();]]&gt; &lt;/script&gt;
-    &lt;/var-def&gt;   
-  
-	&lt;var-def name="fileList"&gt;
-		&lt;script return="convert(document_link.toString())"&gt;&lt;![CDATA[
-			import java.io.BufferedReader;
-			import java.io.File;
-			import java.io.IOException;
-			import java.io.InputStreamReader;
-			import java.net.URL;
-			import com.itextpdf.text.Image;
-
-			import com.google.common.io.Files;
-			import org.apache.commons.io.FileUtils;
-			import org.apache.commons.io.FilenameUtils;
-			import com.freedomoss.workfusion.utils.gson.GsonUtils;
-			import org.webharvest.runtime.variables.ListVariable;
-			import org.webharvest.runtime.variables.Variable;
-
-			static Integer counter;
-			static File outputFolder;
-			static Integer size;
-			static ListVariable lv;
-
-			static int getSize(){
-				return size;
-			}
-
-   			static Variable staticGetVariable(Object i){
-				return lv.get((Integer)i);
-			}
-
-			static boolean getOS(){
-				return ((String)System.getProperties().get("os.name")).contains("Windows");
-			}
-
-			boolean isWindows=getOS();
-
-			String dpi = desired_dpi.getWrappedObject().get(0).getWrappedObject().toString();
-			String convert = convert_path.getWrappedObject().get(0).getWrappedObject().toString();
-
-
-			static ListVariable convert(String documentLink) throws IOException, InterruptedException {
-				File baseDir = Files.createTempDir();
-
-				File inputFolder = new File(baseDir, "input");
-
-				URL documentUrl = new URL(documentLink);
-				String inputFileName = FilenameUtils.getName(documentUrl.getPath());
-				if (inputFileName == null || inputFileName.isEmpty()) {
-					inputFileName = "input.pdf";
-				}
-
-				File inputFile = new File(inputFolder, inputFileName);
-				FileUtils.copyURLToFile(documentUrl, inputFile);
-
-				outputFolder = new File(baseDir, "output");
-				FileUtils.forceMkdir(outputFolder);
-
-				File result = new File(outputFolder, "output.png");
-				File resultTiff = new File(outputFolder, "output.tiff");
-
-				if (isWindows){
-				invoke(new ProcessBuilder(new String[] {
-					"magick",
-					"convert",
-					"-density",dpi,
-					"-depth","1",
-					"-colorspace","Gray",
-					inputFile.getAbsolutePath(),
-					// "-resize", "25%",
-					result.getAbsolutePath()}
-				));
-				} else {
-				invoke(new ProcessBuilder(new String[] {
-					convert,
-					"-density",dpi,
-					"-depth","1",
-					"-colorspace","Gray",
-					inputFile.getAbsolutePath(),
-					// "-resize", "25%",
-					result.getAbsolutePath()}
-				));
-    			}
-				List list=new ArrayList();
-				counter=0;
-				File created=new File(outputFolder, "output-"+counter.toString()+".png");
-				while (created.exists()){
-					counter++;
-					list.add(created);
-					created=new File(outputFolder, "output-"+counter.toString()+".png");
-				}
-				if (counter==0){
-					created=new File(outputFolder, "output.png");
-					if (created.exists()){
-						File updated=new File(outputFolder, "output-0.png");
-						created.renameTo(updated);
-						counter++;
-						list.add(updated);
-					}
-				}
-				size=list.size();
-				counter=0;
-				lv=new ListVariable(list);
-				return lv;
-			}
-
-			static void invoke(ProcessBuilder builder) throws IOException, InterruptedException {
-				builder.redirectErrorStream(true);
-
-				System.err.println(builder.command());
-				Process process = builder.start();
-
-				BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
-				String line;
-				while ((line = in.readLine()) != null) {
-					System.out.println(line);
-				}
-				in.close();
-
-				int code = process.waitFor();
-				if (code != 0) {
-					throw new RuntimeException("Failed to invoke process: " + builder.command() + ". Return code: " + code);
-				}
-			}
-		]]&gt;&lt;/script&gt;
-	&lt;/var-def&gt;
-	
-	&lt;var-def name="numberOfPages"&gt;
-		&lt;script return="getSize()" /&gt;
-	&lt;/var-def&gt;
-
-	&lt;loop item="fileJavaObject" index="i" filter="unique"&gt;
-		&lt;list&gt;
-			&lt;var name="fileList" /&gt;
-		&lt;/list&gt;
-		&lt;body&gt;
-			&lt;log&gt;
-				&lt;template&gt;File: ${fileJavaObject}&lt;/template&gt;
-			&lt;/log&gt;
-			&lt;var-def name="key"&gt;
-				&lt;script return="staticGetVariable(i.toInt()-1)"&gt;&lt;/script&gt;
-			&lt;/var-def&gt;
-			&lt;var-def name="content-${i}"&gt;
-		        &lt;file path="${key}" type="binary"/&gt;
-			&lt;/var-def&gt;
-			&lt;var-def name="content"&gt;
-				&lt;var name="content-${i}" /&gt;
-			&lt;/var-def&gt;
-
-			&lt;var-def name="converted_link-${i}"&gt;
-        		&lt;s3  bucket="${s3_bucket_name}"&gt;
-         			&lt;s3-put-public path="${document_uuid}/${name_of_page}-${i}.png" content="${content}" content-type="image/png" content-disposition="inline"/&gt;
-        		&lt;/s3&gt;
-			&lt;/var-def&gt;
-		&lt;/body&gt;
-	&lt;/loop&gt;
-	
-	&lt;var-def name="jsonFilesUrls"&gt;
-		&lt;json&gt;
-			&lt;loop item="fileJavaObject" index="i" filter="unique"&gt;
-				&lt;list&gt;
-					&lt;var name="fileList" /&gt;
-				&lt;/list&gt;
-				&lt;body&gt;
-					&lt;json-put key="fileList-${i}"&gt;
-						&lt;var name="converted_link-${i}" /&gt;
-					&lt;/json-put&gt;
-				&lt;/body&gt;
-			&lt;/loop&gt;
-		&lt;/json&gt;
-	&lt;/var-def&gt;
-     
-	&lt;export include-original-data="true"&gt;
-		&lt;single-column name="json_file_urls_for_manual" value="${jsonFilesUrls}" /&gt;
-	&lt;/export&gt;
-&lt;/config&gt;</content>
-                                    <description></description>
-                                    <includedConfigs/>
-                                    <inclusionCode>4b53b516-a9d2-4b2d-b619-60e5b362a513</inclusionCode>
-                                    <jsonParams>{"configXMLModified":"true"}</jsonParams>
-                                    <machineWorkSetting>
-                                        <category>
-                                            <automation>false</automation>
-                                            <description></description>
-                                            <enabled>true</enabled>
-                                            <executingType>MACHINE</executingType>
-                                            <name>Other</name>
-                                            <private>false</private>
-                                            <publicId>dd92f240-144b-4fef-8476-4ec0acbc1105</publicId>
-                                        </category>
-                                        <contentType>BLANK</contentType>
-                                        <description></description>
-                                        <enabled>true</enabled>
-                                        <name>Miscellaneous Tasks</name>
-                                        <publicId>26e6e095-00bb-43fa-8c34-af0b18e71ac9</publicId>
-                                        <version>
-                                            <componentUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</componentUuid>
-                                            <incrementalVersion>1.0</incrementalVersion>
-                                            <lastInChain>true</lastInChain>
-                                            <lastModified>2018-07-04T11:58:10Z</lastModified>
-                                            <versionUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</versionUuid>
-                                        </version>
-                                        <answers/>
-                                        <machineWorkSettingType>BASIC</machineWorkSettingType>
-                                        <template>
-                                            <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;config charset="UTF-8"&gt;
-	&lt;export include-original-data="true"&gt;
-	&lt;/export&gt;
-&lt;/config&gt;</content>
-                                            <name>Blank</name>
-                                            <origination>CREATED_MANUALLY</origination>
-                                            <status>ACTIVE</status>
-                                            <type>BASE_MACHINE</type>
-                                            <uuid>8f04bd99-7f51-4796-a528-d1a7c9ccfbc4</uuid>
-                                            <version>
-                                                <componentUuid>8f04bd99-7f51-4796-a528-d1a7c9ccfbc4</componentUuid>
-                                                <incrementalVersion>1.0</incrementalVersion>
-                                                <lastInChain>true</lastInChain>
-                                                <lastModified>2012-12-27T00:00:00Z</lastModified>
-                                                <versionUuid>8f04bd99-7f51-4796-a528-d1a7c9ccfbc4</versionUuid>
-                                            </version>
-                                        </template>
-                                    </machineWorkSetting>
-                                    <machineWorkSettingType>BASIC</machineWorkSettingType>
-                                    <name>(Copy)[TOOD] Split PDF into PNG pages for manual task</name>
-                                    <machineConfigOptions/>
-                                    <sourceType>MANUAL</sourceType>
-                                    <template>
-                                        <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;config charset="UTF-8"&gt;
-	&lt;export include-original-data="true"&gt;
-	&lt;/export&gt;
-&lt;/config&gt;</content>
-                                        <name>Blank</name>
-                                        <origination>CREATED_MANUALLY</origination>
-                                        <status>ACTIVE</status>
-                                        <type>BASE_MACHINE</type>
-                                        <uuid>8f04bd99-7f51-4796-a528-d1a7c9ccfbc4</uuid>
-                                        <version>
-                                            <componentUuid>8f04bd99-7f51-4796-a528-d1a7c9ccfbc4</componentUuid>
-                                            <incrementalVersion>1.0</incrementalVersion>
-                                            <lastInChain>true</lastInChain>
-                                            <lastModified>2012-12-27T00:00:00Z</lastModified>
-                                            <versionUuid>8f04bd99-7f51-4796-a528-d1a7c9ccfbc4</versionUuid>
-                                        </version>
-                                    </template>
-                                    <uuid>4b53b516-a9d2-4b2d-b619-60e5b362a513</uuid>
-                                    <version>
-                                        <componentUuid>6ef58b95-0def-49ed-904f-b2d037481f3d</componentUuid>
-                                        <incrementalVersion>1.0</incrementalVersion>
-                                        <lastInChain>true</lastInChain>
-                                        <lastModified>2018-07-11T09:55:03Z</lastModified>
-                                        <versionUuid>1d4c639b-0e8a-4640-9d4c-87f379bea1c7</versionUuid>
-                                    </version>
-                                </machineConfig>
-                                <moderation>false</moderation>
-                                <origination>CREATED_AUTOMATICALLY</origination>
-                                <requiresData>true</requiresData>
-                                <status>ACTIVE</status>
-                                <streamComplexRunThreshold>1</streamComplexRunThreshold>
-                                <streamTimeInterval>Immediately</streamTimeInterval>
-                                <streamTimeIntervalValue>0</streamTimeIntervalValue>
-                                <streamValueType>Tasks</streamValueType>
-                                <title>(Copy)[TOOD] Split PDF into PNG pages for manual task</title>
-                                <type>SINGLE</type>
-                                <uuid>c617cdde-89fc-4c17-92d6-4c11c9ffecce</uuid>
-                                <validWorkflow>false</validWorkflow>
-                                <version>
-                                    <componentUuid>0a9c76de-899a-4a97-b5d6-9b54bf45dd1d</componentUuid>
-                                    <incrementalVersion>1.1</incrementalVersion>
-                                    <lastInChain>true</lastInChain>
-                                    <lastModified>2018-07-11T09:55:03Z</lastModified>
-                                    <versionUuid>baeedae8-3525-4783-805e-aa67b34af525</versionUuid>
-                                </version>
-                                <workSettingBase>false</workSettingBase>
-                            </campaign>
-                            <deleted>false</deleted>
-                            <stepIndex>12</stepIndex>
-                            <stepPosition>INTERMEDIATE</stepPosition>
-                            <streamed>false</streamed>
-                            <uuid>2a02e016-b44e-4029-9711-400ba7144b26</uuid>
-                        </campaignMap>
-                        <campaignMap>
+                            <activateTracking>false</activateTracking>
                             <businessRule>
                                 <content>package com.freedomoss.requester;
 
@@ -4462,17 +4378,17 @@ auto-focus true
 no-loop
 dialect "mvel"
 agenda-group "initialization-group"
-    when
-        $ctx:CompositeRuleContext(initialized == false);
-    then
-        $ctx.updateWorkingMemory();
-        # move to business rules
-        $ctx.logExecutedRule(kcontext.getRule().getName());
-        kcontext.getKnowledgeRuntime().getAgenda().getAgendaGroup("calculation").setFocus();
+	when
+		$ctx:CompositeRuleContext(initialized == false);
+	then
+		$ctx.updateWorkingMemory();
+		# move to business rules
+		$ctx.logExecutedRule(kcontext.getRule().getName());
+		kcontext.getKnowledgeRuntime().getAgenda().getAgendaGroup("calculation").setFocus();
 end</content>
                                 <name>Business Process: End Rule</name>
                                 <ruleType>WORKFLOW_RULE</ruleType>
-                                <uuid>5a02e60f-fd0f-434e-a6ac-f97a3b60936f</uuid>
+                                <uuid>93b8e6aa-22e9-4980-856d-edf8ec6ee6c3</uuid>
                             </businessRule>
                             <campaign>
                                 <active>false</active>
@@ -4484,6 +4400,7 @@ end</content>
                                 <goldRatio>0</goldRatio>
                                 <goldSource>Empty</goldSource>
                                 <goldType>Percentage</goldType>
+                                <includeOriginalData>false</includeOriginalData>
                                 <machineConfig>
                                     <answers/>
                                     <content>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -4564,7 +4481,7 @@ end</content>
                                             <componentUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</componentUuid>
                                             <incrementalVersion>1.0</incrementalVersion>
                                             <lastInChain>true</lastInChain>
-                                            <lastModified>2018-07-04T11:58:10Z</lastModified>
+                                            <lastModified>2018-05-28T11:12:13Z</lastModified>
                                             <versionUuid>26e6e095-00bb-43fa-8c34-af0b18e71ac9</versionUuid>
                                         </version>
                                         <answers/>
@@ -4616,8 +4533,8 @@ end</content>
                                         <componentUuid>9e5000e3-c243-42d3-b5ad-c6ac90dec35e</componentUuid>
                                         <incrementalVersion>1.0</incrementalVersion>
                                         <lastInChain>true</lastInChain>
-                                        <lastModified>2018-07-04T11:58:19Z</lastModified>
-                                        <versionUuid>91a70674-7f81-11e8-80bc-0ae8ba3240ae</versionUuid>
+                                        <lastModified>2018-05-28T11:12:21Z</lastModified>
+                                        <versionUuid>04cccd58-6268-11e8-97c5-0ae8ba3240ae</versionUuid>
                                     </version>
                                 </machineConfig>
                                 <moderation>false</moderation>
@@ -4633,30 +4550,32 @@ end</content>
                                 <uuid>af4c8905-26dd-4120-b208-39ad3530ffc6</uuid>
                                 <validWorkflow>false</validWorkflow>
                                 <version>
-                                    <componentUuid>912e47e0-7f81-11e8-80bc-0ae8ba3240ae</componentUuid>
+                                    <componentUuid>041df7e3-6268-11e8-97c5-0ae8ba3240ae</componentUuid>
                                     <incrementalVersion>1.0</incrementalVersion>
                                     <lastInChain>true</lastInChain>
-                                    <lastModified>2018-07-04T11:58:19Z</lastModified>
-                                    <versionUuid>91a7209d-7f81-11e8-80bc-0ae8ba3240ae</versionUuid>
+                                    <lastModified>2018-05-28T11:12:21Z</lastModified>
+                                    <versionUuid>04ccea14-6268-11e8-97c5-0ae8ba3240ae</versionUuid>
                                 </version>
                                 <workSettingBase>false</workSettingBase>
                             </campaign>
                             <deleted>false</deleted>
-                            <stepIndex>13</stepIndex>
+                            <skipForSTPCalculation>false</skipForSTPCalculation>
+                            <stepIndex>12</stepIndex>
                             <stepPosition>END</stepPosition>
                             <streamed>false</streamed>
-                            <uuid>ac056825-3be0-4561-957a-c553958a65c7</uuid>
+                            <uuid>0d9c7440-bd6d-48b5-a949-7e66bd14f910</uuid>
                         </campaignMap>
                     </campaignMaps>
                     <campaigns/>
                     <compositeCampaignVersion>NEW_WORKFLOW</compositeCampaignVersion>
-                    <compositeStructureXml>&lt;mxGraphModel&gt;&lt;root&gt;&lt;mxCell id="0"/&gt;&lt;mxCell id="1" parent="0"/&gt;&lt;Start id="2" name="Start" type="start"&gt;&lt;mxCell parent="1" style="start" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="124.0" y="20.0"/&gt;&lt;/mxCell&gt;&lt;/Start&gt;&lt;MachineTask campaignMapUUID="f5358993-8ecf-4fda-80ae-9aa4badde0dd" id="6" name="[TOOD] XSLT XML Enrichment with WORD and DIV tags" taskUUID="2d15732c-0a72-47fc-9cc4-b031920ec61c" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="880.0" y="472.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;End campaignMapUUID="ac056825-3be0-4561-957a-c553958a65c7" id="10" name="End" type="end"&gt;&lt;mxCell parent="1" style="end" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="664.0" y="390.0"/&gt;&lt;/mxCell&gt;&lt;/End&gt;&lt;Link id="25" name="" type="link"&gt;&lt;mxCell edge="1" parent="1" source="2" style="link" target="109"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="targetPoint" x="265.0" y="36.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="30" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="395fe23c-faa5-4d48-ba3c-1072b0c46475" type="link"&gt;&lt;mxCell edge="1" parent="1" source="85" style="link" target="86"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="sourcePoint" x="140.0" y="220.0"/&gt;&lt;mxPoint as="targetPoint" x="140.0" y="250.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Rule id="52" name="OCR Router" ruleUUID="ec98f6c1-851f-4c04-8d57-b3f2d7d2467c" type="rule"&gt;&lt;mxCell parent="1" style="rule" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="124.0" y="390.0"/&gt;&lt;/mxCell&gt;&lt;/Rule&gt;&lt;Rule id="64" name="OCR Type" ruleUUID="dea61106-2df6-4e29-a382-fff00e9ea079" type="rule"&gt;&lt;mxCell parent="1" style="rule" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="304.0" y="105.0"/&gt;&lt;/mxCell&gt;&lt;/Rule&gt;&lt;MachineTask campaignMapUUID="af1844e0-1dc3-4a94-8ee6-db44e24d18ff" id="65" name="[Standard] OCR" taskUUID="5998bd12-5695-4957-91a8-3aaad033c8ad" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="420.1166687011719" y="229.53334045410156"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;Link conditional="true" id="67" label="Standard" name="" outcomeId="Standard" ruleUUID="dea61106-2df6-4e29-a382-fff00e9ea079" type="link"&gt;&lt;mxCell edge="1" parent="1" source="64" style="link" target="65"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="394.0" y="220.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="320.0" y="180.0"/&gt;&lt;mxPoint x="500.0" y="180.0"/&gt;&lt;/Array&gt;&lt;mxPoint as="offset" x="-30.0" y="-3.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;MachineTask campaignMapUUID="ad265121-02a2-482b-ac95-bc331b3d0b02" id="80" name="XSLT Cut off Raw OCR XML tags" taskUUID="ba22e9b1-c6ce-458f-8933-112ed10cb205" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="536.0" y="480.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;MachineTask campaignMapUUID="f15a9e5c-d0bc-4eb0-ae34-e57fa4fe7236" id="85" name="[TOOD] Split document into PNG pages" taskUUID="9c33a147-3416-4058-8b45-75fb1d1aa47c" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="60.0" y="150.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;MachineTask campaignMapUUID="058327c7-71ca-4dd2-b3f6-9a44d2f32519" id="86" name="[TOOD] OCR" taskUUID="964500c3-8ef6-4325-aa98-8a43a3d4355a" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="60.0" y="230.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;Link id="88" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="866681cb-ac18-4556-849b-1f699d099ce6" type="link"&gt;&lt;mxCell edge="1" parent="1" source="86" style="link" target="89"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="sourcePoint" x="140.0" y="310.0"/&gt;&lt;mxPoint as="targetPoint" x="140.0" y="300.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="300.0" y="260.0"/&gt;&lt;/Array&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;MachineTask campaignMapUUID="9fa24264-40ed-4dee-95a5-3a38d869b507" id="89" name="Response from OCR" taskUUID="d44c903c-8fd2-47bd-a3ed-0f4013b6a2a6" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="240.0" y="310.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;Link id="90" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="76d54af0-2713-470e-a536-f9d58592428e" type="link"&gt;&lt;mxCell edge="1" parent="1" source="65" style="link" target="89"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;Array as="points"&gt;&lt;mxPoint x="340.0" y="260.0"/&gt;&lt;/Array&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="91" name="" type="link"&gt;&lt;mxCell edge="1" parent="1" source="89" style="link" target="52"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;Array as="points"&gt;&lt;mxPoint x="140.0" y="340.0"/&gt;&lt;/Array&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="105" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="2b92e509-dd17-49bb-823e-d0ed51b6545c" type="link"&gt;&lt;mxCell edge="1" parent="1" source="109" style="link" target="123"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="sourcePoint" x="320.0" y="47.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;MachineTask campaignMapUUID="2c278764-c540-44fb-9ebb-d18a9b761414" id="109" name="Input data processing" taskUUID="7efd0e4a-ee9a-47bd-8f79-87ce5e2abd59" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="240.0" y="6.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;MachineTask campaignMapUUID="ea52ff24-dba9-44be-9053-bc5ff5af8db1" id="110" name="Result JSON processing" taskUUID="b4d16240-d1a2-45fc-83d8-94f32844359a" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="1020.1166687011719" y="375.53334045410156"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;Link conditional="true" id="112" label="OCR Failed" name="" outcomeId="OCR Failed" ruleUUID="ec98f6c1-851f-4c04-8d57-b3f2d7d2467c" type="link"&gt;&lt;mxCell edge="1" parent="1" source="52" style="link" target="10"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="520.0" y="400.0"/&gt;&lt;Array as="points"/&gt;&lt;mxPoint as="offset" x="-210.0" y="-6.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link conditional="true" id="113" label="TOOD" name="" outcomeId="TOOD" ruleUUID="ec98f6c1-851f-4c04-8d57-b3f2d7d2467c" type="link"&gt;&lt;mxCell edge="1" parent="1" source="52" style="link" target="139"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="240.0" y="460.0"/&gt;&lt;Array as="points"/&gt;&lt;mxPoint as="offset" y="24.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link conditional="true" id="114" label="Standard" name="" outcomeId="Standard" ruleUUID="ec98f6c1-851f-4c04-8d57-b3f2d7d2467c" type="link"&gt;&lt;mxCell edge="1" parent="1" source="52" style="link" target="80"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="320.0" y="670.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="140.0" y="490.0"/&gt;&lt;/Array&gt;&lt;mxPoint as="offset" y="34.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link conditional="true" id="115" label="Standard (without xml export format)" name="" outcomeId="Standard (without xml export format)" ruleUUID="ec98f6c1-851f-4c04-8d57-b3f2d7d2467c" type="link"&gt;&lt;mxCell edge="1" parent="1" source="52" style="link" target="124"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="80.0" y="660.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="140.0" y="570.0"/&gt;&lt;/Array&gt;&lt;mxPoint as="offset" x="-120.0" y="74.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Rule id="116" name="OCR Type" ruleUUID="96da23d4-46cb-4726-b143-bf26a986ebb8" type="rule"&gt;&lt;mxCell parent="1" style="rule" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="750.0" y="464.0"/&gt;&lt;/mxCell&gt;&lt;/Rule&gt;&lt;Link conditional="true" id="117" label="TOOD" name="" outcomeId="TOOD" ruleUUID="96da23d4-46cb-4726-b143-bf26a986ebb8" type="link"&gt;&lt;mxCell edge="1" parent="1" source="116" style="link" target="6"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="610.0" y="543.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link conditional="true" id="118" label="Standard" name="" outcomeId="Standard" ruleUUID="96da23d4-46cb-4726-b143-bf26a986ebb8" type="link"&gt;&lt;mxCell edge="1" parent="1" source="116" style="link" target="124"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="540.0" y="590.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="500.0" y="550.0"/&gt;&lt;/Array&gt;&lt;mxPoint as="offset" x="10.0" y="27.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="119" name="" type="link"&gt;&lt;mxCell edge="1" parent="1" source="80" style="link" target="116"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"/&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="120" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="b4be6405-00de-4252-99b3-decfe9207c2e" type="link"&gt;&lt;mxCell edge="1" parent="1" source="6" style="link" target="124"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;MachineTask campaignMapUUID="83a0d85a-0903-48d2-a252-85f17a18fee9" id="123" name="Look for OCR cache" taskUUID="938e8c73-b9db-4d71-e755-e099d9e288de" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="420.1166687011719" y="6.23333740234375"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;MachineTask campaignMapUUID="227b1f25-7828-4c08-935c-839ca74a1c48" id="124" name="Cache OCR results" taskUUID="9535c598-8850-4c31-e19d-56fecb707c6d" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="810.1166687011719" y="660.2333374023438"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;Rule id="125" name="Cache hit?" ruleUUID="ce894fca-f862-4c53-8f2f-ecedc21a2ee4" type="rule"&gt;&lt;mxCell parent="1" style="rule" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="664.0" y="20.0"/&gt;&lt;/mxCell&gt;&lt;/Rule&gt;&lt;Link id="126" name="" type="link"&gt;&lt;mxCell edge="1" parent="1" source="123" style="link" target="125"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"/&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link conditional="true" id="127" label="Yes" name="" outcomeId="Yes" ruleUUID="ce894fca-f862-4c53-8f2f-ecedc21a2ee4" type="link"&gt;&lt;mxCell edge="1" parent="1" source="125" style="link" target="110"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="750.0" y="21.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="850.0" y="36.0"/&gt;&lt;/Array&gt;&lt;mxPoint as="offset" x="-38.0" y="-183.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link conditional="false" id="128" label="No" name="" outcomeId="No" ruleUUID="ce894fca-f862-4c53-8f2f-ecedc21a2ee4" type="link"&gt;&lt;mxCell edge="1" parent="1" source="125" style="link" target="132"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="563.0" y="120.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="680.0" y="120.0"/&gt;&lt;/Array&gt;&lt;mxPoint as="offset" x="59.0" y="4.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="131" name="" type="link"&gt;&lt;mxCell edge="1" parent="1" source="132" style="link" target="64"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="sourcePoint" x="437.0" y="120.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;MachineTask campaignMapUUID="277b09d1-4757-46cf-9be1-e7fafab0c9b2" id="132" label="" name="GoTo OCR" streamed="false" taskUUID="20ac7cba-c576-4f18-ba33-95ab0cf4b706" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="41.0" width="126.0" x="437.0" y="100.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;Link conditional="true" id="134" label="TOOD" name="" outcomeId="TOOD" ruleUUID="dea61106-2df6-4e29-a382-fff00e9ea079" type="link"&gt;&lt;mxCell edge="1" parent="1" source="64" style="link" target="85"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="424.0" y="105.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="320.0" y="180.0"/&gt;&lt;/Array&gt;&lt;mxPoint as="offset" y="22.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="137" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="b1744dfc-6b79-49a4-8502-4ddf5c273476" type="link"&gt;&lt;mxCell edge="1" parent="1" source="124" style="link" target="110"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"/&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="138" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="3576bd70-ec94-48eb-a0de-2c27f5f3bddd" type="link"&gt;&lt;mxCell edge="1" parent="1" source="110" style="link" target="10"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"/&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;MachineTask campaignMapUUID="2a02e016-b44e-4029-9711-400ba7144b26" id="139" name="(Copy)[TOOD] Split PDF into PNG pages for manual task" taskUUID="c617cdde-89fc-4c17-92d6-4c11c9ffecce" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="300.0" y="412.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;Link id="140" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="ea231138-e758-4951-b5f2-d26a599ea69f" type="link"&gt;&lt;mxCell edge="1" parent="1" source="139" style="link" target="80"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"/&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;/root&gt;&lt;/mxGraphModel&gt;</compositeStructureXml>
+                    <compositeStructureXml>&lt;mxGraphModel&gt;&lt;root&gt;&lt;mxCell id="0"/&gt;&lt;mxCell id="1" parent="0"/&gt;&lt;Start id="2" name="Start" type="start"&gt;&lt;mxCell parent="1" style="start" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="124.0" y="20.0"/&gt;&lt;/mxCell&gt;&lt;/Start&gt;&lt;MachineTask campaignMapUUID="c9cc8253-7ba8-4f3e-a88e-905ba7004bd1" id="6" name="[TOOD] XSLT XML Enrichment with WORD and DIV tags" taskUUID="2d15732c-0a72-47fc-9cc4-b031920ec61c" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="600.0" y="450.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;End campaignMapUUID="0d9c7440-bd6d-48b5-a949-7e66bd14f910" id="10" name="End" type="end"&gt;&lt;mxCell parent="1" style="end" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="664.0" y="390.0"/&gt;&lt;/mxCell&gt;&lt;/End&gt;&lt;Link id="25" name="" type="link"&gt;&lt;mxCell edge="1" parent="1" source="2" style="link" target="109"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="targetPoint" x="265.0" y="36.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="30" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="96876126-d181-4af7-91be-a6f6e6b16b72" type="link"&gt;&lt;mxCell edge="1" parent="1" source="85" style="link" target="86"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="sourcePoint" x="140.0" y="220.0"/&gt;&lt;mxPoint as="targetPoint" x="140.0" y="250.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Rule id="52" name="OCR Router" ruleUUID="1793d295-1ea7-46d2-b710-598f521d9449" type="rule"&gt;&lt;mxCell parent="1" style="rule" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="124.0" y="390.0"/&gt;&lt;/mxCell&gt;&lt;/Rule&gt;&lt;Rule id="64" name="OCR Type" ruleUUID="486c2650-2323-41db-b648-09a168a6225d" type="rule"&gt;&lt;mxCell parent="1" style="rule" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="304.0" y="105.0"/&gt;&lt;/mxCell&gt;&lt;/Rule&gt;&lt;MachineTask campaignMapUUID="f998ca3f-fdb0-4e51-bc99-8794b6dc87f5" id="65" name="[Standard] OCR" taskUUID="5998bd12-5695-4957-91a8-3aaad033c8ad" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="420.1166687011719" y="229.53334045410156"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;Link conditional="true" id="67" label="Standard" name="" outcomeId="Standard" ruleUUID="486c2650-2323-41db-b648-09a168a6225d" type="link"&gt;&lt;mxCell edge="1" parent="1" source="64" style="link" target="65"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="394.0" y="220.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="320.0" y="180.0"/&gt;&lt;mxPoint x="500.0" y="180.0"/&gt;&lt;/Array&gt;&lt;mxPoint as="offset" x="-30.0" y="-3.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;MachineTask campaignMapUUID="93043c89-a935-4d1c-8cea-ce1de7f84a09" id="80" name="XSLT Cut off Raw OCR XML tags" taskUUID="ba22e9b1-c6ce-458f-8933-112ed10cb205" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="240.0" y="450.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;MachineTask campaignMapUUID="3934bf2b-b068-4155-bb09-cf0d5fcf20dd" id="85" label="[TOOD] Split document into PNG pages" name="[TOOD] Split document into PNG pages" originalLabel="[TOOD] Split document into PNG pages" taskUUID="9c33a147-3416-4058-8b45-75fb1d1aa47c" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="60.0" y="150.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;MachineTask campaignMapUUID="f9281b3d-31cf-40c6-b7c2-ff8dcb1a6d79" id="86" label="[TOOD] OCR" name="[TOOD] OCR" originalLabel="[TOOD] OCR" taskUUID="964500c3-8ef6-4325-aa98-8a43a3d4355a" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="60.0" y="230.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;Link id="88" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="8201640a-6eb1-45aa-9ee1-5e45ec83928b" type="link"&gt;&lt;mxCell edge="1" parent="1" source="86" style="link" target="89"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="sourcePoint" x="140.0" y="310.0"/&gt;&lt;mxPoint as="targetPoint" x="140.0" y="300.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="300.0" y="260.0"/&gt;&lt;/Array&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;MachineTask campaignMapUUID="83f44c56-9d01-47aa-ac9c-0467113b7446" id="89" name="Response from OCR" taskUUID="d44c903c-8fd2-47bd-a3ed-0f4013b6a2a6" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="240.0" y="310.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;Link id="90" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="ecad2305-073a-465a-b5d5-cdcedfad1072" type="link"&gt;&lt;mxCell edge="1" parent="1" source="65" style="link" target="89"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;Array as="points"&gt;&lt;mxPoint x="340.0" y="260.0"/&gt;&lt;/Array&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="91" name="" type="link"&gt;&lt;mxCell edge="1" parent="1" source="89" style="link" target="52"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;Array as="points"&gt;&lt;mxPoint x="140.0" y="340.0"/&gt;&lt;/Array&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="105" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="8f1cb86c-0365-4e3a-879b-fe44ea0b3ead" type="link"&gt;&lt;mxCell edge="1" parent="1" source="109" style="link" target="123"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="sourcePoint" x="320.0" y="47.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;MachineTask campaignMapUUID="8fdce086-76ce-44f0-82b9-6e1b22035534" id="109" name="Input data processing" taskUUID="7efd0e4a-ee9a-47bd-8f79-87ce5e2abd59" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="240.0" y="6.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;MachineTask campaignMapUUID="53639cde-e933-47c8-855d-d5ba98a03a74" id="110" name="Result JSON processing" taskUUID="b4d16240-d1a2-45fc-83d8-94f32844359a" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="770.1166687011719" y="375.53334045410156"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;Link conditional="true" id="112" label="OCR Failed" name="" outcomeId="OCR Failed" ruleUUID="1793d295-1ea7-46d2-b710-598f521d9449" type="link"&gt;&lt;mxCell edge="1" parent="1" source="52" style="link" target="10"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="520.0" y="400.0"/&gt;&lt;Array as="points"/&gt;&lt;mxPoint as="offset" x="-210.0" y="-6.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link conditional="true" id="113" label="TOOD" name="" outcomeId="TOOD" ruleUUID="1793d295-1ea7-46d2-b710-598f521d9449" type="link"&gt;&lt;mxCell edge="1" parent="1" source="52" style="link" target="80"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="240.0" y="460.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="140.0" y="470.0"/&gt;&lt;/Array&gt;&lt;mxPoint as="offset" y="24.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link conditional="true" id="114" label="Standard" name="" outcomeId="Standard" ruleUUID="1793d295-1ea7-46d2-b710-598f521d9449" type="link"&gt;&lt;mxCell edge="1" parent="1" source="52" style="link" target="80"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="320.0" y="670.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="140.0" y="490.0"/&gt;&lt;/Array&gt;&lt;mxPoint as="offset" y="34.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link conditional="true" id="115" label="Standard (without xml export format)" name="" outcomeId="Standard (without xml export format)" ruleUUID="1793d295-1ea7-46d2-b710-598f521d9449" type="link"&gt;&lt;mxCell edge="1" parent="1" source="52" style="link" target="124"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="80.0" y="660.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="140.0" y="570.0"/&gt;&lt;/Array&gt;&lt;mxPoint as="offset" x="-120.0" y="74.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Rule id="116" name="OCR Type" ruleUUID="f8adb9b7-a36b-4924-ac00-2c8e184ca5d7" type="rule"&gt;&lt;mxCell parent="1" style="rule" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="484.0" y="464.0"/&gt;&lt;/mxCell&gt;&lt;/Rule&gt;&lt;Link conditional="true" id="117" label="TOOD" name="" outcomeId="TOOD" ruleUUID="f8adb9b7-a36b-4924-ac00-2c8e184ca5d7" type="link"&gt;&lt;mxCell edge="1" parent="1" source="116" style="link" target="6"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="610.0" y="543.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link conditional="true" id="118" label="Standard" name="" outcomeId="Standard" ruleUUID="f8adb9b7-a36b-4924-ac00-2c8e184ca5d7" type="link"&gt;&lt;mxCell edge="1" parent="1" source="116" style="link" target="124"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="540.0" y="590.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="500.0" y="550.0"/&gt;&lt;/Array&gt;&lt;mxPoint as="offset" x="10.0" y="27.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="119" name="" type="link"&gt;&lt;mxCell edge="1" parent="1" source="80" style="link" target="116"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"/&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="120" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="dca899e5-fc18-4df1-86f5-5353c4a6a387" type="link"&gt;&lt;mxCell edge="1" parent="1" source="6" style="link" target="124"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;MachineTask campaignMapUUID="ac24a5e6-0439-4fd1-b1e6-494c6dc91cf0" id="123" label="Look for OCR cache" name="Look for OCR cache" originalLabel="Look for OCR cache" taskUUID="938e8c73-b9db-4d71-e755-e099d9e288de" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="420.1166687011719" y="6.23333740234375"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;MachineTask campaignMapUUID="8733e8de-e185-4acb-81ac-cc9adbaedb48" id="124" label="Cache OCR results" name="Cache OCR results" originalLabel="Cache OCR results" taskUUID="9535c598-8850-4c31-e19d-56fecb707c6d" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="60.0" width="160.0" x="600.1166687011719" y="530.2333374023438"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;Rule id="125" name="Cache hit?" ruleUUID="9e2493cc-a6f6-413a-9523-1d28b277bb4a" type="rule"&gt;&lt;mxCell parent="1" style="rule" vertex="1"&gt;&lt;mxGeometry as="geometry" height="32.0" width="32.0" x="664.0" y="20.0"/&gt;&lt;/mxCell&gt;&lt;/Rule&gt;&lt;Link id="126" name="" type="link"&gt;&lt;mxCell edge="1" parent="1" source="123" style="link" target="125"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"/&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link conditional="true" id="127" label="Yes" name="" outcomeId="Yes" ruleUUID="9e2493cc-a6f6-413a-9523-1d28b277bb4a" type="link"&gt;&lt;mxCell edge="1" parent="1" source="125" style="link" target="110"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="750.0" y="21.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="850.0" y="36.0"/&gt;&lt;/Array&gt;&lt;mxPoint as="offset" x="-38.0" y="-183.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link conditional="false" id="128" label="No" name="" outcomeId="No" ruleUUID="9e2493cc-a6f6-413a-9523-1d28b277bb4a" type="link"&gt;&lt;mxCell edge="1" parent="1" source="125" style="link" target="132"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="563.0" y="120.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="680.0" y="120.0"/&gt;&lt;/Array&gt;&lt;mxPoint as="offset" x="59.0" y="4.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="131" name="" type="link"&gt;&lt;mxCell edge="1" parent="1" source="132" style="link" target="64"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"&gt;&lt;mxPoint as="sourcePoint" x="437.0" y="120.0"/&gt;&lt;Array as="points"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;MachineTask campaignMapUUID="76e45d68-f9d1-4061-8041-2ea0a9705a24" id="132" label="" name="GoTo OCR" streamed="false" taskUUID="20ac7cba-c576-4f18-ba33-95ab0cf4b706" type="machine_task"&gt;&lt;mxCell parent="1" style="machine_task" vertex="1"&gt;&lt;mxGeometry as="geometry" height="41.0" width="126.0" x="437.0" y="100.0"/&gt;&lt;/mxCell&gt;&lt;/MachineTask&gt;&lt;Link conditional="true" id="134" label="TOOD" name="" outcomeId="TOOD" ruleUUID="486c2650-2323-41db-b648-09a168a6225d" type="link"&gt;&lt;mxCell edge="1" parent="1" source="64" style="link" target="85"&gt;&lt;mxGeometry as="geometry"&gt;&lt;mxPoint as="targetPoint" x="424.0" y="105.0"/&gt;&lt;Array as="points"&gt;&lt;mxPoint x="320.0" y="180.0"/&gt;&lt;/Array&gt;&lt;mxPoint as="offset" y="22.0"/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="137" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="8ac80b74-0b6d-44dd-b919-8ee6ff1b40e6" type="link"&gt;&lt;mxCell edge="1" parent="1" source="124" style="link" target="110"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"/&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;Link id="138" name="" outcome="ApproveAll" outcomeId="ApproveAll" ruleUUID="5f720c54-3add-4c4a-b28c-8e95fb8c785d" type="link"&gt;&lt;mxCell edge="1" parent="1" source="110" style="link" target="10"&gt;&lt;mxGeometry as="geometry" relative="1" x="0.5" y="10.0"/&gt;&lt;/mxCell&gt;&lt;/Link&gt;&lt;/root&gt;&lt;/mxGraphModel&gt;</compositeStructureXml>
                     <description>Business Process description</description>
                     <executingType>COMPOSITE</executingType>
                     <goldBucketBlockSize>0</goldBucketBlockSize>
                     <goldRatio>0</goldRatio>
                     <goldSource>Empty</goldSource>
                     <goldType>Percentage</goldType>
+                    <includeOriginalData>false</includeOriginalData>
                     <moderation>false</moderation>
                     <origination>CREATED_AUTOMATICALLY</origination>
                     <requiresData>false</requiresData>
@@ -4665,16 +4584,16 @@ end</content>
                     <streamTimeInterval>Immediately</streamTimeInterval>
                     <streamTimeIntervalValue>0</streamTimeIntervalValue>
                     <streamValueType>Tasks</streamValueType>
-                    <title>Workfusion OCR with cache (v2)</title>
+                    <title>Workfusion OCR with cache (v2.5)</title>
                     <type>COMPOSITE</type>
                     <uuid>e13003e1-da2c-4e3c-ba5d-ef32827b0dc8</uuid>
                     <validWorkflow>true</validWorkflow>
                     <version>
                         <componentUuid>e02a646e-e7ad-4504-9587-d5c0235ef75d</componentUuid>
-                        <incrementalVersion>1.6</incrementalVersion>
+                        <incrementalVersion>1.8</incrementalVersion>
                         <lastInChain>true</lastInChain>
-                        <lastModified>2018-07-11T10:02:42Z</lastModified>
-                        <versionUuid>7728d3f5-b723-47c9-9df8-5c9a7fdff8a0</versionUuid>
+                        <lastModified>2018-11-05T08:16:41Z</lastModified>
+                        <versionUuid>13066f8a-56e7-49d3-97d5-1dbc456748b6</versionUuid>
                     </version>
                     <workSettingBase>true</workSettingBase>
                 </campaign>
