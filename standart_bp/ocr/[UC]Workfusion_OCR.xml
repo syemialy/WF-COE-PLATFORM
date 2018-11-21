@@ -1936,10 +1936,10 @@ Workfusion 2018, RPA Express 2.0
                                 <validWorkflow>false</validWorkflow>
                                 <version>
                                     <componentUuid>661a211a-16b8-4d0c-a4da-ad2fa1cf8db4</componentUuid>
-                                    <incrementalVersion>1.3</incrementalVersion>
+                                    <incrementalVersion>1.4</incrementalVersion>
                                     <lastInChain>false</lastInChain>
-                                    <lastModified>2018-05-30T14:19:25Z</lastModified>
-                                    <versionUuid>b8427ba5-6e51-4a7e-8025-a85162864331</versionUuid>
+                                    <lastModified>2018-11-09T12:20:34Z</lastModified>
+                                    <versionUuid>3d0d2132-8d86-46f9-ab67-e9f4abcd5214</versionUuid>
                                 </version>
                                 <workSettingBase>false</workSettingBase>
                             </campaign>
@@ -2039,31 +2039,38 @@ Workfusion 2018, RPA Express 2.0
         &lt;var-global name="ocr_password"/&gt;
     &lt;/var-def&gt;
   
-    &lt;var-def name="submitImage"&gt;
-        &lt;case&gt;
-            &lt;if condition='${ocr_username.toString().isEmpty() || ocr_password.toString().isEmpty()}'&gt;
-                &lt;http url="${ocr_url}/submitImage" method="post" multipart="true"&gt;
-                    &lt;http-param name="file" isfile="true"&gt;
-                        &lt;http url="${original_document_url}" /&gt;
-                    &lt;/http-param&gt;
-                &lt;/http&gt;
-            &lt;/if&gt;
-            &lt;else&gt;
-                &lt;http url="${ocr_url}/submitImage" method="post" multipart="true" username="${ocr_username.toString()}" password="${ocr_password.toString()}"&gt;
-                    &lt;http-param name="file" isfile="true"&gt;
-                        &lt;http url="${original_document_url}" /&gt;
-                    &lt;/http-param&gt;
-                &lt;/http&gt;
-            &lt;/else&gt;
-        &lt;/case&gt;
-    &lt;/var-def&gt;
-    
-    &lt;var-def name="taskId"&gt;
-        &lt;xpath expression="string(//response/task/@id)"&gt;
-            &lt;var name="submitImage" /&gt;
-        &lt;/xpath&gt;
-    &lt;/var-def&gt;
-    &lt;log level="INFO" message="task id ${taskId}"/&gt;
+     &lt;case&gt;
+        &lt;if condition="${pagesList.toList().size() &amp;gt;= 1}"&gt;
+          &lt;log level="INFO" message="begin ocr multipage document...."/&gt;
+            &lt;loop item="pagesListElement"&gt;
+                &lt;list&gt;
+                    &lt;var name="pagesList" /&gt;
+                &lt;/list&gt;
+                &lt;body&gt;
+                    &lt;var-def name="submitImageResponse"&gt;
+                        &lt;http url="${ocr_url}/submitImage" method="post" multipart="true"&gt;
+                            &lt;http-param name="file" isfile="true"&gt;
+                                &lt;http url="${pagesListElement}" /&gt;
+                            &lt;/http-param&gt;
+                          	&lt;case&gt;
+                              &lt;if condition='${sys.isVariableDefined("taskId")}'&gt;
+                                &lt;http-param name="taskId"&gt;&lt;template&gt;${taskId.toString()}&lt;/template&gt;&lt;/http-param&gt;
+                                &lt;log level="INFO" message="task ID already assigned - ${taskId}"/&gt;
+                              &lt;/if&gt;
+                            &lt;/case&gt;
+                        &lt;/http&gt;
+                     &lt;/var-def&gt;
+                  	 &lt;log level="INFO" message="response from OCR ${submitImageResponse.toString()}"/&gt; 
+                      &lt;var-def name="taskId"&gt;
+                        &lt;xpath expression="string(//response/task/@id)"&gt;
+                            &lt;var name="submitImageResponse" /&gt;
+                        &lt;/xpath&gt;
+    				 &lt;/var-def&gt;                     
+                     &lt;log level="info" message="sending out ${pagesListElement} for task ${taskId}, pages ${pages}"/&gt;                    
+                  &lt;/body&gt;
+            &lt;/loop&gt;
+        &lt;/if&gt;
+    &lt;/case&gt;
       
     &lt;script&gt;&lt;![CDATA[
         //-------------------------------------------------------making processDocument url-------------------------------------------------------
@@ -2084,6 +2091,7 @@ Workfusion 2018, RPA Express 2.0
         sys.defineVariable("processDocumentUrl", process_document_url)
     ]]&gt;&lt;/script&gt;
   	&lt;log level="INFO" message="process document url: + ${processDocumentUrl.toString()}"/&gt;
+  
     &lt;var-def name="processDocument"&gt;
         &lt;case&gt;
             &lt;if condition='${ocr_username.toString().isEmpty() || ocr_password.toString().isEmpty()}'&gt;
@@ -2173,10 +2181,10 @@ Workfusion 2018, RPA Express 2.0
                                     <uuid>244984e9-ae97-45d8-bea4-606c707c4e3e</uuid>
                                     <version>
                                         <componentUuid>e39c0408-4ef1-4448-a091-a4098ad921e4</componentUuid>
-                                        <incrementalVersion>1.35</incrementalVersion>
+                                        <incrementalVersion>1.41</incrementalVersion>
                                         <lastInChain>false</lastInChain>
-                                        <lastModified>2018-11-05T08:16:41Z</lastModified>
-                                        <versionUuid>9455b2f1-4026-450c-9e3b-4b5b04ba99d0</versionUuid>
+                                        <lastModified>2018-11-09T11:47:23Z</lastModified>
+                                        <versionUuid>e333777c-67f3-41f2-80ff-92e13f411200</versionUuid>
                                     </version>
                                 </machineConfig>
                                 <moderation>false</moderation>
@@ -2193,10 +2201,10 @@ Workfusion 2018, RPA Express 2.0
                                 <validWorkflow>false</validWorkflow>
                                 <version>
                                     <componentUuid>aa2d51d8-62b0-4114-bc55-856f662381bc</componentUuid>
-                                    <incrementalVersion>1.14</incrementalVersion>
+                                    <incrementalVersion>1.15</incrementalVersion>
                                     <lastInChain>false</lastInChain>
-                                    <lastModified>2018-07-24T12:00:44Z</lastModified>
-                                    <versionUuid>c4c183e6-0e06-4c12-921f-da00f9056b93</versionUuid>
+                                    <lastModified>2018-11-09T12:20:34Z</lastModified>
+                                    <versionUuid>9fd74324-3c60-470d-9926-e6f474159c30</versionUuid>
                                 </version>
                                 <workSettingBase>false</workSettingBase>
                             </campaign>
@@ -3880,49 +3888,24 @@ Step to look for OCR cache for each OCR export format by all input parameters, a
 Workfusion 2018, RPA Express 2.0
 --&gt;
 
-&lt;config xmlns="http://web-harvest.sourceforge.net/schema/1.0/config"
-	scriptlang="groovy"&gt;
-
-	&lt;var-def name="document_link"&gt;
-		&lt;template&gt;${sys.getVar("original_document_url")}&lt;/template&gt;
-	&lt;/var-def&gt;
+&lt;config xmlns="http://web-harvest.sourceforge.net/schema/1.0/config" scriptlang="groovy"&gt;
 
 	&lt;script&gt;&lt;![CDATA[
 		isUnsuccessfulStatusCode = {statusCode -&gt; return statusCode.toString().matches('^[45]\\d{2}')};
 	]]&gt;&lt;/script&gt;
+    
+    &lt;var-def name="custom_regions"&gt;
+      &lt;template&gt;${import org.apache.commons.lang.StringEscapeUtils; sys.isVariableDefined("custom_regions") ? StringEscapeUtils.escapeSql(custom_regions.toString()) : "" }&lt;/template&gt;
+    &lt;/var-def&gt;
 
-	&lt;try&gt;
-		&lt;body&gt;
-			&lt;var-def name="document"&gt;
-				&lt;http url="${document_link}" /&gt;
-			&lt;/var-def&gt;
-		&lt;/body&gt;
-		&lt;catch&gt;
-		&lt;/catch&gt;
-	&lt;/try&gt;
-
-	&lt;case&gt;
-		&lt;if condition="${isUnsuccessfulStatusCode(http.statusCode)}"&gt;
-			&lt;try&gt;
-				&lt;body&gt;
-					&lt;var-def name="document_link"&gt;
-						&lt;template&gt;${org.apache.commons.httpclient.util.URIUtil.encodeQuery(document_link.toString())}
-						&lt;/template&gt;
-					&lt;/var-def&gt;
-					&lt;var-def name="document"&gt;
-						&lt;http url="${document_link}" /&gt;
-					&lt;/var-def&gt;
-				&lt;/body&gt;
-				&lt;catch&gt;
-				&lt;/catch&gt;
-			&lt;/try&gt;
-		&lt;/if&gt;
-	&lt;/case&gt;
+	&lt;var-def name="document"&gt;
+		&lt;http url="${import org.apache.commons.httpclient.util.URIUtil; URIUtil.encodeQuery(original_document_url.toString())}" /&gt;
+	&lt;/var-def&gt;
 
 	&lt;case&gt;
 		&lt;if condition="${isUnsuccessfulStatusCode(http.statusCode)}"&gt;
 			&lt;script&gt;&lt;![CDATA[
-				throw new RuntimeException("Failed to fetch url: " + document_link + " status code: " + http.statusCode);
+				throw new RuntimeException("Failed to fetch url: " + original_document_url + " status code: " + http.statusCode);
 			]]&gt;&lt;/script&gt;
 		&lt;/if&gt;
 	&lt;/case&gt;
@@ -3934,7 +3917,7 @@ Workfusion 2018, RPA Express 2.0
 		&lt;if condition="${document_hash.toString().length() == 0}"&gt;
 			&lt;var-def name="document_hash"&gt;
 				&lt;script
-					return="org.apache.commons.codec.digest.DigestUtils.md5Hex(document.toBinary())" /&gt;
+					return="import org.apache.commons.codec.digest.DigestUtils; DigestUtils.md5Hex(document.toBinary())" /&gt;
 			&lt;/var-def&gt;
 		&lt;/if&gt;
 	&lt;/case&gt;
@@ -3980,7 +3963,7 @@ Workfusion 2018, RPA Express 2.0
                       		AND "document_language"='${document_language}' 
                       		AND "ocr_xml_char_recognition"='${ocr_xml_char_recognition}' 
                       		AND "allowed_region_types"='${allowed_region_types}' 
-                      		AND "custom_regions"='${static import org.apache.commons.lang.StringEscapeUtils.*; escapeSql(custom_regions.toString())}' 
+                      		AND "custom_regions"='${custom_regions}' 
                       		AND "change_dpi"='${change_dpi}' AND "invert_image"='${invert_image}' 
                       		AND "discard_color_image"='${discard_color_image}' 
                       		AND "remove_color_objects"='${remove_color_objects}' 
@@ -3998,9 +3981,9 @@ Workfusion 2018, RPA Express 2.0
                     &lt;/var-def&gt;
                   
 					&lt;script&gt;&lt;![CDATA[
+						import groovy.json.JsonSlurper;
 						no_cached_export_format_list.remove(format.toString());
-
-						ocr_result_list.toList().add(new HashMap(new groovy.json.JsonSlurper().parseText(value.toString())));
+						ocr_result_list.toList().add(new HashMap(new JsonSlurper().parseText(value.toString())));
 					]]&gt;&lt;/script&gt;
 				&lt;/if&gt;
 			&lt;/case&gt;  
@@ -4110,10 +4093,10 @@ Workfusion 2018, RPA Express 2.0
                                     <uuid>df291882-d46b-46ec-906d-561e980b087a</uuid>
                                     <version>
                                         <componentUuid>7cb14104-af75-43fe-aff5-86e9d8780b4f</componentUuid>
-                                        <incrementalVersion>1.67</incrementalVersion>
+                                        <incrementalVersion>1.74</incrementalVersion>
                                         <lastInChain>true</lastInChain>
-                                        <lastModified>2018-11-05T08:16:41Z</lastModified>
-                                        <versionUuid>84608416-02e2-4902-bd20-fd04095f238e</versionUuid>
+                                        <lastModified>2018-11-05T10:54:12Z</lastModified>
+                                        <versionUuid>30a73415-e4e9-4687-97b8-3a4395dcb17d</versionUuid>
                                     </version>
                                 </machineConfig>
                                 <moderation>false</moderation>
@@ -4130,10 +4113,10 @@ Workfusion 2018, RPA Express 2.0
                                 <validWorkflow>false</validWorkflow>
                                 <version>
                                     <componentUuid>1339b2d0-655f-4d34-9ce0-9808950f4bb2</componentUuid>
-                                    <incrementalVersion>1.54</incrementalVersion>
+                                    <incrementalVersion>1.55</incrementalVersion>
                                     <lastInChain>true</lastInChain>
-                                    <lastModified>2018-07-24T16:29:28Z</lastModified>
-                                    <versionUuid>80e3ec97-416f-4c70-aa49-877151e59ebb</versionUuid>
+                                    <lastModified>2018-11-09T12:20:34Z</lastModified>
+                                    <versionUuid>20a80609-edfe-4407-bc7f-719fe796c327</versionUuid>
                                 </version>
                                 <workSettingBase>false</workSettingBase>
                             </campaign>
